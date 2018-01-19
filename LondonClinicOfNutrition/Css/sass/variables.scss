@@ -1,0 +1,35 @@
+﻿/*#region Fonts*/
+
+$primaryfont: 'omnes-pro', Arial, sans-serif;
+$secondaryfont: Helvetica,sans-serif;
+$base: 18px;
+$spacing: 34px;
+
+/*#endregion*/
+
+/*#region Colours */
+
+$black: #000;
+$black-alt: #2F2F2F;
+$black-light: #46474F;
+$white: #FFF;
+$grey: #F2F2F2;
+
+$primary: #14CC6E;
+$primary-alt: #12A064;
+$secondary: #F7A219;
+$secondary-alt: #9e0000;
+$table: #FFF;
+$table-alt: #c8c8cd;
+$alert:#F00;
+
+/*#endregion*/
+
+/*#region Media Queries*/
+
+$breakpoints: (
+    phone: 768px,
+    tablet: 1024px
+);
+
+/*#endregion*/

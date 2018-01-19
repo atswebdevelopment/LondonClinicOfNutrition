@@ -1,0 +1,11 @@
+﻿.nav{
+    @include clearlist();
+
+    &--left{
+        float:left;
+    }
+
+    &--right{
+        float:right;
+    }
+}

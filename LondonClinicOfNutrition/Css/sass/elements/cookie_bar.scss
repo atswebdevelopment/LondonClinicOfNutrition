@@ -1,0 +1,23 @@
+﻿.cookie-bar {
+    background: $white;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 11;
+    color: $primary;
+    text-align: center;
+    width: 100%;
+    padding: 20px 20px 0;
+    box-sizing:border-box;
+    min-height:146px;
+    display:none;
+
+    p {
+        font-size: 0.938em;
+        margin-bottom:10px;
+    }
+
+    .button a{
+        margin-bottom:20px;
+    }
+}

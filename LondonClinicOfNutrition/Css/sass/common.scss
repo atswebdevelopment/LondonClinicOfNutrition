@@ -1,0 +1,87 @@
+﻿h1, h2, h3, h4, h5, h6, p, img, li, blockquote, table {
+    margin-bottom: 40px;
+}
+
+h1{
+    font-size:$base + 37;
+}
+
+h2{
+    border-bottom:1px solid $grey;
+    text-align:center;
+    color:$primary;
+    font-size:$base + 19;
+
+    @include media-query(phone, max){
+        font-size:$base + 8;
+    }
+
+    span{
+        border-bottom:9px solid $primary;
+        display:inline-block;
+        padding-bottom:18px;
+
+        @include media-query(phone, max){
+            border-bottom-width:5px;
+            padding-bottom:8px;
+        }
+    }
+}
+
+h3{
+    font-size:$base + 8;
+    margin:5px 0 0;
+
+    @include media-query(phone, max){
+        font-size:$base + 2;
+    }
+
+    a{
+        color:$black;
+    }
+}
+
+p{
+    line-height:$base + 12;
+}
+
+.buttons a,
+.button a,
+a .button,
+a.button,
+button{
+    line-height:56px;
+    display:inline-block;
+    background:$secondary;
+    color:$white;
+    font-size:$base - 2;
+    padding:0 30px;
+    min-width:120px;
+    position:relative;
+    border-radius:28px;
+    box-sizing: border-box;
+    text-transform:uppercase;
+}
+
+.buttons a:hover,
+.button a:hover,
+a:hover .button,
+a.button:hover,
+button:hover{
+    text-decoration:none;
+    background-color:$white;
+    color:$black;
+}
+
+input{
+    line-height:59px;
+    display:inline-block;
+    background:$white;
+    color:$black;
+    font-size:$base;
+    padding:0;
+    position:relative;
+    border-radius:10px;
+    text-align:center;
+    width:300px;
+}

@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Epiphany.SeoMetadata;
+@{ 
+    var home = Umbraco.TypedContentSingleAtXPath("//homepage");
+    var siteName = home.Name;
+    var seo = Model.Content.GetPropertyValue<SeoMetadata>("metadata");
+    var pageTitle = seo.Title;
+    if (Model.Content.Level == 1)
+    {
+        pageTitle = siteName;
+    }
+    else if (String.IsNullOrEmpty(seo.Title))
+    {
+        pageTitle = (String.IsNullOrEmpty(Model.Content.Name) || Model.Content.Name == siteName)
+                        ? siteName
+                        : Model.Content.Name + " | " + siteName;
+    }
+    else
+    {
+        pageTitle += " | " + siteName;
+    }
+
+    var pageDescription = seo.Description;
+}
+    <title>@pageTitle</title>
+@if (!String.IsNullOrEmpty(pageDescription))
+{
+    <meta name="description" content="@pageDescription" />
+}
+
+    <meta property="og:title" content="@pageTitle" />
+@if (!String.IsNullOrEmpty(pageDescription))
+{
+    <meta property="og:description" content="@pageDescription" />
+}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@pageTitle" />
+@if (!String.IsNullOrEmpty(pageDescription))
+{
+    <meta name="twitter:description" content="@pageDescription" />
+}

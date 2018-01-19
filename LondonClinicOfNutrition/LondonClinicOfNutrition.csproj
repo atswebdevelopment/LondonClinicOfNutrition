@@ -72,6 +72,10 @@
       <HintPath>..\packages\UmbracoCms.Core.7.7.7\lib\net45\controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Epiphany.SeoMetadata, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Epiphany.SeoMetadata.0.4.0\lib\net40\Epiphany.SeoMetadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Examine, Version=0.1.88.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.0.1.88\lib\net45\Examine.dll</HintPath>
       <Private>True</Private>
@@ -303,6 +307,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\Epiphany.SeoMetadata\css\epiphany.seo.metadata.css" />
+    <Content Include="App_Plugins\Epiphany.SeoMetadata\js\epiphany.seo.metadata.js" />
+    <Content Include="App_Plugins\Epiphany.SeoMetadata\views\epiphany.seo.metadata.html" />
+    <Content Include="App_Plugins\Epiphany.SeoMetadata\views\serp1.png" />
+    <Content Include="App_Plugins\Epiphany.SeoMetadata\views\serp2.png" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.resource.js" />
@@ -325,8 +334,16 @@
     <Content Include="config\Lang\ru-RU.user.xml" />
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
+    <Content Include="Css\editor.css" />
+    <Content Include="Css\main.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="gruntfile.js" />
+    <Content Include="Scripts\js\jquery.ats.dg.js" />
+    <Content Include="Scripts\lib\jquery.min.js" />
+    <Content Include="Scripts\lib\slick.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\main.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +384,30 @@
     <Content Include="config\BaseRestExtensions.config" />
     <Content Include="config\applications.config" />
     <Content Include="config\404handlers.config" />
+    <Content Include="package.json" />
+    <Content Include="Css\editor.css.map" />
+    <Content Include="Css\main.css.map" />
+    <Content Include="Css\sass\cms\cms.scss" />
+    <Content Include="Css\sass\cms\editor.scss" />
+    <Content Include="Css\sass\common.scss" />
+    <Content Include="Css\sass\elements\banner.scss" />
+    <Content Include="Css\sass\elements\blocks.scss" />
+    <Content Include="Css\sass\elements\brand_filter.scss" />
+    <Content Include="Css\sass\elements\cookie_bar.scss" />
+    <Content Include="Css\sass\elements\footer.scss" />
+    <Content Include="Css\sass\elements\forms.scss" />
+    <Content Include="Css\sass\elements\header.scss" />
+    <Content Include="Css\sass\global.scss" />
+    <Content Include="Css\sass\layout.scss" />
+    <Content Include="Css\sass\main.scss" />
+    <Content Include="Css\sass\mixins.scss" />
+    <Content Include="Css\sass\pages\homepage.scss" />
+    <Content Include="Css\sass\slick.scss" />
+    <Content Include="Css\sass\variables.scss" />
+    <Content Include="Views\Homepage.cshtml" />
+    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="App_Plugins\Epiphany.SeoMetadata\package.manifest" />
+    <Content Include="Views\Partials\Seo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,58 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    @Html.Partial("Seo", Model.Content)
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <link href="/css/main.css" rel="stylesheet" />
+    <!-- Fonts -->
+    @*<script>
+        (function(d) {
+            var config = {
+                kitId: 'ukk8hle',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>*@
+</head>
+<body>
+    <!-- Content -->
+    <!-- Header -->
+    @Html.Partial("Header", Model.Content)
+    <!-- End Header -->
+    <!-- Content -->
+    @RenderBody()
+    <!-- End Content -->
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-main">
+
+        </div>
+        <div class="footer-utilities">
+
+        </div>
+    </div>
+    <!-- End Footer -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111281711-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111281711-1');
+    </script>*@
+    <!-- End Google Analytics -->
+    <script src="/scripts/lib/jquery.min.js"></script>
+    @*<script src="/scripts/lib/slick.min.js"></script>*@
+    <script src="/scripts/main.min.js"></script>
+</body>
+</html>

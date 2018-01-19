@@ -1,0 +1,117 @@
+﻿html, body, span, div, p, a, li, ul, ol, h1, h2, h3, h4, h5, img, input, button, table, blockquote, fieldset, svg {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: color 0.15s cubic-bezier(.21,.96,.59,.97), background-color 0.15s cubic-bezier(.21,.96,.59,.97), fill 0.15s cubic-bezier(.21,.96,.59,.97);
+}
+
+body {
+    overflow-x: hidden;
+    font-family: $primaryfont;
+    font-size: $base;
+    color:$black;
+    font-weight:200;
+}
+
+a {
+    text-decoration: none;
+    color:$white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, b, strong{
+    @include font(bold);
+}
+
+img {
+    max-width: 100%;
+}
+
+hr{
+    margin-bottom:24px;
+}
+
+ol, ul{ 
+    padding:0;
+    list-style:none; 
+}
+
+ol{
+    counter-reset: item;
+}
+
+li{
+    padding-left:30px;
+}
+
+li:before{
+    color:$primary;
+    width:0;
+    float:left;
+    margin-left:-30px;
+}
+
+ol li:before {
+    content: counter(item);
+    counter-increment: item;
+}
+
+ul li:before {
+    content: '\2022';
+}
+
+button{
+    outline:none;
+    cursor:pointer;
+}
+
+audio, div, canvas, img, video {
+    vertical-align:top;
+}
+
+textarea{
+    resize: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.strong{
+    font-size:1.5em;
+    color:$primary;
+    font-weight:bold;
+}
+
+table {
+    border-spacing: 0; 
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead tr{
+    background:$primary;
+    color:$white;
+}
+
+tr{
+    background:$table;
+}
+
+tr:nth-child(even){
+    background:$table-alt;
+}
+
+td{
+    border-right:1px solid $white;
+    padding:2px;
+    font-size:	0.875rem;
+}
+
+.bg-load,.img-load{
+    background:url(/Images/loader.svg) 50% 50% no-repeat;
+    background-size:32px !important;
+}
