@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                 },
                 files: [
                   {
-                      "Css/main.css": "Css/sass/main.scss",
+                      "Css/main.css": "Css/sass/main.scss"
                   }
                 ]
             }
@@ -33,13 +33,14 @@ module.exports = function (grunt) {
             },
             files: {
                 src: [
+                    "Views/Partials/**/*.js",
                     "scripts/js/*.js"
                 ]
             }
         },
         concat: {
             scripts: {
-                src: ["scripts/js/*.js"],
+                src: ["Views/Partials/**/*.js", "scripts/js/*.js"],
                 dest: "scripts/main.js",
             }
         },
@@ -51,11 +52,11 @@ module.exports = function (grunt) {
         },
         watch: {
             sass: {
-                files: ["Css/sass/*.scss", "Css/sass/**/*.scss"],
+                files: ["Css/sass/*.scss", "Views/Partials/**/*.scss", "Css/sass/**/*.scss"],
                 tasks: ["sass"]
             },
             scripts: {
-                files: ["scripts/js/*.js"],
+                files: ["Views/Partials/**/*.js", "scripts/js/*.js"],
                 tasks: ["jshint", "concat:scripts", "uglify:build"]
             }
         }

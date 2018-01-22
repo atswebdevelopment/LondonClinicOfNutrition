@@ -1,0 +1,41 @@
+﻿.footer-main{
+    background:$primary-alt;
+    height:293px;
+    padding:100px 0;
+    box-sizing:border-box;
+    color:$primary-dark;
+    
+    &__social{
+        width:50%;
+        float:left;
+    }
+
+    &__register{
+        width:50%;
+        float:right;
+    }
+}
+
+.footer-utilities{
+    background:$primary-dark;
+    height:84px;
+    color:rgba($primary,0.68);
+
+    p{
+        float:left;
+        margin:30px 0 0;
+    }
+
+    &__nav{
+        @include clearlist();
+        float:right;
+    }
+
+    &__link{
+        margin:30px 0 0 80px;
+
+        a{
+            color:rgba($primary,0.68);
+        }
+    }
+}

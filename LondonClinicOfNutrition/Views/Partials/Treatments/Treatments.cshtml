@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{ 
+    var treatments = Umbraco.TypedContentSingleAtXPath("//treatments");
+    var take = 999;
+    var scroll = false;
+
+    if(treatments.Id != Model.Content.Id)
+    {
+        take = 6;
+        scroll = true;
+    }
+}
+<div class="section">
+    <div class="inner">
+        <div class="boxes treatments" data-id="@treatments.Id" data-take="@take" data-scroll="@scroll">
+
+        </div>
+    </div>
+</div>

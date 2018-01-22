@@ -101,3 +101,59 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+/*ATS Web Overrides*/
+
+.slick-arrow{
+    width:59px;
+    height:59px;
+    line-height: 74px;
+    border-radius:50%;
+    background:$white;
+    position:absolute;
+    top:50%;
+    margin-top:-30px;
+    right:0;
+    z-index:1;
+
+    &.slick-prev{
+        transform: rotateZ(180deg);
+        right:auto;
+        left:0;
+    }
+
+    svg{
+        width:13.97px;
+        height:24px;
+        margin-left:2px;
+
+        .a,.b,.c{
+            @include svg($black-light);
+        }
+    }
+}
+
+.slick-dots{
+    text-align:center;
+    margin:0 0 20px;
+    @include clearlist();
+
+    li{
+        margin:0;
+
+        button{
+            width:10px;
+            height:10px;
+            margin:0 8px;
+            text-indent:-999em;
+            border-radius:50%;
+            background:rgba($black-alt,0.3);
+        }
+
+        &.slick-active{
+            button{
+                background:$white;
+            }
+        }
+    }
+}

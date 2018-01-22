@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var home = Umbraco.TypedContentSingleAtXPath("//homepage");
+    var footerNavigation = home.GetPropertyValue<IEnumerable<IPublishedContent>>("footerNavigation");
+}
+<div class="footer">
+    <div class="footer-main">
+        <div class="inner">
+            <div class="footer-main__social">
+                <span class="title">Contact us today</span>
+                <ul class="social">
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-twitter.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-facebook.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-linkedin.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-phone.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-email.svg"></span></a></li>
+                </ul>
+            </div>
+            @*<div class="footer-main__register">
+                <form class="form">
+                    <span class="title">Recieve free health tips & recipes</span>
+                    <fieldset>
+                        <div class="form__field">
+                            <input type="text" placeholder="yourname@email.com"/>
+                            <button>test</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>*@
+        </div>
+    </div>
+    <div class="footer-utilities">
+        <div class="inner">
+            <p>London Clinic of Nutrition&copy; All Rights Reserved.</p>
+            <ul class="footer-utilities__nav">
+                @foreach (var item in footerNavigation)
+                {
+                    <li class="footer-utilities__link"><a href="@item.Url">@item.Name</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

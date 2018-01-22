@@ -1,7 +1,95 @@
 /*
-* Title: 
-* Author: Adam Southorn http://www.jabberwokie.com
-* Date: --/--/--
+* Title: Content scroller
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var contentScroller = {
+    init: function () {
+        $('.slick-content-scroller').slick({
+            dots: true,
+            prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+            nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+        });
+        views.setImages();
+    }
+};
+/*
+* Title: Cookiebar
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var cookieBar = {
+    init: function () {
+        //Cookie bar
+        if (localStorage.cookies === undefined) {
+            try {
+                localStorage.cookies = "on";
+                $('.cookie-bar').slideDown();
+            }
+            catch (err) { }
+        }
+
+        $('.cookie-bar .button a').on('click touch', function () {
+            $('.cookie-bar').slideUp();
+            return false;
+        });
+    }
+};
+/*
+* Title: Treatments
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var treatments = {
+    skip: 0,
+    take: 0,
+    init: function () {
+        //Treatments
+        treatments.take = $('.treatments').attr('data-take');
+        treatments.view(treatments.skip, treatments.take);
+    },
+    view: function (skip, take){
+        treatments.model($('.treatments').attr('data-id'), skip, take).success(function (data) {
+            treatments.controller(data);
+        }).fail(function (data) {
+            console.log(data.responseJSON.Message);
+        });
+    },
+    controller: function (data){
+        console.log(data);
+
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="boxes__box"><div class="boxes__content"><a class="boxes__link" href="' + data[i].url + '"></a><h3>' + data[i].name + '</h3></div></div>';
+        }
+
+        $('.boxes').append(html);
+
+        if ($('.treatments').attr('data-scroll') === 'True') {
+            $('.treatments').slick({
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+            });
+        }
+    },
+    model: function (id, skip, take) {
+        return $.ajax({
+            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+            type: 'GET',
+            context: document.body
+        });
+    }
+};
+/*
+* Title: Main JS
+* Author: Adam Southorn
 * Version: 1.0
 */
 
@@ -12,27 +100,12 @@ var views = {
         if ($('form').length) {
             views.forms();
         }
-
         views.resize();
         //$(window).on('resize', function (e) {
         //    views.resize();
         //});
     },
     ui: function () {
-        //Cookie bar
-        //if (localStorage.cookies === undefined) {
-        //    try {
-        //        localStorage.cookies = "on";
-        //        $('.cookie-bar').slideDown();
-        //    }
-        //    catch (err) { }
-        //}
-
-        //$('.cookie-bar .button a').on('click touch', function () {
-        //    $('.cookie-bar').slideUp();
-        //    return false;
-        //});
-
         $('.switch a').click(function () {
             $('.mailer__content').toggleClass('hidden');
             return false;
@@ -93,7 +166,7 @@ var views = {
         });
     },
     resize: function () {
-        
+
     },
     forms: function () {
         $('form').submit(function (e) {
@@ -111,7 +184,7 @@ var views = {
             try {
                 models.form(form.serialize(), form.attr('data-method')).success(function (data) {
                     controllers.form(data, form);
-                }).fail(function (data){
+                }).fail(function (data) {
                     console.log(data.responseJSON.Message);
                     form.find('.error-text').show();
                     form.removeClass('form--loading');
@@ -177,29 +250,8 @@ var views = {
         var re = /^[0-9]+$/;
         return re.test(val);
     }
-},
-controllers = {
-    form: function (data, form) {
-        form.removeClass('form--loading');
-
-        console.log(data);
-        if (data === "success") {
-            form.addClass('form--loaded');
-        }
-        else {
-            form.find('.error-text').show();
-        }
-    }
-},
-models = {
-    form: function (data, method) {
-        return $.ajax({
-            url: '/umbraco/api/DigitalGardenApi/' + method,
-            type: 'POST',
-            context: document.body,
-            data: data
-        });
-    }
 };
-
 views.init();
+cookieBar.init();
+contentScroller.init();
+treatments.init();

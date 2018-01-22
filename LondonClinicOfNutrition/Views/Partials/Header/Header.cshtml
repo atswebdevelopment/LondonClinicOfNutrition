@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var home = Umbraco.TypedContentSingleAtXPath("//homepage");
+    var utilityNavigation = home.GetPropertyValue<IEnumerable<IPublishedContent>>("utilityNavigation");
+    var mainNavigation = home.GetPropertyValue<IEnumerable<IPublishedContent>>("mainNavigation");
+    var mainNavigationHalf = Math.Ceiling((float)mainNavigation.Count() / 2);
+    var mainNavigationInt = 0;
+}
+<div class="header">
+    <div class="header-utilities">
+        <div class="inner">
+            <ul class="header-utilities__nav">
+                @foreach (var item in utilityNavigation)
+                {
+                    <li class="header-utilities__link"><a href="@item.Url">@item.Name</a></li>
+                }
+            </ul>
+            <ul class="header-utilities__nav">
+                <li class="header-utilities__link header-utilities__link--icon"><a href=""><span class="svg-load" data-src="/images/icon-phone.svg"></span></a></li>
+                <li class="header-utilities__link header-utilities__link--icon"><a href=""><span class="svg-load" data-src="/images/icon-email.svg"></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-main">
+        <div class="inner">
+            <ul class="header-main__nav">
+                @foreach (var item in mainNavigation)
+                {
+                    mainNavigationInt++;
+                    var additionalMainNavigationClass = mainNavigationInt == mainNavigationHalf ? "header-main__link--padright" : "";
+                    additionalMainNavigationClass = mainNavigationInt == (mainNavigationHalf + 1) ? "header-main__link--padleft" : additionalMainNavigationClass;
+                    <li class="header-main__link @additionalMainNavigationClass @(item.IsAncestorOrSelf(Model.Content) ? "header-main__link--active" : null)"><a href="@item.Url">@item.Name</a></li>
+                }
+            </ul>
+            <div class="logo">
+                <a href="/"><span class="logo__image svg-load" data-src="/images/logo.svg"></span></a>
+            </div>
+            <form class="search">
+
+            </form>
+        </div>
+    </div>
+</div>

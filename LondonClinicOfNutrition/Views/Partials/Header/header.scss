@@ -1,0 +1,120 @@
+﻿.header{
+    overflow:hidden;
+
+    a{
+        color:$primary-dark;
+    }
+}
+
+.header-utilities{
+    background:$primary-alt;
+    height:55px;
+    text-align:right;
+
+    &__nav{
+        display:inline-block;
+        vertical-align:top;
+        @include clearlist();
+        margin-left:10px;
+    }
+
+    &__link{
+        margin:0;
+        padding-right:10px;
+
+        &:after{
+            content:"";
+            display:inline-block;
+            height:24px;
+            width:0;
+            border-left:1px solid $primary-dark;
+            margin-left:16px;
+            position:relative;
+            top:6px;
+        }
+
+        &:last-child{
+            &:after{
+                content:none;
+            }
+        }
+
+        a{
+            margin-top:11px;
+            display:inline-block;
+        }
+
+        &--icon{
+            &:after{
+                content:none;
+            }
+
+            a{
+                margin-top:13px;
+
+                svg{
+                    width:24px;
+                    height:24px;
+
+                    .a{
+                        @include svg($primary-dark);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-main{
+    height:85px;
+
+    &__nav{
+        @include clearlist();
+        text-align:center;
+    }
+    
+    &__link{
+        margin:0;
+        position:relative;
+
+        a{
+            display:block;
+            padding:28px 47px;
+        }
+
+        &--padright{
+            margin-right:115px;
+        }
+
+        &--padleft{
+            margin-left:115px;
+        }
+
+        &--active{
+            :after{
+                content:"";
+                width:40px;
+                height:0;
+                border-bottom:3px solid $primary;
+                position:absolute;
+                bottom:24px;
+                left:50%;
+                margin-left:-20px;
+            }
+        }
+    }
+}
+
+.logo{
+    border-radius:50%;
+    width:170px;
+    height:170px;
+    background:$white;
+    display:block;
+    padding:17px 33px 0;
+    box-sizing:border-box;
+    position: absolute;
+    top: -58px;
+    left: 50%;
+    margin-left: -85px;
+}

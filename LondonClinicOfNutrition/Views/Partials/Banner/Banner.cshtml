@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var background = "";
+    var bannerImage = Model.Content.GetPropertyValue<IPublishedContent>("background");
+    if (bannerImage != null)
+    {
+        background = bannerImage.Url;
+    }
+}
+<div class="banner bg-load vertical" data-src="@background">
+    <div class="inner vertical-block">
+        @Model.Content.GetPropertyValue("content")
+    </div>
+</div>

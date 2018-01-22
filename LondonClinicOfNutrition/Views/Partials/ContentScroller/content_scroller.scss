@@ -1,0 +1,16 @@
+﻿.content-scroller {
+    background:url(/Images/bg-content-scroller.svg) center $primary-alt fixed;
+    background-size:cover;
+    padding:40px 0;
+    color:$white;
+
+    &__text{
+        padding: 100px 20%;
+
+        p{
+            font-size:$base + 7;
+            line-height:$base + 20;
+            max-width:750px;
+        }
+    }
+}

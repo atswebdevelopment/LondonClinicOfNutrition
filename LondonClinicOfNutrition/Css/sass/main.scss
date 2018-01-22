@@ -3,9 +3,11 @@
 @import "global";
 @import "common";
 @import "layout";
-@import "elements/header";
-@import "elements/navigation";
-@import "elements/banner";
-@import "elements/footer";
-/*@import "elements/cookie_bar";
-@import "pages/homepage";*/
+@import "slick";
+@import "../../Views/Partials/CookieBar/cookie_bar";
+@import "../../Views/Partials/Header/header";
+@import "../../Views/Partials/Banner/banner";
+@import "../../Views/Partials/HighlightBar/highlight_bar";
+@import "../../Views/Partials/ContentScroller/content_scroller";
+@import "../../Views/Partials/Treatments/treatments";
+@import "../../Views/Partials/Footer/footer";

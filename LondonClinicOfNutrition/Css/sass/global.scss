@@ -1,8 +1,8 @@
-﻿html, body, span, div, p, a, li, ul, ol, h1, h2, h3, h4, h5, img, input, button, table, blockquote, fieldset, svg {
+﻿html, body, span, div, p, a, li, ul, ol, h1, h2, h3, h4, h5, img, input, button, table, blockquote, fieldset, svg, .a {
     margin: 0;
     padding: 0;
     border: 0;
-    transition: color 0.15s cubic-bezier(.21,.96,.59,.97), background-color 0.15s cubic-bezier(.21,.96,.59,.97), fill 0.15s cubic-bezier(.21,.96,.59,.97);
+    transition: color 0.15s $bezier, background-color 0.15s $bezier, fill 0.15s $bezier, fill 0.15s $bezier;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
 
 a {
     text-decoration: none;
-    color:$white;
+    color:$primary;
 }
 
 a:hover {

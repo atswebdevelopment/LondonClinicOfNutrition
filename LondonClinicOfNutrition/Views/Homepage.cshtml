@@ -2,7 +2,10 @@
 @{
 	Layout = "_Layout.cshtml";
 }
-@Html.Partial("Banner", Model.Content)
+@Html.Partial("Banner/Banner", Model.Content)
+@Html.Partial("HighlightBar/HighlightBar", Model.Content)
+@Html.Partial("ContentScroller/ContentScroller", Model.Content)
+@Html.Partial("Treatments/Treatments", Model.Content)
 <div class="section">
     <div class="inner">
     </div>
@@ -23,3 +26,4 @@
         <span class="button"><a href="">View all articles</a></span>
     </div>
 </div>
+@Html.Partial("HighlightBar/HighlightBar", Model.Content)

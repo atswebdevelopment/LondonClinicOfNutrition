@@ -50,6 +50,7 @@
 
 @mixin svg($color){
     fill:$color;
+    stroke:$color;
 }
 
 @mixin group {
@@ -88,8 +89,9 @@
         display:inline-block;
     }
     .vertical-block{
-        width:99%;
+        width:98%;
         vertical-align:middle;
         display:inline-block;
+        box-sizing: border-box;
     }
 }

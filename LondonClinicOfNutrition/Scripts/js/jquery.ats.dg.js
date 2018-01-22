@@ -1,7 +1,6 @@
 ﻿/*
-* Title: 
-* Author: Adam Southorn http://www.jabberwokie.com
-* Date: --/--/--
+* Title: Main JS
+* Author: Adam Southorn
 * Version: 1.0
 */
 
@@ -12,27 +11,12 @@ var views = {
         if ($('form').length) {
             views.forms();
         }
-
         views.resize();
         //$(window).on('resize', function (e) {
         //    views.resize();
         //});
     },
     ui: function () {
-        //Cookie bar
-        //if (localStorage.cookies === undefined) {
-        //    try {
-        //        localStorage.cookies = "on";
-        //        $('.cookie-bar').slideDown();
-        //    }
-        //    catch (err) { }
-        //}
-
-        //$('.cookie-bar .button a').on('click touch', function () {
-        //    $('.cookie-bar').slideUp();
-        //    return false;
-        //});
-
         $('.switch a').click(function () {
             $('.mailer__content').toggleClass('hidden');
             return false;
@@ -93,7 +77,7 @@ var views = {
         });
     },
     resize: function () {
-        
+
     },
     forms: function () {
         $('form').submit(function (e) {
@@ -111,7 +95,7 @@ var views = {
             try {
                 models.form(form.serialize(), form.attr('data-method')).success(function (data) {
                     controllers.form(data, form);
-                }).fail(function (data){
+                }).fail(function (data) {
                     console.log(data.responseJSON.Message);
                     form.find('.error-text').show();
                     form.removeClass('form--loading');
@@ -177,29 +161,4 @@ var views = {
         var re = /^[0-9]+$/;
         return re.test(val);
     }
-},
-controllers = {
-    form: function (data, form) {
-        form.removeClass('form--loading');
-
-        console.log(data);
-        if (data === "success") {
-            form.addClass('form--loaded');
-        }
-        else {
-            form.find('.error-text').show();
-        }
-    }
-},
-models = {
-    form: function (data, method) {
-        return $.ajax({
-            url: '/umbraco/api/DigitalGardenApi/' + method,
-            type: 'POST',
-            context: document.body,
-            data: data
-        });
-    }
 };
-
-views.init();
