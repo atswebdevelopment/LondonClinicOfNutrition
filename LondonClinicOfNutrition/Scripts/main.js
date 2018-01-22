@@ -1,4 +1,63 @@
 /*
+* Title: Blogs
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var blogs = {
+    skip: 0,
+    take: 0,
+    container: $('.boxes-blogs .boxes'),
+    init: function () {
+        //Blogs
+        blogs.take = blogs.container.attr('data-take');
+        blogs.view(blogs.skip, blogs.take);
+    },
+    view: function (skip, take){
+        blogs.model(blogs.container.attr('data-id'), skip, take).success(function (data) {
+            blogs.controller(data);
+        }).fail(function (data) {
+            console.log(data.responseJSON.Message);
+        });
+    },
+    controller: function (data){
+        console.log(data);
+
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="boxes__box"><div class="boxes__content">' +
+                '<a class="boxes__link" href="' + data[i].url + '"></a>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<span class="timestamp">' + data[i].date + '</span>' +
+                '<h3>' + data[i].name + '</h3>' +
+                '<span class="button"><a>Read more</a></span>' +
+                '</div></div>';
+        }
+
+        blogs.container.append(html);
+
+        if (blogs.container.attr('data-scroll') === 'True') {
+            blogs.container.slick({
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+            });
+        }
+        global.setImages();
+    },
+    model: function (id, skip, take) {
+        return $.ajax({
+            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+            type: 'GET',
+            context: document.body
+        });
+    }
+};
+/*
 * Title: Content scroller
 * Author: Adam Southorn
 * Version: 1.0
@@ -38,6 +97,63 @@ var cookieBar = {
     }
 };
 /*
+* Title: Recipes
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var recipes = {
+    skip: 0,
+    take: 0,
+    init: function () {
+        //Recipes
+        recipes.take = $('.boxes-recipes .boxes').attr('data-take');
+        recipes.view(recipes.skip, recipes.take);
+    },
+    view: function (skip, take){
+        recipes.model($('.boxes-recipes .boxes').attr('data-id'), skip, take).success(function (data) {
+            recipes.controller(data);
+        }).fail(function (data) {
+            console.log(data.responseJSON.Message);
+        });
+    },
+    controller: function (data){
+        console.log(data);
+
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="boxes__box"><div class="boxes__content">' +
+                '<a class="boxes__link" href="' + data[i].url + '"></a>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<h3>' + data[i].name + '</h3>' +
+                '<span class="button"><a>Read more</a></span>' +
+                '</div></div>';
+        }
+
+        $('.boxes-recipes .boxes').append(html);
+
+        if ($('.boxes-recipes .boxes').attr('data-scroll') === 'True') {
+            $('.boxes-recipes .boxes').slick({
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+            });
+        }
+        global.setImages();
+    },
+    model: function (id, skip, take) {
+        return $.ajax({
+            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+            type: 'GET',
+            context: document.body
+        });
+    }
+};
+/*
 * Title: Services
 * Author: Adam Southorn
 * Version: 1.0
@@ -46,19 +162,20 @@ var cookieBar = {
 var services = {
     skip: 0,
     take: 0,
+    container: $('.boxes-services .boxes'),
     init: function () {
         //Services
-        services.take = $('.boxes-services .boxes').attr('data-take');
+        services.take = services.container.attr('data-take');
         services.view(services.skip, services.take);
     },
-    view: function (skip, take){
-        services.model($('.boxes-services .boxes').attr('data-id'), skip, take).success(function (data) {
+    view: function (skip, take) {
+        services.model(services.container.attr('data-id'), skip, take).success(function (data) {
             services.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
         });
     },
-    controller: function (data){
+    controller: function (data) {
         console.log(data);
 
         var html = '';
@@ -73,10 +190,10 @@ var services = {
                 '</div></div>';
         }
 
-        $('.boxes-services .boxes').append(html);
+        services.container.append(html);
 
-        if ($('.boxes-services .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-services .boxes').slick({
+        if (services.container.attr('data-scroll') === 'True') {
+            services.container.slick({
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
@@ -103,13 +220,14 @@ var services = {
 var treatments = {
     skip: 0,
     take: 0,
+    container: $('.boxes-treatments .boxes'),
     init: function () {
         //Treatments
-        treatments.take = $('.boxes-treatments .boxes').attr('data-take');
+        treatments.take = treatments.container.attr('data-take');
         treatments.view(treatments.skip, treatments.take);
     },
     view: function (skip, take){
-        treatments.model($('.boxes-treatments .boxes').attr('data-id'), skip, take).success(function (data) {
+        treatments.model(treatments.container.attr('data-id'), skip, take).success(function (data) {
             treatments.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -130,10 +248,10 @@ var treatments = {
                 '</div></div>';
         }
 
-        $('.boxes-treatments .boxes').append(html);
+        treatments.container.append(html);
 
-        if ($('.boxes-treatments .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-treatments .boxes').slick({
+        if (treatments.container.attr('data-scroll') === 'True') {
+            treatments.container.slick({
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
@@ -317,3 +435,5 @@ cookieBar.init();
 contentScroller.init();
 treatments.init();
 services.init();
+blogs.init();
+recipes.init();

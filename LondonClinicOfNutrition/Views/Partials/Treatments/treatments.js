@@ -7,13 +7,14 @@
 var treatments = {
     skip: 0,
     take: 0,
+    container: $('.boxes-treatments .boxes'),
     init: function () {
         //Treatments
-        treatments.take = $('.boxes-treatments .boxes').attr('data-take');
+        treatments.take = treatments.container.attr('data-take');
         treatments.view(treatments.skip, treatments.take);
     },
     view: function (skip, take){
-        treatments.model($('.boxes-treatments .boxes').attr('data-id'), skip, take).success(function (data) {
+        treatments.model(treatments.container.attr('data-id'), skip, take).success(function (data) {
             treatments.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -34,10 +35,10 @@ var treatments = {
                 '</div></div>';
         }
 
-        $('.boxes-treatments .boxes').append(html);
+        treatments.container.append(html);
 
-        if ($('.boxes-treatments .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-treatments .boxes').slick({
+        if (treatments.container.attr('data-scroll') === 'True') {
+            treatments.container.slick({
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,

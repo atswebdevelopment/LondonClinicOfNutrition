@@ -14,4 +14,16 @@
     &--grey{
         background:$grey;
     }
+
+    &__header{
+        margin-bottom:70px;
+    }
+
+    &__title{
+        text-transform:uppercase;
+        font-weight:bold;
+        border-bottom:8px solid $primary;
+        padding-bottom:10px;
+        display:inline-block;
+    }
 }

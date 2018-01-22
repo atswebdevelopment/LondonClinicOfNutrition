@@ -95,6 +95,13 @@ input{
     margin-bottom:20px;
 }
 
+.timestamp{
+    color:$primary;
+    font-size:$base - 2;
+    display:block;
+    margin-bottom:10px;
+}
+
 .social{
     @include clearlist();
 
@@ -176,6 +183,18 @@ input{
     &__link{
         @include fill();
         z-index:1;
+    }
+
+    &__image{
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 32px;
+        left: 0;
+        width: 79%;
+        margin-left: 10.5%;
+        display: block;
+        height: 176px;
     }
 
     &__icon{

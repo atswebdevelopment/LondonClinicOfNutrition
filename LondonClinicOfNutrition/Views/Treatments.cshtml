@@ -3,5 +3,9 @@
     Layout = "_Layout.cshtml";
 }
 @Html.Partial("Banner/Banner", Model.Content)
-@Html.Partial("Treatments/Treatments", Model.Content)
+<div class="section">
+    <div class="inner">
+        @Html.Partial("Treatments/Treatments", Model.Content)
+    </div>
+</div>
 @Html.Partial("HighlightBar/HighlightBar", Model.Content)

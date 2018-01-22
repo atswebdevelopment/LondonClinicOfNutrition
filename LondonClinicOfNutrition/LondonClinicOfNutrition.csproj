@@ -341,14 +341,17 @@
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gruntfile.js" />
+    <Content Include="Images\bg-box.svg" />
     <Content Include="Images\bg-highlight-bar.svg" />
     <Content Include="Images\icon-arrow.svg" />
+    <Content Include="Images\icon-cancer.svg" />
     <Content Include="Images\icon-email.svg" />
     <Content Include="Images\icon-facebook.svg" />
     <Content Include="Images\icon-linkedIn.svg" />
     <Content Include="Images\icon-phone.svg" />
     <Content Include="Images\icon-twitter.svg" />
     <Content Include="Images\image-banner-1.png" />
+    <Content Include="Images\image-banner-2.jpg" />
     <Content Include="Images\loader.svg" />
     <Content Include="Images\logo.svg" />
     <Content Include="Scripts\js\jquery.ats.dg.js" />
@@ -357,8 +360,11 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\main.min.js" />
     <Content Include="Images\bg-content-scroller.svg" />
+    <Content Include="Views\Partials\Blogs\blogs.js" />
     <Content Include="Views\Partials\ContentScroller\content_scroller.js" />
     <Content Include="Views\Partials\CookieBar\cookie_bar.js" />
+    <Content Include="Views\Partials\Recipes\recipes.js" />
+    <Content Include="Views\Partials\Services\services.js" />
     <Content Include="Views\Partials\Treatments\treatments.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -448,6 +454,12 @@
     <Content Include="Views\Treatments.cshtml" />
     <Content Include="Views\Partials\Treatments\Treatments.cshtml" />
     <Content Include="Views\Partials\Treatments\treatments.scss" />
+    <Content Include="Views\Partials\Services\Services.cshtml" />
+    <Content Include="Views\Partials\Services\services.scss" />
+    <Content Include="Views\Partials\Blogs\Blogs.cshtml" />
+    <Content Include="Views\Partials\Blogs\blogs.scss" />
+    <Content Include="Views\Partials\Recipes\Recipes.cshtml" />
+    <Content Include="Views\Partials\Recipes\recipes.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
