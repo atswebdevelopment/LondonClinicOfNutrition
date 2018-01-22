@@ -13,4 +13,12 @@
             max-width:750px;
         }
     }
+
+    .slick-dots{
+        .slick-active{
+            button{
+                background:$white;
+            }
+        }
+    }
 }

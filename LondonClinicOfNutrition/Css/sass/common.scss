@@ -38,10 +38,10 @@ a.button{
 .buttons a:hover,
 .button a:hover,
 a:hover .button,
-a.button:hover{
+a.button:hover,
+.boxes__box:hover .button a{
     text-decoration:none;
-    background-color:$white;
-    color:$black;
+    background-color:$black-light;
 }
 
 .buttons--alt a,
@@ -55,9 +55,25 @@ a.button--alt{
 .buttons--alt a:hover,
 .button--alt a:hover,
 a:hover .button--alt,
-a.button--alt:hover{
+a.button--alt:hover,
+.boxes__box:hover .button--alt a{
     background-color:$secondary;
     color:$white;
+}
+
+.buttons--secondary a,
+.button--secondary a,
+a .button--secondary,
+a.button--secondary{
+    background:$primary;
+}
+
+.buttons--secondary a:hover,
+.button--secondary a:hover,
+a:hover .button--secondary,
+a.button--secondary:hover,
+.boxes__box:hover .button--secondary a{
+    background-color:$primary-alt;
 }
 
 input{
@@ -123,25 +139,68 @@ input{
     }
 
     &__content{
-        width:72%;
-        height:502px;
-        margin:50px 14% 120px;
+        width: 60%;
+        height: 502px;
+        margin: 50px 20% 120px;
         background-size:cover;
         border-radius:10px;
+
+        h3{
+            border-bottom:1px solid $black;
+            padding-bottom:19px;
+            margin-bottom:26px;
+        }
+
+        p{
+            height: 171px;
+            overflow: hidden;
+            margin-bottom: 28px;
+            position:relative;
+
+            &:after{
+                content:"";
+                width:100%;
+                height:14px;
+                display:block;
+                position:absolute;
+                bottom:0;
+                left:0;
+                background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+                background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+                background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+            }
+        }
     }
 
     &__link{
         @include fill();
+        z-index:1;
     }
 
     &__icon{
-        width:196px;
-        height:196px;
-        margin:0 auto;
+        width:132px;
+        height:132px;
+        margin:0 auto 68px;
         border-radius:50%;
-        background:$white;
+        background:$primary;
         position:relative;
-        top:-48px;
+        top:32px;
         z-index:1;
+        box-sizing: border-box;
+        padding: 18px;
+
+        svg{
+            width:100%;
+            height:100%;
+
+            .a{
+                @include svg($primary);
+            }
+
+            .b{
+                @include svg($white);
+            }
+        }
     }
 }

@@ -5,7 +5,16 @@
 @Html.Partial("Banner/Banner", Model.Content)
 @Html.Partial("HighlightBar/HighlightBar", Model.Content)
 @Html.Partial("ContentScroller/ContentScroller", Model.Content)
-@Html.Partial("Treatments/Treatments", Model.Content)
+<div class="section">
+    <div class="inner">
+        @Html.Partial("Treatments/Treatments", Model.Content)
+    </div>
+</div>
+<div class="section section--grey">
+    <div class="inner">
+        @Html.Partial("Services/Services", Model.Content)
+    </div>
+</div>
 <div class="section">
     <div class="inner">
     </div>
