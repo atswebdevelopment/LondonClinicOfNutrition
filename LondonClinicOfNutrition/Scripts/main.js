@@ -11,7 +11,7 @@ var contentScroller = {
             prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
             nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
         });
-        views.setImages();
+        global.setImages();
     }
 };
 /*
@@ -64,7 +64,10 @@ var treatments = {
         var html = '';
 
         for (var i = 0; i < data.length; i++) {
-            html += '<div class="boxes__box"><div class="boxes__content"><a class="boxes__link" href="' + data[i].url + '"></a><h3>' + data[i].name + '</h3></div></div>';
+            html += '<div class="boxes__box"><div class="boxes__content">' +
+                '<a class="boxes__link" href="' + data[i].url + '"></a>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<h3>' + data[i].name + '</h3></div></div>';
         }
 
         $('.boxes').append(html);
@@ -78,6 +81,7 @@ var treatments = {
                 nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
             });
         }
+        global.setImages();
     },
     model: function (id, skip, take) {
         return $.ajax({
@@ -93,23 +97,20 @@ var treatments = {
 * Version: 1.0
 */
 
-var views = {
+var global = {
     init: function () {
-        views.ui();
-        views.setImages();
+        global.ui();
+        global.setImages();
         if ($('form').length) {
-            views.forms();
+            global.forms();
         }
-        views.resize();
+        global.resize();
         //$(window).on('resize', function (e) {
         //    views.resize();
         //});
     },
     ui: function () {
-        $('.switch a').click(function () {
-            $('.mailer__content').toggleClass('hidden');
-            return false;
-        });
+        
     },
     setImages: function () {
         $('.img-load,.bg-load,.svg-load').each(function () {
@@ -251,7 +252,7 @@ var views = {
         return re.test(val);
     }
 };
-views.init();
+global.init();
 cookieBar.init();
 contentScroller.init();
 treatments.init();

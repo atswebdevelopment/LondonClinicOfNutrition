@@ -4,23 +4,20 @@
 * Version: 1.0
 */
 
-var views = {
+var global = {
     init: function () {
-        views.ui();
-        views.setImages();
+        global.ui();
+        global.setImages();
         if ($('form').length) {
-            views.forms();
+            global.forms();
         }
-        views.resize();
+        global.resize();
         //$(window).on('resize', function (e) {
         //    views.resize();
         //});
     },
     ui: function () {
-        $('.switch a').click(function () {
-            $('.mailer__content').toggleClass('hidden');
-            return false;
-        });
+        
     },
     setImages: function () {
         $('.img-load,.bg-load,.svg-load').each(function () {

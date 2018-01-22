@@ -11,16 +11,7 @@ h1, h2{
 }
 
 h3{
-    font-size:$base + 8;
-    margin:5px 0 0;
-
-    @include media-query(phone, max){
-        font-size:$base + 2;
-    }
-
-    a{
-        color:$black;
-    }
+    font-size:$base + 4;
 }
 
 p, li{
@@ -124,6 +115,7 @@ input{
         width:33.3%;
         position:relative;
         transition:0.2s all $bezier;
+        background:url(/Images/bg-box.svg) no-repeat center;
 
         &:hover{
             transform:scale(1.1);
@@ -134,11 +126,22 @@ input{
         width:72%;
         height:502px;
         margin:50px 14% 120px;
-        box-shadow:$shadow 0 10px 30px;
+        background-size:cover;
         border-radius:10px;
     }
 
     &__link{
         @include fill();
+    }
+
+    &__icon{
+        width:196px;
+        height:196px;
+        margin:0 auto;
+        border-radius:50%;
+        background:$white;
+        position:relative;
+        top:-48px;
+        z-index:1;
     }
 }

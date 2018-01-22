@@ -17,3 +17,26 @@
         </div>
     </div>
 </div>
+
+@{
+    var background = "";
+    var typedMediaPickerSingle = Model.Content.GetPropertyValue<IPublishedContent>("backgroundImage");
+    if (typedMediaPickerSingle != null)
+    {
+        background = typedMediaPickerSingle.Url;
+    }
+}
+
+<div class="content">
+    <div class="bg" style="background-image:url(@background);"></div>
+    <div class="inner">
+        <div class="logo"></div>
+        <h1>@CurrentPage.Name</h1>
+        <div class="column">
+            @CurrentPage.column1
+        </div>
+        <div class="column">
+            @CurrentPage.column2
+        </div>
+    </div>
+</div>

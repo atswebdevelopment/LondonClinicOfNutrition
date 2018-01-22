@@ -25,7 +25,10 @@ var treatments = {
         var html = '';
 
         for (var i = 0; i < data.length; i++) {
-            html += '<div class="boxes__box"><div class="boxes__content"><a class="boxes__link" href="' + data[i].url + '"></a><h3>' + data[i].name + '</h3></div></div>';
+            html += '<div class="boxes__box"><div class="boxes__content">' +
+                '<a class="boxes__link" href="' + data[i].url + '"></a>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<h3>' + data[i].name + '</h3></div></div>';
         }
 
         $('.boxes').append(html);
@@ -39,6 +42,7 @@ var treatments = {
                 nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
             });
         }
+        global.setImages();
     },
     model: function (id, skip, take) {
         return $.ajax({
