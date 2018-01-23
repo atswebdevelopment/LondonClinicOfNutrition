@@ -102,6 +102,35 @@ input{
     margin-bottom:10px;
 }
 
+.arrow{
+    width:59px;
+    height:59px;
+    line-height: 74px;
+    border-radius:50%;
+    background:$white;
+    box-shadow:rgba(#383862,0.13) 0 10px 20px;
+
+    svg{
+        width:13.97px;
+        height:24px;
+        margin-left:2px;
+
+        .a,.b,.c{
+            @include svg($black-light);
+        }
+    }
+
+    &:hover{
+        background:$primary-alt;
+
+        svg{
+            .a,.b,.c{
+                @include svg($white);
+            }
+        }
+    }
+}
+
 .social{
     @include clearlist();
 

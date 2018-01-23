@@ -460,6 +460,7 @@
     <Content Include="Views\Partials\Blogs\blogs.scss" />
     <Content Include="Views\Partials\Recipes\Recipes.cshtml" />
     <Content Include="Views\Partials\Recipes\recipes.scss" />
+    <Content Include="Css\sass\section.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
