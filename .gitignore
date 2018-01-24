@@ -231,5 +231,4 @@ ModelManifest.xml
 **/Umbraco
 **/Umbraco_Client
 **/config/connectionStrings.config
-**/Media
 **/App_Plugins/UmbracoForms/Data
