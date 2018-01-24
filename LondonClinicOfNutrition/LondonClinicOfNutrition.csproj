@@ -344,11 +344,13 @@
     <Content Include="Images\bg-box.svg" />
     <Content Include="Images\bg-highlight-bar.svg" />
     <Content Include="Images\icon-arrow.svg" />
+    <Content Include="Images\icon-blogs.svg" />
     <Content Include="Images\icon-cancer.svg" />
     <Content Include="Images\icon-email.svg" />
     <Content Include="Images\icon-facebook.svg" />
     <Content Include="Images\icon-linkedIn.svg" />
     <Content Include="Images\icon-phone.svg" />
+    <Content Include="Images\icon-recipes.svg" />
     <Content Include="Images\icon-twitter.svg" />
     <Content Include="Images\image-banner-1.png" />
     <Content Include="Images\image-banner-2.jpg" />
