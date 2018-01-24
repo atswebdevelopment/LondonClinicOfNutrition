@@ -341,9 +341,11 @@
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="gruntfile.js" />
+    <Content Include="Images\bg-box-small.svg" />
     <Content Include="Images\bg-box.svg" />
     <Content Include="Images\bg-highlight-bar.svg" />
     <Content Include="Images\icon-arrow.svg" />
+    <Content Include="Images\icon-auto-immune-disease.svg" />
     <Content Include="Images\icon-blogs.svg" />
     <Content Include="Images\icon-cancer.svg" />
     <Content Include="Images\icon-email.svg" />

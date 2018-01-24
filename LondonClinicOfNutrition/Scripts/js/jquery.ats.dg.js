@@ -17,7 +17,21 @@ var global = {
         //});
     },
     ui: function () {
-        
+        $('.section__indicator button').click(function () {
+            if (!$(this).next('span').length) {
+                var next = $(this).parents('.section').next();
+
+                $('html, body').stop().animate({
+                    'scrollTop': next.offset().top
+                }, 300, function () {
+                    //window.location.hash = target;
+                });
+            }
+            else {
+                $('html, body').scrollTop(0);
+            }
+            return false;
+        });
     },
     setImages: function () {
         $('.img-load,.bg-load,.svg-load').each(function () {

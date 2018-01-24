@@ -1,7 +1,5 @@
-﻿
-
-.section{
-    padding:132px 0;
+﻿.section{
+    padding:66px 0;
 
     &--grey{
         background:$grey;
@@ -17,6 +15,7 @@
         border-bottom:8px solid $primary;
         padding-bottom:10px;
         display:inline-block;
+        min-width: 250px;
     }
 
     &__footer{
@@ -41,21 +40,33 @@
     }
 
     &__indicator{
-        position:absolute;
-        bottom:-80px;
-        left:50%;
-        width:100px;
-        margin-left:-50px;
-        text-align:center;
+        width: 100px;
+        margin-left: -50px;
+        text-align: center;
+        margin: 0 auto;
 
         span{
             display:inline-block;
-            margin-bottom:8px;
         }
 
-        svg{
-            transform-origin: 5px 12px;
-            transform: rotateZ(90deg);
+        .arrow{
+            margin:8px 0 12px;
+
+            svg{
+                transform-origin: 5px 12px;
+                transform: rotateZ(90deg);
+            }
+
+            &--inverted{
+                svg{
+                    transform: rotateZ(270deg);
+                }
+            }
         }
+    }
+
+    &__content{
+        max-width:850px;
+        margin:0 auto;
     }
 }

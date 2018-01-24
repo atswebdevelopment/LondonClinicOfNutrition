@@ -28,11 +28,12 @@ var blogs = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                //'<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<span class="boxes__image bg-load" data-src="/images/image-banner-1.png"></span>' +
                 '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
                 '<span class="timestamp">' + data[i].date + '</span>' +
                 '<h3>' + data[i].name + '</h3>' +
-                '<span class="button"><a>Read more</a></span>' +
+                '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
         }
 
@@ -125,10 +126,11 @@ var recipes = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                //'<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<span class="boxes__image bg-load" data-src="/images/image-banner-1.png"></span>' +
                 '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
                 '<h3>' + data[i].name + '</h3>' +
-                '<span class="button"><a>Read more</a></span>' +
+                '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
         }
 
@@ -288,7 +290,21 @@ var global = {
         //});
     },
     ui: function () {
-        
+        $('.section__indicator button').click(function () {
+            if (!$(this).next('span').length) {
+                var next = $(this).parents('.section').next();
+
+                $('html, body').stop().animate({
+                    'scrollTop': next.offset().top
+                }, 300, function () {
+                    //window.location.hash = target;
+                });
+            }
+            else {
+                $('html, body').scrollTop(0);
+            }
+            return false;
+        });
     },
     setImages: function () {
         $('.img-load,.bg-load,.svg-load').each(function () {
@@ -432,8 +448,18 @@ var global = {
 };
 global.init();
 cookieBar.init();
-contentScroller.init();
-treatments.init();
-services.init();
-blogs.init();
-recipes.init();
+if ($('.content-scroller').length) {
+    contentScroller.init();
+}
+if ($('.boxes-treatments').length) {
+    treatments.init();
+}
+if ($('.boxes-services').length) {
+    services.init();
+}
+if ($('.boxes-blogs').length) {
+    blogs.init();
+}
+if ($('.boxes-recipes').length) {
+    recipes.init();
+}

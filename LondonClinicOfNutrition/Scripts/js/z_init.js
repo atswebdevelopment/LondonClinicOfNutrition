@@ -1,7 +1,17 @@
 ﻿global.init();
 cookieBar.init();
-contentScroller.init();
-treatments.init();
-services.init();
-blogs.init();
-recipes.init();
+if ($('.content-scroller').length) {
+    contentScroller.init();
+}
+if ($('.boxes-treatments').length) {
+    treatments.init();
+}
+if ($('.boxes-services').length) {
+    services.init();
+}
+if ($('.boxes-blogs').length) {
+    blogs.init();
+}
+if ($('.boxes-recipes').length) {
+    recipes.init();
+}

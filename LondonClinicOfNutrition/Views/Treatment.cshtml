@@ -2,3 +2,75 @@
 @{
     Layout = "_Layout.cshtml";
 }
+@Html.Partial("Banner/Banner", Model.Content)
+<div class="section">
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">About</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("about")
+        </div>
+        <div class="section__indicator">
+            <span>scroll</span>
+            <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Types</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("types")
+        </div>
+        <div class="section__indicator">
+            <span>scroll</span>
+            <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Symptoms</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("symptoms")
+        </div>
+        <div class="section__indicator">
+            <span>scroll</span>
+            <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Causes</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("causes")
+        </div>
+        <div class="section__indicator">
+            <span>scroll</span>
+            <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Treatments</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("treatments")
+        </div>
+        <div class="section__indicator">
+            <button type="button" class="arrow arrow--inverted"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+            <span>back to top</span>
+        </div>
+    </div>
+</div>
+@Html.Partial("HighlightBar/HighlightBar", Model.Content)

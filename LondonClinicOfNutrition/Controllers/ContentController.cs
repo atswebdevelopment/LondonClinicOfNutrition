@@ -13,13 +13,13 @@ namespace LondonClinicOfNutrition.Controllers
         // GET: Content
         public IEnumerable<ContentModel> GetContent(int id = 0, int take = 0, int skip = 0)
         {
-            var node = Umbraco.TypedContent(id).Children.Skip(skip).Take(take);
+            var nodeChildren = Umbraco.TypedContent(id).Children.Skip(skip).Take(take);
             List<ContentModel> nodes = new List<ContentModel>();
 
-            foreach (var item in node)
+            foreach (var item in nodeChildren)
             {
                 var icon = "";
-                var nodeIcon = item.GetProperty("icon");
+                var nodeIcon =  ? : item.GetProperty("icon");
                 if (nodeIcon != null)
                 {
                     var nodeImageValue = nodeIcon.Value.ToString();
