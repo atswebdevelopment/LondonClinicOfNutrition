@@ -28,9 +28,8 @@ var blogs = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                //'<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<span class="boxes__image bg-load" data-src="/images/image-banner-1.png"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="timestamp">' + data[i].date + '</span>' +
                 '<h3>' + data[i].name + '</h3>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
@@ -126,9 +125,8 @@ var recipes = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                //'<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<span class="boxes__image bg-load" data-src="/images/image-banner-1.png"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<h3>' + data[i].name + '</h3>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
