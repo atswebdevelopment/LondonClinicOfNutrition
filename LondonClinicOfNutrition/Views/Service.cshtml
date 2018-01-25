@@ -3,6 +3,22 @@
     Layout = "_Layout.cshtml";
 }
 @Html.Partial("Banner/Banner", Model.Content)
+<div class="controls">
+    <div class="inner">
+        <div class="controls__left">
+            <a href="@Model.Content.Up().Url"><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back to @Model.Content.Up().Name</a>
+        </div>
+        <div class="controls__right">
+            <ul class="social">
+                <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-twitter.svg"></span></a></li>
+                <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-facebook.svg"></span></a></li>
+                <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-linkedin.svg"></span></a></li>
+                <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-phone.svg"></span></a></li>
+                <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-email.svg"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="section">
     <div class="inner">
         @Html.Partial("Services/Service", Model.Content)

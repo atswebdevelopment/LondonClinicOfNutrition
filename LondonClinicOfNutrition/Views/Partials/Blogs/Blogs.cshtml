@@ -4,7 +4,7 @@
     var take = 999;
     var scroll = false;
 
-    if(blogs.Id != Model.Content.Id)
+    if (Model.Content.DocumentTypeAlias != "blogs")
     {
         take = 6;
         scroll = true;
@@ -17,7 +17,7 @@
     <div class="boxes" data-id="@blogs.Id" data-take="@take" data-scroll="@scroll">
     </div>
 </div>
-@if (blogs.Id != Model.Content.Id)
+@if (Model.Content.DocumentTypeAlias != "blogs")
 {
 <div class="section__footer">
     <span class="button section__button section__button--center"><a href="@blogs.Url">View all @blogs.Name</a></span>

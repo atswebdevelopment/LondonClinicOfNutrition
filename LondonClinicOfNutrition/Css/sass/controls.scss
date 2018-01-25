@@ -1,0 +1,33 @@
+﻿.controls{
+    background:$primary;
+    padding:40px 0;
+    @include group();
+
+    &__left{
+        float:left;
+        margin-right:160px;
+
+        a{
+            line-height:59px;
+            display:block;
+            color:$white;
+            text-transform:uppercase;
+        }
+
+        .arrow{
+            float:left;
+            margin-right:22px;
+            display:block;
+            text-align:center;
+        }
+    }
+    
+    &__right{
+        float:right;
+
+        .social{
+            position:relative;
+            top:8px;
+        }
+    }
+}

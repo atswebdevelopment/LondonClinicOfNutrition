@@ -3,7 +3,26 @@
     Layout = "_Layout.cshtml";
 }
 @Html.Partial("Banner/Banner", Model.Content)
+<div class="controls">
+    <div class="inner">
+        <div class="controls__left">
+            <a href=""><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> BACK</a>
+        </div>
+        <div class="controls__center">
+            <div class="filter">
+                <ul class="buttons buttons--alt">
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#types">TYPES</a></li>
+                    <li><a href="#symptoms">SYMPTOMS</a></li>
+                    <li><a href="#causes">CAUSES</a></li>
+                    <li><a href="#treatments">TREATMENTS</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="section">
+    <a name="about"></a>
     <div class="inner">
         <div class="section__header">
             <span class="section__title">About</span>
@@ -18,6 +37,7 @@
     </div>
 </div>
 <div class="section">
+    <a name="types"></a>
     <div class="inner">
         <div class="section__header">
             <span class="section__title">Types</span>
@@ -32,6 +52,7 @@
     </div>
 </div>
 <div class="section">
+    <a name="symptoms"></a>
     <div class="inner">
         <div class="section__header">
             <span class="section__title">Symptoms</span>
@@ -46,6 +67,7 @@
     </div>
 </div>
 <div class="section">
+    <a name="causes"></a>
     <div class="inner">
         <div class="section__header">
             <span class="section__title">Causes</span>
@@ -60,6 +82,7 @@
     </div>
 </div>
 <div class="section">
+    <a name="treatments"></a>
     <div class="inner">
         <div class="section__header">
             <span class="section__title">Treatments</span>

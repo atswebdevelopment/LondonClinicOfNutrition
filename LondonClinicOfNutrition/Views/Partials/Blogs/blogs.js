@@ -31,7 +31,7 @@ var blogs = {
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
                 '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="timestamp">' + data[i].date + '</span>' +
-                '<h3>' + data[i].name + '</h3>' +
+                '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
         }

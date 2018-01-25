@@ -1,7 +1,16 @@
 ﻿.section{
     padding:66px 0;
-    background-position: center bottom;
-    background-repeat: no-repeat;
+    position:relative;
+
+    > a{
+        position:absolute;
+        top:0px;
+    }
+
+    &--nopad{
+        padding:0;
+        text-align:center;
+    }
 
     &--grey{
         background:$grey;
@@ -70,5 +79,49 @@
     &__content{
         max-width:850px;
         margin:0 auto;
+
+        ul{
+            @include group();
+            margin-bottom:40px;
+
+            li{
+                width:36%;
+                margin-right:5%;
+                float:left;
+                font-weight:bold;
+                margin-bottom:20px;
+                position:relative;
+                padding-left:58px;
+
+                &:before{
+                    content:"";
+                    width:24px;
+                    border-bottom:4px solid $primary;
+                    position:absolute;
+                    left:30px;
+                    top:12px;
+                }
+            }
+        }
+    }
+
+    &__social{
+        max-width:850px;
+        margin:80px auto;
+        border-bottom:1px solid rgba(#46474F,0.36);
+
+        .social{
+            text-align:right;
+
+            &__link{
+                margin:0 0 0 28px;
+
+                svg{
+                    .a{
+                        fill:$secondary;
+                    }
+                }
+            }
+        }
     }
 }

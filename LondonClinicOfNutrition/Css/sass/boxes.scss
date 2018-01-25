@@ -21,12 +21,6 @@
         background-size:cover;
         border-radius:10px;
 
-        h3{
-            border-bottom:1px solid $black;
-            padding-bottom:19px;
-            margin-bottom:26px;
-        }
-
         p{
             height: 171px;
             overflow: hidden;
@@ -47,6 +41,15 @@
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
             }
         }
+    }
+    
+    &__title{
+        border-bottom:1px solid $black;
+        padding-bottom:19px;
+        margin-bottom:26px;
+        font-size:$base + 4;
+        font-weight:bold;
+        display:block;
     }
 
     &__link{

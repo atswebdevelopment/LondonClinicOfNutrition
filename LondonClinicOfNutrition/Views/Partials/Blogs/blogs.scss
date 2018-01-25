@@ -9,17 +9,17 @@
             margin-top:82px;
             height: 337px;
 
-            h3{
-                border:none;
-                font-weight:normal;
-                height: 56px;
-                overflow: hidden;
-            }
-
             .button{
                 text-align:center;
                 display:block;
             }
+        }
+
+        &__title{
+            border:none;
+            font-weight:normal;
+            height: 56px;
+            overflow: hidden;
         }
 
         &__icon{

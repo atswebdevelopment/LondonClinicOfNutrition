@@ -11,7 +11,9 @@ h1, h2{
 }
 
 h3{
-    font-size:$base + 4;
+    font-size:$base + 15;
+    color:$primary;
+    text-transform:uppercase;
 }
 
 p, li{
@@ -49,7 +51,7 @@ a.button:hover,
 a .button--alt,
 a.button--alt{
     background:$white;
-    color:$secondary;
+    color:$primary;
 }
 
 .buttons--alt a:hover,
@@ -57,6 +59,23 @@ a.button--alt{
 a:hover .button--alt,
 a.button--alt:hover,
 .boxes__box:hover .button--alt a{
+    background-color:$primary-dark;
+    color:$white;
+}
+
+.buttons--highlight a,
+.button--highlight a,
+a .button--highlight,
+a.button--highlight{
+    background:$white;
+    color:$secondary;
+}
+
+.buttons--highlight a:hover,
+.button--highlight a:hover,
+a:hover .button--highlight,
+a.button--highlight:hover,
+.boxes__box:hover .button--highlight a{
     background-color:$secondary;
     color:$white;
 }
@@ -74,6 +93,14 @@ a:hover .button--secondary,
 a.button--secondary:hover,
 .boxes__box:hover .button--secondary a{
     background-color:$primary-alt;
+}
+
+.buttons{
+    @include clearlist();
+
+    li{
+        margin:0 50px 0 0;
+    }
 }
 
 input{
@@ -127,6 +154,13 @@ input{
             .a,.b,.c{
                 @include svg($white);
             }
+        }
+    }
+
+    &--left{
+        svg{
+            transform-origin: 5px 12px;
+            transform: rotateZ(180deg);
         }
     }
 }
