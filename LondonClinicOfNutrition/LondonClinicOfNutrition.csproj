@@ -465,6 +465,9 @@
     <Content Include="Views\Partials\Recipes\Recipes.cshtml" />
     <Content Include="Views\Partials\Recipes\recipes.scss" />
     <Content Include="Css\sass\section.scss" />
+    <Content Include="Views\Partials\Services\Service.cshtml" />
+    <Content Include="Css\sass\boxes.scss" />
+    <Content Include="Css\sass\controls.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
