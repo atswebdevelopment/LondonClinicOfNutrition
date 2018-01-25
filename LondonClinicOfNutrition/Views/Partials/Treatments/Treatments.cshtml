@@ -1,6 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{ 
-    var treatments = Umbraco.TypedContentSingleAtXPath("//treatments");
+    var treatments = Umbraco.TypedContentAtXPath("//treatments").Where(m => m.Id == 1096).First();
     var take = 999;
     var scroll = false;
 

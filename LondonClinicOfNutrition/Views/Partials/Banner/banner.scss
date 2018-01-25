@@ -32,4 +32,25 @@
             line-height:$base + 12;
         }
     }
+
+    &__icon{
+        width:120px;
+        height:120px;
+        float:left;
+
+        .a{
+            fill:$white;
+        }
+
+        .b{
+            fill:none;
+        }
+    }
+
+    &__content{
+        &.align-left{
+            text-align: left;
+            padding-left: 176px;
+        }
+    }
 }

@@ -2,3 +2,12 @@
 @{
     Layout = "_Layout.cshtml";
 }
+@Html.Partial("Banner/Banner", Model.Content)
+<div class="section">
+    <div class="inner">
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("bodyContent")
+        </div>
+    </div>
+</div>
+@Html.Partial("HighlightBar/HighlightBar", Model.Content)

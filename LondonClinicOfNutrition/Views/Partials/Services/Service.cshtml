@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{ 
+    var services = Model.Content;
+    var take = 999;
+    var scroll = false;
+}
+<div class="section__header">
+    <span class="section__title">@Model.Content.Name</span>
+</div>
+<div class="section__content">
+    @Model.Content.GetPropertyValue("bodyContent")
+</div>
+<div class="boxes-services boxes-services--service">
+    <div class="boxes" data-id="@services.Id" data-take="@take" data-scroll="@scroll">
+    </div>
+</div>

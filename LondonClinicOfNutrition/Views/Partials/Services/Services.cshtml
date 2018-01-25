@@ -17,6 +17,8 @@
     <div class="boxes" data-id="@services.Id" data-take="@take" data-scroll="@scroll">
     </div>
 </div>
+@if (services.Id != Model.Content.Id)
+{
 <div class="section__footer">
     <span class="button section__button"><a href="@services.Url">View all @services.Name</a></span>
     <p>We have helped people with many health conditions such as stress and fatigue, auto-immune disorders, digestive health, fertility, thyroid health, PCOS, weight loss and hormone imbalances. </p>
@@ -25,3 +27,4 @@
     <span>scroll</span>
     <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
 </div>
+}

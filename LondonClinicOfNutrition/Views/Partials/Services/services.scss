@@ -11,3 +11,20 @@
         }
     }
 }
+
+.boxes-services--service{
+    .boxes{
+        &__icon{
+            display:none;
+        }
+
+        &__box{
+            background-image:url(/Images/bg-box-small.svg);
+        }
+
+        &__content{
+            margin-top:82px;
+            height: 337px;
+        }
+    }
+}

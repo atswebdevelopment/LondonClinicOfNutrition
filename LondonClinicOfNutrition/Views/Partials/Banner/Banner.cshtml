@@ -6,10 +6,30 @@
     {
         background = bannerImage.Url;
     }
-    background = "/images/image-banner-1.png";
+
+    var iconBanner = false;
+    var additionalClasses = "";
+    if (Model.Content.DocumentTypeAlias == "treatment" || Model.Content.DocumentTypeAlias == "service")
+    {
+        iconBanner = true;
+        additionalClasses = "align-left";
+    }
 }
 <div class="banner bg-load vertical" data-src="@background">
     <div class="inner vertical-block">
-        @Model.Content.GetPropertyValue("content")
+        @if (iconBanner)
+        {
+            var icon = "";
+            var iconImage = Model.Content.GetPropertyValue<IPublishedContent>("icon");
+            if (iconImage != null)
+            {
+                icon = iconImage.Url;
+            }
+            <span class="banner__icon svg-load" data-src="@icon"></span>
+        }
+        <div class="banner__content @additionalClasses">
+            <h1>@Model.Content.Name</h1>
+            @Model.Content.GetPropertyValue("content")
+        </div>
     </div>
 </div>
