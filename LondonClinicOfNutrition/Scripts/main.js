@@ -74,6 +74,18 @@ var contentScroller = {
     }
 };
 /*
+* Title: Controls
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var controls = {
+    init: function () {
+        //Controls
+        
+    }
+};
+/*
 * Title: Cookiebar
 * Author: Adam Southorn
 * Version: 1.0
@@ -449,6 +461,9 @@ global.init();
 cookieBar.init();
 if ($('.content-scroller').length) {
     contentScroller.init();
+}
+if ($('.controls').length) {
+    controls.init();
 }
 if ($('.boxes-treatments').length) {
     treatments.init();

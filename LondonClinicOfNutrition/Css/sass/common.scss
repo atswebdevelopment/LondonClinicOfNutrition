@@ -41,7 +41,8 @@ a.button{
 .button a:hover,
 a:hover .button,
 a.button:hover,
-.boxes__box:hover .button a{
+.boxes__box:hover .button a,
+.buttons .active a{
     text-decoration:none;
     background-color:$black-light;
 }
@@ -58,7 +59,8 @@ a.button--alt{
 .button--alt a:hover,
 a:hover .button--alt,
 a.button--alt:hover,
-.boxes__box:hover .button--alt a{
+.boxes__box:hover .button--alt a,
+.buttons--alt .active a{
     background-color:$primary-dark;
     color:$white;
 }
@@ -75,7 +77,8 @@ a.button--highlight{
 .button--highlight a:hover,
 a:hover .button--highlight,
 a.button--highlight:hover,
-.boxes__box:hover .button--highlight a{
+.boxes__box:hover .button--highlight a,
+.buttons--highlight .active a{
     background-color:$secondary;
     color:$white;
 }
@@ -91,7 +94,8 @@ a.button--secondary{
 .button--secondary a:hover,
 a:hover .button--secondary,
 a.button--secondary:hover,
-.boxes__box:hover .button--secondary a{
+.boxes__box:hover .button--secondary a,
+.buttons--secondary .active a{
     background-color:$primary-alt;
 }
 

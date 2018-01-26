@@ -3,6 +3,9 @@ cookieBar.init();
 if ($('.content-scroller').length) {
     contentScroller.init();
 }
+if ($('.controls').length) {
+    controls.init();
+}
 if ($('.boxes-treatments').length) {
     treatments.init();
 }

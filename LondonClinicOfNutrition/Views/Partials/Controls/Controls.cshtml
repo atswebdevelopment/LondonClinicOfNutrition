@@ -1,0 +1,104 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+
+}
+<div class="controls">
+    <div class="inner">
+        @if (Model.Content.DocumentTypeAlias == "treatment" || Model.Content.DocumentTypeAlias == "service" || Model.Content.DocumentTypeAlias == "blog" || Model.Content.DocumentTypeAlias == "recipe")
+        {
+            <div class="controls__left">
+                <a href="@Model.Content.Up().Url"><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back to @Model.Content.Up().Name</a>
+            </div>
+        }
+
+        @if (Model.Content.DocumentTypeAlias == "treatment")
+        {
+            <div class="controls__left">
+                <a href=""><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> BACK</a>
+            </div>
+            <ul class="buttons buttons--alt">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#types">TYPES</a></li>
+                <li><a href="#symptoms">SYMPTOMS</a></li>
+                <li><a href="#causes">CAUSES</a></li>
+                <li><a href="#treatments">TREATMENTS</a></li>
+            </ul>
+        }
+
+        @if (Model.Content.DocumentTypeAlias == "recipes")
+        {
+            <div class="controls__center">
+                <div class="filter">
+                    <ul class="buttons buttons--alt">
+                        <li class="active"><a href="" data-filter="all">View all</a></li>
+                        <li><a href="" data-filter="breakfast">Breakfast</a></li>
+                        <li><a href="" data-filter="lunch">Lunch</a></li>
+                        <li><a href="" data-filter="dinner">Dinner</a></li>
+                        <li><a href="" data-filter="snacks">Snacks</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+
+        @if (Model.Content.DocumentTypeAlias == "blogs")
+        {
+            <div class="controls__center">
+                <div class="filter">
+                    <ul class="buttons buttons--alt">
+                        <li class="active"><a href="" data-filter="all">View all</a></li>
+                        <li><a href="" data-filter="popular">Most popular</a></li>
+                        <li><a href="" data-filter="health-tips">Health tips</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+
+        @if (Model.Content.DocumentTypeAlias == "blog" || Model.Content.DocumentTypeAlias == "service" || Model.Content.DocumentTypeAlias == "recipe")
+        {
+            <div class="controls__right">
+                <ul class="social">
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-twitter.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-facebook.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-linkedin.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-phone.svg"></span></a></li>
+                    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-email.svg"></span></a></li>
+                </ul>
+            </div>
+        }
+
+        @*@if (Model.Content.DocumentTypeAlias == "blogs")
+        {
+            <div class="controls__center">
+                <div class="filter">
+                    <ul class="buttons buttons--alt">
+                        <li class="active"><a href="" data-filter="all">View all</a></li>
+                        <li><a href="" data-filter="breakfast">Breakfast</a></li>
+                        <li><a href="" data-filter="lunch">Lunch</a></li>
+                        <li><a href="" data-filter="dinner">Dinner</a></li>
+                        <li><a href="" data-filter="snacks">Snacks</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+        else if (Model.Content.DocumentTypeAlias == "treatment")
+        {
+            <div class="controls__left">
+                <a href=""><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> BACK</a>
+            </div>
+            <ul class="buttons buttons--alt">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#types">TYPES</a></li>
+                <li><a href="#symptoms">SYMPTOMS</a></li>
+                <li><a href="#causes">CAUSES</a></li>
+                <li><a href="#treatments">TREATMENTS</a></li>
+            </ul>
+        }
+        else if ()
+        {
+            <div class="controls__left">
+                <a href="@Model.Content.Up().Url"><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back to @Model.Content.Up().Name</a>
+            </div>
+            
+        }*@
+    </div>
+</div>

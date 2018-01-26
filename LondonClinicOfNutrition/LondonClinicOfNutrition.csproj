@@ -366,6 +366,7 @@
     <Content Include="Images\bg-content-scroller.svg" />
     <Content Include="Views\Partials\Blogs\blogs.js" />
     <Content Include="Views\Partials\ContentScroller\content_scroller.js" />
+    <Content Include="Views\Partials\Controls\controls.js" />
     <Content Include="Views\Partials\CookieBar\cookie_bar.js" />
     <Content Include="Views\Partials\Recipes\recipes.js" />
     <Content Include="Views\Partials\Services\services.js" />
@@ -467,7 +468,9 @@
     <Content Include="Css\sass\section.scss" />
     <Content Include="Views\Partials\Services\Service.cshtml" />
     <Content Include="Css\sass\boxes.scss" />
-    <Content Include="Css\sass\controls.scss" />
+    <Content Include="Views\Partials\Treatments\Treatment.cshtml" />
+    <Content Include="Views\Partials\Controls\Controls.cshtml" />
+    <Content Include="Views\Partials\Controls\controls.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
