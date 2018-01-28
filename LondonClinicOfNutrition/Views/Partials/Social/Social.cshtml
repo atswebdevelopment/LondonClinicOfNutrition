@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<ul class="social">
+    <li class="social__link"><a href="https://twitter.com/home?status=@Request.Url.AbsoluteUri" target="_blank" title="Share on Twitter"><span class="svg-load" data-src="/images/icon-twitter.svg"></span></a></li>
+    <li class="social__link"><a href="" title="Share on Facebook"><span class="svg-load" data-src="/images/icon-facebook.svg"></span></a></li>
+    <li class="social__link"><a href="https://www.linkedin.com/shareArticle?mini=true&url=@{@Request.Url.AbsoluteUri}&title=&summary=&source=" target="_blank" title="Share on LinkedIn"><span class="svg-load" data-src="/images/icon-linkedin.svg"></span></a></li>
+    <li class="social__link"><a href="mailto:?body=@Model.Content.UrlAbsolute()&subject=@Model.Content.Name" title="Share via email"><span class="svg-load" data-src="/images/icon-email.svg"></span></a></li>
+</ul>

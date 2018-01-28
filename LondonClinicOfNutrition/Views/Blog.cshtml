@@ -6,9 +6,7 @@
 @Html.Partial("Controls/Controls", Model.Content)
 <div class="section">
     <div class="inner">
-        <div class="section__content">
-            @Model.Content.GetPropertyValue("bodyContent")
-        </div>
+        @Html.Partial("Blogs/Blog", Model.Content)
     </div>
 </div>
 @Html.Partial("HighlightBar/HighlightBar", Model.Content)

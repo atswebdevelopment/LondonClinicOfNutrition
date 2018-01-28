@@ -10,18 +10,10 @@
 <div class="section__content">
     @Model.Content.GetPropertyValue("bodyContent")
 </div>
-<div class="section__social">
 @if (Model.Content.Children.Count() == 0)
 {
-<ul class="social">
-    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-twitter.svg"></span></a></li>
-    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-facebook.svg"></span></a></li>
-    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-linkedin.svg"></span></a></li>
-    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-phone.svg"></span></a></li>
-    <li class="social__link"><a href=""><span class="svg-load" data-src="/images/icon-email.svg"></span></a></li>
-</ul>
+@Html.Partial("Social/Social", Model.Content)
 }
-</div>
 @if (Model.Content.Children.Count() == 0)
 {
 <div class="section__indicator">

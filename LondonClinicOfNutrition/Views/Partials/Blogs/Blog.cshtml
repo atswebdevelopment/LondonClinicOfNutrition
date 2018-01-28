@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<div class="section__content">
+    <span class="timestamp"><span class="timestamp__icon svg-load" data-src="/images/icon-timestamp.svg"></span> Posted @Model.Content.CreateDate.ToString("dd MMMM yyyy")</span>
+    @Model.Content.GetPropertyValue("bodyContent")
+</div>
+<div class="section__social">
+    @Html.Partial("Social/Social", Model.Content)
+</div>

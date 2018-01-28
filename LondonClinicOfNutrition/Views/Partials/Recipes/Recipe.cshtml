@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<div class="section">
+    <div class="inner">
+        <div class="section__content">
+            <span class="timestamp"><span class="timestamp__icon svg-load" data-src="/images/icon-timestamp.svg"></span> Posted @Model.Content.CreateDate.ToString("dd MMMM yyyy")</span>
+            <h1>@Model.Content.Name</h1>
+            @Model.Content.GetPropertyValue("bodyContent")
+        </div>
+    </div>
+</div>
+<div class="section">
+    <a name="types"></a>
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Ingredients</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("ingredients")
+        </div>
+        <div class="section__indicator">
+            <span>scroll for method</span>
+            <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <a name="types"></a>
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Method</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("method")
+        </div>
+        <div class="section__social">
+            @Html.Partial("Social/Social", Model.Content)
+        </div>
+        <div class="section__indicator">
+            <button type="button" class="arrow arrow--inverted"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+            <span>back to top</span>
+        </div>
+    </div>
+</div>

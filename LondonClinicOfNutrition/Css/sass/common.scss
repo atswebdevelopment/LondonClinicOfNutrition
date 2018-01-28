@@ -130,7 +130,15 @@ input{
     color:$primary;
     font-size:$base - 2;
     display:block;
-    margin-bottom:10px;
+    margin:60px 0;
+
+    &__icon{
+        width:16px;
+        height:20.31px;
+        margin-right:10px;
+        position:relative;
+        top:5px;
+    }
 }
 
 .arrow{
@@ -165,33 +173,6 @@ input{
         svg{
             transform-origin: 5px 12px;
             transform: rotateZ(180deg);
-        }
-    }
-}
-
-.social{
-    @include clearlist();
-
-    &__link{
-        margin:0 46px 0 0;
-
-        a{
-            svg{
-                width:47px;
-                height:47px;
-
-                .a{
-                    fill:$white;
-                }
-            }
-
-            &:hover{
-                svg{
-                    .a{
-                        fill:$primary-dark;
-                    }
-                }
-            }
         }
     }
 }
