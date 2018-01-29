@@ -18,3 +18,6 @@ if ($('.boxes-blogs').length) {
 if ($('.boxes-recipes').length) {
     recipes.init();
 }
+if ($('.boxes-team').length) {
+    team.init();
+}

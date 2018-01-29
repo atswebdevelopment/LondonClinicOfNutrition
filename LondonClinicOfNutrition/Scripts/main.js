@@ -12,6 +12,12 @@ var blogs = {
         //Blogs
         blogs.take = blogs.container.attr('data-take');
         blogs.view(blogs.skip, blogs.take);
+
+        $('.load-more').click(function () {
+            blogs.skip += blogs.take;
+            blogs.view(blogs.skip, blogs.take);
+            return false;
+        });
     },
     view: function (skip, take){
         blogs.model(blogs.container.attr('data-id'), skip, take).success(function (data) {
@@ -36,6 +42,12 @@ var blogs = {
                 '</div></div>';
         }
 
+        if ($('.load-more').length) {
+            if (data.length < blogs.take) {
+                $('.section__indicator').remove();
+            }
+        }
+
         blogs.container.append(html);
 
         if (blogs.container.attr('data-scroll') === 'True') {
@@ -43,8 +55,8 @@ var blogs = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
             });
         }
         global.setImages();
@@ -67,8 +79,8 @@ var contentScroller = {
     init: function () {
         $('.slick-content-scroller').slick({
             dots: true,
-            prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-            nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+            prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+            nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
         });
         global.setImages();
     }
@@ -151,8 +163,8 @@ var recipes = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
             });
         }
         global.setImages();
@@ -210,8 +222,66 @@ var services = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+            });
+        }
+        global.setImages();
+    },
+    model: function (id, skip, take) {
+        return $.ajax({
+            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+            type: 'GET',
+            context: document.body
+        });
+    }
+};
+/*
+* Title: Team
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var team = {
+    skip: 0,
+    take: 0,
+    init: function () {
+        //Team
+        team.take = $('.boxes-team .boxes').attr('data-take');
+        team.view(team.skip, team.take);
+    },
+    view: function (skip, take){
+        team.model($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
+            team.controller(data);
+        }).fail(function (data) {
+            console.log(data.responseJSON.Message);
+        });
+    },
+    controller: function (data){
+        console.log(data);
+
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="boxes__box"><div class="boxes__content">' +
+                '<a class="boxes__link" href="' + data[i].url + '"></a>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<span class="boxes__title">' + data[i].name + '</span>' +
+                '<span class="boxes__subtitle">' + data[i].content + '</span>' +
+                '<span class="button button--secondary"><a>About me</a></span>' +
+                '</div></div>';
+        }
+
+        $('.boxes-team .boxes').append(html);
+
+        if ($('.boxes-team .boxes').attr('data-scroll') === 'True') {
+            $('.boxes-team .boxes').slick({
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
             });
         }
         global.setImages();
@@ -301,7 +371,7 @@ var global = {
         //});
     },
     ui: function () {
-        $('.section__indicator button').click(function () {
+        $('.section__indicator .arrow').click(function () {
             if (!$(this).next('span').length) {
                 var next = $(this).parents('.section').next();
 
@@ -476,4 +546,7 @@ if ($('.boxes-blogs').length) {
 }
 if ($('.boxes-recipes').length) {
     recipes.init();
+}
+if ($('.boxes-team').length) {
+    team.init();
 }

@@ -17,7 +17,7 @@ var global = {
         //});
     },
     ui: function () {
-        $('.section__indicator button').click(function () {
+        $('.section__indicator .arrow').click(function () {
             if (!$(this).next('span').length) {
                 var next = $(this).parents('.section').next();
 

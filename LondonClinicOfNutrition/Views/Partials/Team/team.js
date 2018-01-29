@@ -1,20 +1,20 @@
 ﻿/*
-* Title: Recipes
+* Title: Team
 * Author: Adam Southorn
 * Version: 1.0
 */
 
-var recipes = {
+var team = {
     skip: 0,
     take: 0,
     init: function () {
-        //Recipes
-        recipes.take = $('.boxes-recipes .boxes').attr('data-take');
-        recipes.view(recipes.skip, recipes.take);
+        //Team
+        team.take = $('.boxes-team .boxes').attr('data-take');
+        team.view(team.skip, team.take);
     },
     view: function (skip, take){
-        recipes.model($('.boxes-recipes .boxes').attr('data-id'), skip, take).success(function (data) {
-            recipes.controller(data);
+        team.model($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
+            team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
         });
@@ -30,14 +30,15 @@ var recipes = {
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
                 '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
-                '<span class="button button--secondary"><a>Read more</a></span>' +
+                '<span class="boxes__subtitle">' + data[i].content + '</span>' +
+                '<span class="button button--secondary"><a>About me</a></span>' +
                 '</div></div>';
         }
 
-        $('.boxes-recipes .boxes').append(html);
+        $('.boxes-team .boxes').append(html);
 
-        if ($('.boxes-recipes .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-recipes .boxes').slick({
+        if ($('.boxes-team .boxes').attr('data-scroll') === 'True') {
+            $('.boxes-team .boxes').slick({
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,

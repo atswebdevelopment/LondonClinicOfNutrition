@@ -12,6 +12,12 @@ var blogs = {
         //Blogs
         blogs.take = blogs.container.attr('data-take');
         blogs.view(blogs.skip, blogs.take);
+
+        $('.load-more').click(function () {
+            blogs.skip += blogs.take;
+            blogs.view(blogs.skip, blogs.take);
+            return false;
+        });
     },
     view: function (skip, take){
         blogs.model(blogs.container.attr('data-id'), skip, take).success(function (data) {
@@ -36,6 +42,12 @@ var blogs = {
                 '</div></div>';
         }
 
+        if ($('.load-more').length) {
+            if (data.length < blogs.take) {
+                $('.section__indicator').remove();
+            }
+        }
+
         blogs.container.append(html);
 
         if (blogs.container.attr('data-scroll') === 'True') {
@@ -43,8 +55,8 @@ var blogs = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
             });
         }
         global.setImages();

@@ -2,3 +2,19 @@
 @{
     Layout = "_Layout.cshtml";
 }
+<div class="section section--columns">
+    <div class="inner">
+        <div class="section__column">
+            @Model.Content.GetPropertyValue("image")
+        </div>
+        <div class="section__column section-column--wide">
+            <h1>@Model.Content.Name</h1>
+            <span class="section__subtitle">@Model.Content.GetPropertyValue("")</span>
+        @Model.Content.GetPropertyValue("bodyContent")
+        </div>
+    </div>
+</div>
+<div class="section__indicator">
+    <button type="button" class="round-button arrow arrow--inverted"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+    <span>back to top</span>
+</div>

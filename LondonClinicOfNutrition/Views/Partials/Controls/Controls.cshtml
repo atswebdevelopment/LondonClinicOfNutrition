@@ -7,15 +7,12 @@
         @if (Model.Content.DocumentTypeAlias == "treatment" || Model.Content.DocumentTypeAlias == "service" || Model.Content.DocumentTypeAlias == "blog" || Model.Content.DocumentTypeAlias == "recipe")
         {
             <div class="controls__left">
-                <a href="@Model.Content.Up().Url"><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back to @Model.Content.Up().Name</a>
+                <a href="@Model.Content.Up().Url"><span class="round-button arrow round-button--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back to @Model.Content.Up().Name</a>
             </div>
         }
 
         @if (Model.Content.DocumentTypeAlias == "treatment")
         {
-            <div class="controls__left">
-                <a href=""><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> BACK</a>
-            </div>
             <ul class="buttons buttons--alt">
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#types">TYPES</a></li>

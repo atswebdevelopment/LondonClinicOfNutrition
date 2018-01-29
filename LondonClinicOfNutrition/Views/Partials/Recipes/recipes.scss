@@ -1,28 +1,3 @@
 ﻿.boxes-recipes{
-    .boxes{
-        &__box{
-            background:url(/Images/bg-box-small.svg) no-repeat center;
-        }
-
-        &__content{
-            margin-top:82px;
-            height: 337px;
-        }
-
-        &__title{
-            border:none;
-            font-weight:normal;
-            height: 56px;
-            overflow: hidden;
-        }
-
-        &__icon{
-            width:110px;
-            height:110px;
-            background:$white;
-            top:70px;
-            box-sizing: border-box;
-            padding: 18px;
-        }
-    }
+    @extend .boxes-small;
 }

@@ -3,22 +3,7 @@
     Layout = "_Layout.cshtml";
 }
 @Html.Partial("Banner/Banner", Model.Content)
-<div class="controls">
-    <div class="inner">
-        <div class="controls__left">
-            <a href=""><span class="arrow arrow--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> BACK</a>
-        </div>
-        <div class="controls__center">
-            <ul class="buttons buttons--alt">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#types">TYPES</a></li>
-                <li><a href="#symptoms">SYMPTOMS</a></li>
-                <li><a href="#causes">CAUSES</a></li>
-                <li><a href="#treatments">TREATMENTS</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+@Html.Partial("Controls/Controls", Model.Content)
 <div class="section">
     <div class="inner">
         @Html.Partial("Treatments/Treatments", Model.Content)

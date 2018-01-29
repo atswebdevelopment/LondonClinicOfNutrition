@@ -339,19 +339,27 @@
     <Content Include="Css\editor.css" />
     <Content Include="Css\main.css" />
     <Content Include="default.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gruntfile.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js\jquery.ats.dg.js" />
     <Content Include="Scripts\lib\jquery.min.js" />
     <Content Include="Scripts\lib\slick.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\main.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\Partials\Blogs\blogs.js" />
     <Content Include="Views\Partials\ContentScroller\content_scroller.js" />
     <Content Include="Views\Partials\Controls\controls.js" />
     <Content Include="Views\Partials\CookieBar\cookie_bar.js" />
     <Content Include="Views\Partials\Recipes\recipes.js" />
     <Content Include="Views\Partials\Services\services.js" />
+    <Content Include="Views\Partials\Team\team.js" />
     <Content Include="Views\Partials\Treatments\treatments.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -400,6 +408,8 @@
     <Content Include="Css\sass\cms\cms.scss" />
     <Content Include="Css\sass\cms\editor.scss" />
     <Content Include="Css\sass\common.scss" />
+    <Content Include="Css\sass\elements\blocks.scss" />
+    <Content Include="Css\sass\elements\forms.scss" />
     <Content Include="Css\sass\global.scss" />
     <Content Include="Css\sass\layout.scss" />
     <Content Include="Css\sass\main.scss" />
@@ -451,10 +461,17 @@
     <Content Include="Views\Partials\Treatments\Treatment.cshtml" />
     <Content Include="Views\Partials\Controls\Controls.cshtml" />
     <Content Include="Views\Partials\Controls\controls.scss" />
-    <Content Include="Views\Partials\Social\Social.cshtml" />
-    <Content Include="Views\Partials\Social\social.scss" />
     <Content Include="Views\Partials\Blogs\Blog.cshtml" />
     <Content Include="Views\Partials\Recipes\Recipe.cshtml" />
+    <Content Include="Views\Partials\Social\Social.cshtml" />
+    <Content Include="Views\Partials\Social\social.scss" />
+    <Content Include="Views\Partials\About.cshtml" />
+    <Content Include="Views\Partials\Team\Team.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Partials\Team\team.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

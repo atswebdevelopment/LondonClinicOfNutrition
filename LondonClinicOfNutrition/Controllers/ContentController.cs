@@ -20,8 +20,9 @@ namespace LondonClinicOfNutrition.Controllers
             foreach (var item in nodeChildren)
             {
                 var icon = "";
-                var nodeIcon = node.DocumentTypeAlias == "blogs" ? node.GetProperty("icon") : item.GetProperty("icon");
-                nodeIcon = node.DocumentTypeAlias == "recipes" ? node.GetProperty("icon") : nodeIcon;
+                var nodeIcon = node.DocumentTypeAlias == "blogs" ||
+                    node.DocumentTypeAlias == "recipes" ||
+                    node.DocumentTypeAlias == "team" ? node.GetProperty("icon") : item.GetProperty("icon");
 
                 if (nodeIcon != null)
                 {
@@ -35,6 +36,10 @@ namespace LondonClinicOfNutrition.Controllers
 
                 var image = "";
                 var nodeImage = item.GetProperty("background");
+                if (nodeImage == null)
+                {
+                    nodeImage = item.GetProperty("image");
+                }
                 if (nodeImage != null)
                 {
                     var nodeImageValue = nodeImage.Value.ToString();
@@ -46,6 +51,12 @@ namespace LondonClinicOfNutrition.Controllers
                 }
 
                 var content = "";
+                if(node.DocumentTypeAlias == "team")
+                {
+                    content = item.GetProperty("jobTitle").Value.ToString();
+                }
+
+
                 DateTime dt = item.CreateDate;
                 var date = String.Format("{0}{1} {2}",
                                   dt.Day,

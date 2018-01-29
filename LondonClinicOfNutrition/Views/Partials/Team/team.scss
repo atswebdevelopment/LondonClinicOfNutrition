@@ -1,0 +1,18 @@
+﻿.boxes-team{
+    @extend .boxes-small;
+
+    .boxes{
+        &__image{
+            height: 212px;
+        }
+
+        &__icon{
+            top: 106px;
+            margin: 0 auto 120px;
+        }
+
+        &__subtitle{
+            margin:-68px 0 28px;
+        }
+    }
+}

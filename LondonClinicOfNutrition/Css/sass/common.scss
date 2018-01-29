@@ -127,7 +127,6 @@ input{
 }
 
 .timestamp{
-    color:$primary;
     font-size:$base - 2;
     display:block;
     margin:60px 0;
@@ -138,10 +137,39 @@ input{
         margin-right:10px;
         position:relative;
         top:5px;
+
+        .a{
+            fill:$black-light;
+        }
     }
 }
 
-.arrow{
+.subtitle-item{
+    margin:-10px 62px 40px 0;
+    display:inline-block;
+
+    svg{
+        width:25px;
+        max-height:25px;
+        position:relative;
+        top:3px;
+        margin-right:4px;
+
+        .a{
+            fill:$primary;
+        }
+
+        .b{
+            fill:$white;
+        }
+    }
+
+    b{
+        margin-right:4px;
+    }
+}
+
+.round-button{
     width:59px;
     height:59px;
     line-height: 74px;

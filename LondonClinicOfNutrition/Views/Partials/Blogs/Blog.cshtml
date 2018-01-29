@@ -4,5 +4,6 @@
     @Model.Content.GetPropertyValue("bodyContent")
 </div>
 <div class="section__social">
+    <span class="timestamp">Posted @Model.Content.CreateDate.ToString("dd MMMM yyyy") by @Model.Content.CreatorName</span>
     @Html.Partial("Social/Social", Model.Content)
 </div>

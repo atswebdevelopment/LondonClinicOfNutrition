@@ -11,7 +11,7 @@
     }
 }
 <div class="section__header">
-    <span class="section__title">Lcon Blog</span>
+    <span class="section__title">@blogs.GetPropertyValue("sectionTitle")</span>
 </div>
 <div class="boxes-blogs">
     <div class="boxes" data-id="@blogs.Id" data-take="@take" data-scroll="@scroll">
@@ -24,6 +24,13 @@
 </div>
 <div class="section__indicator">
     <span>scroll</span>
-    <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+    <button type="button" class="round-button arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
 </div>
+}
+else
+{
+    <div class="section__indicator">
+        <span>load more</span>
+        <button type="button" class="round-button load-more"><span class="svg-load" data-src="/images/icon-load.svg"></span></button>
+    </div>
 }

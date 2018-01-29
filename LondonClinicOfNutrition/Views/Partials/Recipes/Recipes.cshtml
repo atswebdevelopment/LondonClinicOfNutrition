@@ -11,16 +11,19 @@
     }
 }
 <div class="section__header">
-    <span class="section__title">Yummy recipes</span>
+    <span class="section__title">@recipes.GetPropertyValue("sectionTitle")</span>
 </div>
 <div class="boxes-recipes">
     <div class="boxes" data-id="@recipes.Id" data-take="@take" data-scroll="@scroll">
     </div>
 </div>
+@if (Model.Content.DocumentTypeAlias != "recipes")
+{
 <div class="section__footer">
     <span class="button section__button section__button--center"><a href="@recipes.Url">View all @recipes.Name</a></span>
 </div>
 <div class="section__indicator">
     <span>scroll</span>
-    <button type="button" class="arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+    <button type="button" class="round-button arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
 </div>
+}
