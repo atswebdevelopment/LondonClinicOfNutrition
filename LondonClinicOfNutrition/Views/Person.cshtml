@@ -2,13 +2,16 @@
 @{
     Layout = "_Layout.cshtml";
 }
-<div class="section section--columns">
+<div class="section team">
     <div class="inner">
-        <div class="section__column">
+        <div class="team__column">
             @Model.Content.GetPropertyValue("image")
         </div>
-        <div class="section__column section-column--wide">
-            <h1>@Model.Content.Name</h1>
+        <div class="team__column team__column--wide">
+            <div class="team__header">
+                <h1>@Model.Content.Name</h1>
+                <span class="subtitle">@Model.Content.GetPropertyValue("jobTitle")</span>
+            </div>
             <span class="section__subtitle">@Model.Content.GetPropertyValue("")</span>
         @Model.Content.GetPropertyValue("bodyContent")
         </div>

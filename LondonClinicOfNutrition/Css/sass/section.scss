@@ -129,28 +129,6 @@
         }
     }
 
-    &--columns{
-        @include group();
-
-        &:before{
-            content:"";
-            @include fill();
-            height:508px;
-            background:$primary-alt;
-        }
-    }
-
-    &__column{
-        float:left;
-        width:30%;
-        margin-right:3%;
-
-        &--wide{
-            width:67%;
-            margin:0;
-        }
-    }
-
     &__social{
         max-width:850px;
         margin:80px auto;

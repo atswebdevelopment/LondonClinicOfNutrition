@@ -16,3 +16,30 @@
         }
     }
 }
+
+.team{
+    text-align:center;
+
+    &:before{
+        content:"";
+        @include fill();
+        height:508px;
+        background:$primary-alt;
+    }
+
+    &__column{
+        width:27%;
+        margin-right:3%;
+        display:inline-block;
+        text-align:left;
+
+        &--wide{
+            width:60%;
+            margin:0;
+        }
+    }
+
+    &__header{
+        color:$white;
+    }
+}
