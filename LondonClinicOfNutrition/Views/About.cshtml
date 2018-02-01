@@ -4,5 +4,28 @@
 }
 @Html.Partial("Banner/Banner", Model.Content)
 @Html.Partial("HighlightBar/HighlightBar", Model.Content)
-@Html.Partial("About", Model.Content)
+<div class="section">
+    <div class="inner">
+        <div class="section__header">
+            <span class="section__title">Our story</span>
+        </div>
+        <div class="section__content">
+            @Model.Content.GetPropertyValue("bodyContent")
+        </div>
+        <div class="section__indicator">
+            <span>scroll</span>
+            <button type="button" class="round-button arrow"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+        </div>
+    </div>
+</div>
+<div class="section section--grey">
+    <div class="inner">
+        @Html.Partial("Team/Team", Model.Content)
+    </div>
+</div>
+<div class="section">
+    <div class="inner">
+        @Html.Partial("Testimonials/Testimonials", Model.Content)
+    </div>
+</div>
 @Html.Partial("HighlightBar/HighlightBar", Model.Content)

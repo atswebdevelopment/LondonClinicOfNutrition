@@ -14,7 +14,7 @@ var services = {
         services.view(services.skip, services.take);
     },
     view: function (skip, take) {
-        services.model(services.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(services.container.attr('data-id'), skip, take).success(function (data) {
             services.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -43,17 +43,10 @@ var services = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };

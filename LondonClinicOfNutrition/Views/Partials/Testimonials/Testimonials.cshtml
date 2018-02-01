@@ -1,0 +1,21 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var testimonials = Model.Content;//Umbraco.TypedContentSingleAtXPath("//about");
+    var take = 999;
+    var scroll = false;
+}
+<div class="section__header">
+    <span class="section__title">Testimonials</span>
+</div>
+<div class="boxes-testimonials">
+    <div class="boxes" data-id="@testimonials.Id" data-take="@take" data-scroll="@scroll">
+
+    </div>
+</div>
+<div class="section__footer">
+    <p class="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra lacus et sapien imperdiet efficitur. Praesent euismod suscipit turpis quis aliquet. Suspendisse potenti. </p>
+</div>
+<div class="section__indicator">
+    <button type="button" class="round-button arrow arrow--inverted"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+    <span>back to top</span>
+</div>

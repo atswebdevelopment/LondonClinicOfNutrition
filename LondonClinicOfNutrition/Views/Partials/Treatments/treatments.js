@@ -14,7 +14,7 @@ var treatments = {
         treatments.view(treatments.skip, treatments.take);
     },
     view: function (skip, take){
-        treatments.model(treatments.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(treatments.container.attr('data-id'), skip, take).success(function (data) {
             treatments.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -42,17 +42,10 @@ var treatments = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };

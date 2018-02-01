@@ -2,3 +2,9 @@
 @{
     Layout = "_Layout.cshtml";
 }
+@Html.Partial("Controls/Controls", Model.Content)
+<div class="section">
+    <div class="inner">
+        @Html.Partial("Search/Search", Model.Content)
+    </div>
+</div>

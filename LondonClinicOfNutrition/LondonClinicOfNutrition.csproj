@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -349,6 +349,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js\jquery.ats.dg.js" />
     <Content Include="Scripts\lib\jquery.min.js" />
+    <Content Include="Scripts\lib\google-places.js" />
     <Content Include="Scripts\lib\slick.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\main.min.js" />
@@ -358,13 +359,18 @@
     <Content Include="Views\Partials\Controls\controls.js" />
     <Content Include="Views\Partials\CookieBar\cookie_bar.js" />
     <Content Include="Views\Partials\Recipes\recipes.js" />
+    <Content Include="Views\Partials\Reviews\reviews.js" />
+    <Content Include="Views\Partials\Search\search.js" />
     <Content Include="Views\Partials\Services\services.js" />
     <Content Include="Views\Partials\Team\team.js" />
+    <Content Include="Views\Partials\Testimonials\testimonials.js" />
     <Content Include="Views\Partials\Treatments\treatments.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -472,6 +478,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Partials\Team\team.scss" />
+    <Content Include="Views\Partials\Reviews\Reviews.cshtml" />
+    <Content Include="Views\Partials\Reviews\reviews.scss" />
+    <Content Include="Views\Partials\Testimonials\Testimonials.cshtml" />
+    <Content Include="Views\Partials\Testimonials\testimonials.scss" />
+    <Content Include="Views\Partials\Search\Search.cshtml" />
+    <Content Include="Views\Partials\Search\search.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

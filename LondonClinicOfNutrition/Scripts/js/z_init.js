@@ -21,3 +21,12 @@ if ($('.boxes-recipes').length) {
 if ($('.boxes-team').length) {
     team.init();
 }
+if ($('.boxes-reviews').length) {
+    reviews.init();
+}
+if ($('.boxes-testimonials').length) {
+    testimonials.init();
+}
+if ($('.search-results').length) {
+    search.init();
+}

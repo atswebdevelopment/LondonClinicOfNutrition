@@ -20,7 +20,7 @@ var blogs = {
         });
     },
     view: function (skip, take){
-        blogs.model(blogs.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(blogs.container.attr('data-id'), skip, take).success(function (data) {
             blogs.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -36,7 +36,7 @@ var blogs = {
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
                 '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
-                '<span class="timestamp">' + data[i].date + '</span>' +
+                '<span class="boxes__timestamp timestamp">' + data[i].date + '</span>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
@@ -55,18 +55,11 @@ var blogs = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };
 /*
@@ -79,8 +72,8 @@ var contentScroller = {
     init: function () {
         $('.slick-content-scroller').slick({
             dots: true,
-            prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-            nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+            prevArrow: global.views.prevArrow,
+            nextArrow: global.views.nextArrow
         });
         global.setImages();
     }
@@ -129,19 +122,20 @@ var cookieBar = {
 var recipes = {
     skip: 0,
     take: 0,
+    container: $('.boxes-recipes .boxes'),
     init: function () {
         //Recipes
-        recipes.take = $('.boxes-recipes .boxes').attr('data-take');
+        recipes.take = recipes.container.attr('data-take');
         recipes.view(recipes.skip, recipes.take);
     },
-    view: function (skip, take){
-        recipes.model($('.boxes-recipes .boxes').attr('data-id'), skip, take).success(function (data) {
+    view: function (skip, take) {
+        global.models.getContent(recipes.container.attr('data-id'), skip, take).success(function (data) {
             recipes.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
         });
     },
-    controller: function (data){
+    controller: function (data) {
         console.log(data);
 
         var html = '';
@@ -156,25 +150,100 @@ var recipes = {
                 '</div></div>';
         }
 
-        $('.boxes-recipes .boxes').append(html);
+        recipes.container.append(html);
 
-        if ($('.boxes-recipes .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-recipes .boxes').slick({
+        if (recipes.container.attr('data-scroll') === 'True') {
+            recipes.container.slick({
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
+    }
+};
+/*
+* Title: Reviews
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var reviews = {
+    container: $('.boxes-reviews .boxes'),
+    init: function () {
+        reviews.container.googlePlaces({
+            placeId: 'ChIJh5YWhNQadkgRqetJi1V1Yck',
+            render: ['reviews'],
+            min_rating: 4,
+            max_rows: 5
         });
+
+        var checkBoxesBeforeSlick = setInterval(function () {
+            if ($('.boxes__stars').length) {
+                clearInterval(checkBoxesBeforeSlick);
+                reviews.container.slick({
+                    dots: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    prevArrow: global.views.prevArrow,
+                    nextArrow: global.views.nextArrow
+                });
+                global.setImages();
+            }
+        }, 100);
+    }
+};
+/*
+* Title: Search
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var search = {
+    skip: 0,
+    take: 0,
+    container: $('.search-results'),
+    init: function () {
+        //Search
+        search.take = search.container.attr('data-take');
+        search.view(search.skip, search.take);
+
+        $('.load-more').click(function () {
+            search.skip += search.take;
+            search.view(search.skip, search.take);
+            return false;
+        });
+    },
+    view: function (skip, take) {
+        global.models.getSearch(search.container.attr('data-searchTerm'), skip, take).success(function (data) {
+            search.controller(data);
+        }).fail(function (data) {
+            console.log(data.responseJSON.Message);
+        });
+    },
+    controller: function (data) {
+        console.log(data);
+
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="search-results__result">' +
+                '<h2><a href="' + data[i].url + '">' + data[i].name + '</a></h2>' +
+                    data[i].content +
+                    '<span class="search-results__timestamp timestamp">' + data[i].date + '</span>' +
+                    '<span class="search-results__link"><a href="' + data[i].url + '">Read more</a></span>' +
+                '</div>';
+        }
+
+        if ($('.load-more').length) {
+            if (data.length < search.take) {
+                $('.section__indicator').remove();
+            }
+        }
+
+        search.container.append(html);
     }
 };
 /*
@@ -193,7 +262,7 @@ var services = {
         services.view(services.skip, services.take);
     },
     view: function (skip, take) {
-        services.model(services.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(services.container.attr('data-id'), skip, take).success(function (data) {
             services.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -222,18 +291,11 @@ var services = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };
 /*
@@ -251,7 +313,7 @@ var team = {
         team.view(team.skip, team.take);
     },
     view: function (skip, take){
-        team.model($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
             team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -280,18 +342,62 @@ var team = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
+    }
+};
+/*
+* Title: Testimonials
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var testimonials = {
+    skip: 0,
+    take: 0,
+    container: $('.boxes-testimonials .boxes'),
+    init: function () {
+        //Testimonials
+        testimonials.take = testimonials.container.attr('data-take');
+        testimonials.view(testimonials.skip, testimonials.take);
     },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
+    view: function (skip, take) {
+        global.models.getContent(testimonials.container.attr('data-id'), skip, take).success(function (data) {
+            testimonials.controller(data);
+        }).fail(function (data) {
+            console.log(data.responseJSON.Message);
         });
+    },
+    controller: function (data) {
+        console.log(data);
+
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="boxes__box"><div class="boxes__content">' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
+                '<div class="boxes__icon boxes__icon--small"><span class="svg-load" data-src="/images/icon-quote.svg"></span></div>' +
+                '<span class="boxes__title">' + data[i].name + '</span>' +
+                '<p>' + data[i].content + '</p>' +
+                '<span class="boxes__foot">' + data[i].title + '</span>' +
+                '</div></div>';
+        }
+
+        testimonials.container.append(html);
+
+        if (testimonials.container.attr('data-scroll') === 'True') {
+            testimonials.container.slick({
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
+            });
+        }
+        global.setImages();
     }
 };
 /*
@@ -310,7 +416,7 @@ var treatments = {
         treatments.view(treatments.skip, treatments.take);
     },
     view: function (skip, take){
-        treatments.model(treatments.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(treatments.container.attr('data-id'), skip, take).success(function (data) {
             treatments.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -338,18 +444,11 @@ var treatments = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };
 /*
@@ -525,6 +624,26 @@ var global = {
     validatePhone: function (val) {
         var re = /^[0-9]+$/;
         return re.test(val);
+    },
+    views: {
+        prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+        nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+    },
+    models: {
+        getContent: function (id, skip, take) {
+            return $.ajax({
+                url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+                type: 'GET',
+                context: document.body
+            });
+        },
+        getSearch: function (searchTerm, skip, take) {
+            return $.ajax({
+                url: '/umbraco/api/Search/GetSearch?searchTerm=' + searchTerm + '&skip=' + skip + '&take=' + take,
+                type: 'GET',
+                context: document.body
+            });
+        }
     }
 };
 global.init();
@@ -549,4 +668,13 @@ if ($('.boxes-recipes').length) {
 }
 if ($('.boxes-team').length) {
     team.init();
+}
+if ($('.boxes-reviews').length) {
+    reviews.init();
+}
+if ($('.boxes-testimonials').length) {
+    testimonials.init();
+}
+if ($('.search-results').length) {
+    search.init();
 }

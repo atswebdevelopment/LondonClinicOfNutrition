@@ -13,7 +13,7 @@ var team = {
         team.view(team.skip, team.take);
     },
     view: function (skip, take){
-        team.model($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
             team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -42,17 +42,10 @@ var team = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };

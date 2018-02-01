@@ -171,5 +171,25 @@ var global = {
     validatePhone: function (val) {
         var re = /^[0-9]+$/;
         return re.test(val);
+    },
+    views: {
+        prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+        nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+    },
+    models: {
+        getContent: function (id, skip, take) {
+            return $.ajax({
+                url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+                type: 'GET',
+                context: document.body
+            });
+        },
+        getSearch: function (searchTerm, skip, take) {
+            return $.ajax({
+                url: '/umbraco/api/Search/GetSearch?searchTerm=' + searchTerm + '&skip=' + skip + '&take=' + take,
+                type: 'GET',
+                context: document.body
+            });
+        }
     }
 };

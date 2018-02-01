@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var query = "No results found";
+    var searchTerm = Request.QueryString["q"];
+    IEnumerable<IPublishedContent> searchResults = null;
+    var resultsCount = 0;
+
+    if (!string.IsNullOrEmpty(searchTerm))
+    {
+        searchResults = Umbraco.TypedSearch(searchTerm);
+        resultsCount = searchResults.Count();
+        if(resultsCount > 0)
+        {
+            query = "Results for <span>" + searchTerm + ":</span>";
+        }
+    }
+}
+<div class="section__header"></div>
+<div class="section__content">
+    <h1>Search results</h1>
+    <div class="search-results" data-take="10" data-searchTerm="@searchTerm">
+        <span class="search-results__title">@Html.Raw(query)</span>
+        <span class="search-results__count">@resultsCount results found</span>
+    </div>
+</div>
+<div class="section__indicator">
+    <span>load more</span>
+    <button type="button" class="round-button load-more"><span class="svg-load" data-src="/images/icon-load.svg"></span></button>
+</div>

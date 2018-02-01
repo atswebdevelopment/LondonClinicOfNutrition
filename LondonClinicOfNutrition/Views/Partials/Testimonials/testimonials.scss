@@ -1,0 +1,10 @@
+﻿.boxes-testimonials {
+    .boxes {
+        &__content {
+            p {
+                max-height: 288px;
+                height: auto;
+            }
+        }
+    }
+}

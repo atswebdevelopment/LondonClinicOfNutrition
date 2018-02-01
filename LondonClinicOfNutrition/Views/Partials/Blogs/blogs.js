@@ -20,7 +20,7 @@ var blogs = {
         });
     },
     view: function (skip, take){
-        blogs.model(blogs.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(blogs.container.attr('data-id'), skip, take).success(function (data) {
             blogs.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -36,7 +36,7 @@ var blogs = {
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
                 '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
-                '<span class="timestamp">' + data[i].date + '</span>' +
+                '<span class="boxes__timestamp timestamp">' + data[i].date + '</span>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
@@ -55,17 +55,10 @@ var blogs = {
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-                nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+                prevArrow: global.views.prevArrow,
+                nextArrow: global.views.nextArrow
             });
         }
         global.setImages();
-    },
-    model: function (id, skip, take) {
-        return $.ajax({
-            url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
-            type: 'GET',
-            context: document.body
-        });
     }
 };

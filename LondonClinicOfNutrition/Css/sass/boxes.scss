@@ -1,40 +1,40 @@
-﻿.boxes{
-    text-align:center;
-    padding:0 8%;
+﻿.boxes {
+    text-align: center;
+    padding: 0 8%;
 
-    &__box{
-        display:inline-block;
-        width:33.3%;
-        position:relative;
-        transition:0.2s all $bezier;
-        background:url(/Images/bg-box.svg) no-repeat center;
+    &__box {
+        display: inline-block;
+        width: 33.3%;
+        position: relative;
+        transition: 0.2s all $bezier;
+        background: url(/Images/bg-box.svg) no-repeat center;
 
-        &:hover{
-            transform:scale(1.1);
+        &:hover {
+            transform: scale(1.1);
         }
     }
 
-    &__content{
+    &__content {
         width: 60%;
         height: 502px;
         margin: 50px 20% 120px;
-        background-size:cover;
-        border-radius:10px;
+        background-size: cover;
+        border-radius: 10px;
 
-        p{
+        p {
             height: 171px;
             overflow: hidden;
             margin-bottom: 28px;
-            position:relative;
+            position: relative;
 
-            &:after{
-                content:"";
-                width:100%;
-                height:14px;
-                display:block;
-                position:absolute;
-                bottom:0;
-                left:0;
+            &:after {
+                content: "";
+                width: 100%;
+                height: 14px;
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
                 background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
                 background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
                 background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
@@ -42,29 +42,33 @@
             }
         }
     }
-    
-    &__title{
-        border-bottom:1px solid $black;
-        padding-bottom:19px;
-        margin-bottom:26px;
-        font-size:$base + 4;
+
+    &__title {
+        border-bottom: 1px solid $black;
+        padding-bottom: 19px;
+        margin-bottom: 26px;
+        font-size: $base + 4;
+        font-weight: bold;
+        display: block;
+    }
+
+    &__subtitle {
+        font-size: $base - 2;
+        display: block;
+        color: $primary-alt;
+        margin: -68px 0 68px;
+    }
+
+    &__foot {
         font-weight:bold;
-        display:block;
-    }
-    
-    &__subtitle{
-        font-size:$base - 2;
-        display:block;
-        color:$primary-alt;
-        margin:-68px 0 68px;
     }
 
-    &__link{
+    &__link {
         @include fill();
-        z-index:2;
+        z-index: 2;
     }
 
-    &__image{
+    &__image {
         background-size: cover;
         background-position: center;
         position: absolute;
@@ -77,32 +81,38 @@
         border-radius: 10px 10px 0 0;
     }
 
-    &__icon{
-        width:132px;
-        height:132px;
-        margin:0 auto 68px;
-        border-radius:50%;
-        position:relative;
-        top:32px;
-        z-index:1;
+    &__icon {
+        width: 132px;
+        height: 132px;
+        margin: 0 auto 68px;
+        border-radius: 50%;
+        position: relative;
+        top: 32px;
+        z-index: 1;
 
-        svg{
-            width:100%;
-            height:100%;
+        svg {
+            width: 100%;
+            height: 100%;
 
-            .a{
+            .a {
                 @include svg($primary);
             }
 
-            .b{
+            .b {
                 @include svg($white);
             }
         }
+
+        &--small {
+            width: 44px;
+            height: 36px;
+            top: 42px;
+        }
     }
 
-    .timestamp{
-        color:$primary;
-        margin-bottom:10px;
+    &__timestamp {
+        color: $primary;
+        margin-bottom: 10px;
     }
 }
 

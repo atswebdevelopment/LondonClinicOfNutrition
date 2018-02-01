@@ -2,33 +2,13 @@
     .boxes{
         &__box{
             text-align:left;
-            background:url(/Images/bg-box-small.svg) no-repeat center;
         }
 
         &__content{
-            margin-top:82px;
-            height: 337px;
-
             .button{
                 text-align:center;
                 display:block;
             }
-        }
-
-        &__title{
-            border:none;
-            font-weight:normal;
-            height: 56px;
-            overflow: hidden;
-        }
-
-        &__icon{
-            width:110px;
-            height:110px;
-            background:$white;
-            top:70px;
-            box-sizing: border-box;
-            padding: 18px;
         }
     }
 }

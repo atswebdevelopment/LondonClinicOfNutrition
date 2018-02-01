@@ -13,14 +13,14 @@
 <div class="section__header">
     <span class="section__title">@blogs.GetPropertyValue("sectionTitle")</span>
 </div>
-<div class="boxes-blogs">
+<div class="boxes-blogs boxes-small">
     <div class="boxes" data-id="@blogs.Id" data-take="@take" data-scroll="@scroll">
     </div>
 </div>
 @if (Model.Content.DocumentTypeAlias != "blogs")
 {
 <div class="section__footer">
-    <span class="button section__button section__button--center"><a href="@blogs.Url">View all @blogs.Name</a></span>
+    <span class="button section__button"><a href="@blogs.Url">View all @blogs.Name</a></span>
 </div>
 <div class="section__indicator">
     <span>scroll</span>

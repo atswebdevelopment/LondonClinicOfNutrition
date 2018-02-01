@@ -1,21 +1,21 @@
 ﻿/*
-* Title: Recipes
+* Title: Testimonials
 * Author: Adam Southorn
 * Version: 1.0
 */
 
-var recipes = {
+var testimonials = {
     skip: 0,
     take: 0,
-    container: $('.boxes-recipes .boxes'),
+    container: $('.boxes-testimonials .boxes'),
     init: function () {
-        //Recipes
-        recipes.take = recipes.container.attr('data-take');
-        recipes.view(recipes.skip, recipes.take);
+        //Testimonials
+        testimonials.take = testimonials.container.attr('data-take');
+        testimonials.view(testimonials.skip, testimonials.take);
     },
     view: function (skip, take) {
-        global.models.getContent(recipes.container.attr('data-id'), skip, take).success(function (data) {
-            recipes.controller(data);
+        global.models.getContent(testimonials.container.attr('data-id'), skip, take).success(function (data) {
+            testimonials.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
         });
@@ -27,18 +27,18 @@ var recipes = {
 
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
-                '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon boxes__icon--small"><span class="svg-load" data-src="/images/icon-quote.svg"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
-                '<span class="button button--secondary"><a>Read more</a></span>' +
+                '<p>' + data[i].content + '</p>' +
+                '<span class="boxes__foot">' + data[i].title + '</span>' +
                 '</div></div>';
         }
 
-        recipes.container.append(html);
+        testimonials.container.append(html);
 
-        if (recipes.container.attr('data-scroll') === 'True') {
-            recipes.container.slick({
+        if (testimonials.container.attr('data-scroll') === 'True') {
+            testimonials.container.slick({
                 dots: true,
                 slidesToShow: 3,
                 slidesToScroll: 3,

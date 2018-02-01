@@ -1,0 +1,29 @@
+﻿.boxes-reviews {
+    .boxes {
+        &__username{
+            display:inline-block;
+            margin-bottom:10px;
+        }
+
+        &__stars {
+            @include clearlist();
+            margin-bottom:10px;
+        }
+
+        &__star {
+            margin:0 8px;
+
+            svg {
+                width:16px;
+                height:15.37px;
+                .a {
+                    fill: #f7a219;
+                }
+            }
+
+            &--inactive{
+                opacity:0.2;
+            }
+        }
+    }
+}

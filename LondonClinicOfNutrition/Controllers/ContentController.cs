@@ -51,9 +51,15 @@ namespace LondonClinicOfNutrition.Controllers
                 }
 
                 var content = "";
-                if(node.DocumentTypeAlias == "team")
+                var title = "";
+                if (node.DocumentTypeAlias == "team")
                 {
                     content = item.GetProperty("jobTitle").Value.ToString();
+                }
+                if (node.DocumentTypeAlias == "about")
+                {
+                    content = item.GetProperty("content").Value.ToString();
+                    title = item.GetProperty("bodyName").Value.ToString();
                 }
 
 
@@ -66,6 +72,7 @@ namespace LondonClinicOfNutrition.Controllers
                 nodes.Add(new ContentModel
                 {
                     name = item.Name,
+                    title = title,
                     icon = icon,
                     image = image,
                     url = item.Url,

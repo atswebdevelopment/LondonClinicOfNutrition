@@ -1,155 +1,162 @@
-﻿.section{
-    padding:66px 0;
-    position:relative;
+﻿.section {
+    padding: 66px 0;
+    position: relative;
 
-    > a{
-        position:absolute;
-        top:0px;
+    > a {
+        position: absolute;
+        top: 0px;
     }
 
-    &--nopad{
-        padding:0;
+    &--nopad {
+        padding: 0;
+        text-align: center;
+    }
+
+    &--grey {
+        background: $grey;
+    }
+
+    &--map {
+        background: url(/images/bg-map.jpg) 50%;
+        background-size:cover;
+        padding:190px 0 150px;
         text-align:center;
     }
 
-    &--grey{
-        background:$grey;
+    &__header {
+        margin-bottom: 70px;
     }
 
-    &__header{
-        margin-bottom:70px;
-    }
-
-    &__title{
-        text-transform:uppercase;
-        font-weight:bold;
-        border-bottom:8px solid $primary;
-        padding-bottom:10px;
-        display:inline-block;
+    &__title {
+        text-transform: uppercase;
+        font-weight: bold;
+        border-bottom: 8px solid $primary;
+        padding-bottom: 10px;
+        display: inline-block;
         min-width: 250px;
     }
 
-    &__footer{
-        padding:20px 12% 50px;
+    &__footer {
+        padding: 20px 12% 50px;
 
-        p{
+        p {
             font-size: $base + 9;
             line-height: $base + 19;
         }
     }
 
-    &__button{
-        float:right;
-        margin-left:140px;
+    &__button {
+        float: right;
+        margin-left: 140px;
 
-        &--center{
-            float:none;
-            margin:0 0 40px;
-            text-align:center;
-            display:block;
+        &--center {
+            float: none;
+            margin: 0 0 40px;
+            text-align: center;
+            display: block;
         }
     }
 
-    &__indicator{
+    &__indicator {
         width: 100px;
         margin-left: -50px;
         text-align: center;
         margin: 0 auto;
 
-        span{
-            display:inline-block;
+        span {
+            display: inline-block;
         }
 
-        .round-button{
-            margin:8px 0 12px;
+        .round-button {
+            margin: 8px 0 12px;
         }
 
-        .arrow{
-            svg{
+        .arrow {
+            svg {
                 transform-origin: 5px 12px;
                 transform: rotateZ(90deg);
             }
 
-            &--inverted{
-                svg{
+            &--inverted {
+                svg {
                     transform: rotateZ(270deg);
                 }
             }
         }
 
-        .load-more{
-            line-height:84px;
+        .load-more {
+            line-height: 84px;
 
-            svg{
-                width:35px;
-                height:35.71px;
+            svg {
+                width: 35px;
+                height: 35.71px;
 
-                .a{
-                    stroke:none;
-                    fill:$primary;
+                .a {
+                    stroke: none;
+                    fill: $primary;
                 }
             }
 
-            &:hover{
-                svg{
-                    .a{
-                        fill:$white;
+            &:hover {
+                svg {
+                    .a {
+                        fill: $white;
                     }
                 }
             }
         }
     }
 
-    &__content{
-        max-width:850px;
-        margin:0 auto;
+    &__content {
+        max-width: 850px;
+        margin: 0 auto;
 
-        ul{
+        ul {
             @include group();
-            margin-bottom:40px;
+            margin-bottom: 40px;
 
-            li{
-                width:36%;
-                margin-right:5%;
-                float:left;
-                font-weight:bold;
-                margin-bottom:20px;
-                position:relative;
-                padding-left:58px;
+            li {
+                width: 36%;
+                margin-right: 5%;
+                float: left;
+                font-weight: bold;
+                margin-bottom: 20px;
+                position: relative;
+                padding-left: 58px;
 
-                &:before{
-                    content:"";
-                    width:24px;
-                    border-bottom:4px solid $primary;
-                    position:absolute;
-                    left:30px;
-                    top:12px;
+                &:before {
+                    content: "";
+                    width: 24px;
+                    border-bottom: 4px solid $primary;
+                    position: absolute;
+                    left: 30px;
+                    top: 12px;
                 }
             }
         }
     }
 
-    &__social{
-        max-width:850px;
-        margin:80px auto;
-        border-bottom:1px solid rgba(#46474F,0.36);
+    &__social {
+        max-width: 850px;
+        margin: 80px auto;
+        border-bottom: 1px solid rgba(#46474F,0.36);
         @include group();
 
-        .social{
-            float:right;
+        .social {
+            float: right;
 
-            &__link{
-                margin:0 0 0 28px;
+            &__link {
+                margin: 0 0 0 28px;
 
-                svg{
-                    .a{
-                        fill:$secondary;
+                svg {
+                    .a {
+                        fill: $secondary;
                     }
                 }
             }
         }
 
-        .timestamp{
+        .timestamp {
             float: left;
             margin: 24px 0 0;
         }
