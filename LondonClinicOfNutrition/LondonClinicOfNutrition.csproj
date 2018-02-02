@@ -339,14 +339,17 @@
     <Content Include="Css\editor.css" />
     <Content Include="Css\main.css" />
     <Content Include="default.aspx" />
+    <Content Include="error.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gruntfile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Css\sass\forms.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\js\forms.js" />
     <Content Include="Scripts\js\jquery.ats.dg.js" />
     <Content Include="Scripts\lib\jquery.min.js" />
     <Content Include="Scripts\lib\google-places.js" />
@@ -368,8 +371,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Models\FormsModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -411,11 +416,7 @@
     <Content Include="package.json" />
     <Content Include="Css\editor.css.map" />
     <Content Include="Css\main.css.map" />
-    <Content Include="Css\sass\cms\cms.scss" />
-    <Content Include="Css\sass\cms\editor.scss" />
     <Content Include="Css\sass\common.scss" />
-    <Content Include="Css\sass\elements\blocks.scss" />
-    <Content Include="Css\sass\elements\forms.scss" />
     <Content Include="Css\sass\global.scss" />
     <Content Include="Css\sass\layout.scss" />
     <Content Include="Css\sass\main.scss" />
@@ -484,6 +485,7 @@
     <Content Include="Views\Partials\Testimonials\testimonials.scss" />
     <Content Include="Views\Partials\Search\Search.cshtml" />
     <Content Include="Views\Partials\Search\search.scss" />
+    <Content Include="Views\Partials\Team\Person.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -35,7 +35,7 @@ var blogs = {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__timestamp timestamp">' + data[i].date + '</span>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
@@ -144,7 +144,7 @@ var recipes = {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
@@ -277,7 +277,7 @@ var services = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="/images/icon-cancer.svg"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<p>Cancer is a complicated illness. There are many different types of cancer and prognosis can vary enormously between individuals. We all know someone who has been diagnosed with cancer and sadly, it’s becoming more common.</p>' +
                 '<span class="button' + style +'"><a>Read more</a></span>' +
@@ -430,7 +430,7 @@ var treatments = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<p>Cancer is a complicated illness. There are many different types of cancer and prognosis can vary enormously between individuals. We all know someone who has been diagnosed with cancer and sadly, it’s becoming more common.</p>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
@@ -452,6 +452,106 @@ var treatments = {
     }
 };
 /*
+* Title: Forms JS
+* Author: Adam Southorn
+* Version: 1.0
+*/
+
+var forms = {
+    init: function () {
+        $('.ajax').submit(function (e) {
+            var form = $(this);
+
+            if (!forms.validateForms(form)) {
+                e.preventDefault();
+                return false;
+            }
+
+            form.find('.error-text').hide();
+
+            form.addClass('form--loading');
+
+            try {
+                global.models.postForm(form.serialize(), form.attr('data-method')).success(function (data) {
+                    forms.controller(data, form);
+                }).fail(function (data) {
+                    console.log(data);
+                    form.find('.error-text').show();
+                    form.removeClass('form--loading');
+                });
+            }
+            catch (ex) {
+                console.log(ex);
+                console.log('form post failed');
+                form.find('.error-text').show();
+                form.removeClass('form--loading');
+            }
+
+            e.preventDefault();
+        });
+
+        $('body').on('change', '.form__field--error input', function () {
+            var form = $(this).parents('form');
+            forms.validateForms(form); 
+        });
+    },
+    controller: function (data, form) {
+        if (data === "success") {
+            form.addClass('form--complete');
+        }
+        form.removeClass('form--loading');
+    },
+    validateForms: function (form) {
+        var result = true;
+
+        form.find('.email').each(function () {
+            if ($(this).val() !== "") {
+                if (forms.validateEmail($(this).val()) === false) {
+                    result = false;
+                    $(this).parents('.form__field').addClass('form__field--error').find('.form__validation').text('Email address is not valid');
+                }
+                else {
+                    $(this).parents('.form__field').removeClass('form__field--error').find('.form__validation').text('');
+                }
+            }
+        });
+
+        form.find('.required').each(function () {
+            if ($(this).val() === "") {
+                result = false;
+                $(this).parents('.form__field').addClass('form__field--error').find('.form__validation').text('This field is required');
+            }
+            else {
+                $(this).parents('.form__field').removeClass('form__field--error').find('.form__validation').text('');
+            }
+        });
+
+        form.find('.phone').each(function () {
+            if ($(this).val() !== "") {
+                if (forms.validatePhone($(this).val()) === false) {
+                    result = false;
+                    $(this).parents('.form__field').addClass('form__field--error').find('.form__validation').text('Telephone number is not valid');
+                }
+                else {
+                    $(this).parents('.form__field').removeClass('form__field--error').find('..form__validation').text('');
+                }
+            }
+        });
+
+        form.find('.form__field--error').eq(0).find('input').focus();
+
+        return result;
+    },
+    validateEmail: function (val) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(val);
+    },
+    validatePhone: function (val) {
+        var re = /^[0-9]+$/;
+        return re.test(val);
+    }
+};
+/*
 * Title: Main JS
 * Author: Adam Southorn
 * Version: 1.0
@@ -461,9 +561,6 @@ var global = {
     init: function () {
         global.ui();
         global.setImages();
-        if ($('form').length) {
-            global.forms();
-        }
         global.resize();
         //$(window).on('resize', function (e) {
         //    views.resize();
@@ -543,88 +640,6 @@ var global = {
     resize: function () {
 
     },
-    forms: function () {
-        $('form').submit(function (e) {
-            var form = $(this);
-
-            if (!views.validateForms(form)) {
-                e.preventDefault();
-                return false;
-            }
-
-            form.find('.error-text').hide();
-
-            form.addClass('form--loading');
-
-            try {
-                models.form(form.serialize(), form.attr('data-method')).success(function (data) {
-                    controllers.form(data, form);
-                }).fail(function (data) {
-                    console.log(data.responseJSON.Message);
-                    form.find('.error-text').show();
-                    form.removeClass('form--loading');
-                });
-            }
-            catch (ex) {
-                console.log(ex);
-                console.log('form post failed');
-                form.find('.error-text').show();
-                form.removeClass('form--loading');
-            }
-
-            e.preventDefault();
-        });
-
-        $('body').on('change', '.field--error input', function () {
-            var form = $(this).parents('form');
-            views.validateForms(form);
-        });
-    },
-    validateForms: function (form) {
-        var result = true;
-
-        form.find('.email').each(function () {
-            if (views.validateEmail($(this).val()) === false) {
-                result = false;
-                $(this).parents('.form__field').addClass('form__field--error').find('.validation').text('Email address is not valid');
-            }
-            else {
-                $(this).parents('.form__field').removeClass('form__field--error').find('.validation').text('');
-            }
-        });
-
-        form.find('.required').each(function () {
-            if ($(this).val() === "") {
-                result = false;
-                $(this).parents('.form__field').addClass('form__field--error').find('.validation').text('This field is required');
-            }
-            else {
-                $(this).parents('.form__field').removeClass('form__field--error').find('.validation').text('');
-            }
-        });
-
-        form.find('.phone').each(function () {
-            if (views.validatePhone($(this).val()) === false) {
-                result = false;
-                $(this).parents('.form__field').addClass('form__field--error').find('.validation').text('Telephone number is not valid');
-            }
-            else {
-                $(this).parents('.form__field').removeClass('form__field--error').find('.validation').text('');
-            }
-        });
-
-        form.find('.field--error').eq(0).find('input').focus();
-
-        return result;
-    },
-    validateEmail: function (val) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(val);
-    },
-    validatePhone: function (val) {
-        var re = /^[0-9]+$/;
-        return re.test(val);
-    },
     views: {
         prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
         nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
@@ -643,11 +658,22 @@ var global = {
                 type: 'GET',
                 context: document.body
             });
+        },
+        postForm: function (data, method) {
+            return $.ajax({
+                url: '/umbraco/api/Forms/' + method,
+                type: 'POST',
+                context: document.body,
+                data: data
+            });
         }
     }
 };
 global.init();
 cookieBar.init();
+if ($('.form').length) {
+    forms.init();
+}
 if ($('.content-scroller').length) {
     contentScroller.init();
 }

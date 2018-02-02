@@ -17,29 +17,81 @@
     }
 }
 
-.team{
-    text-align:center;
+.team {
+    text-align: center;
+    padding-top: 30px;
 
-    &:before{
-        content:"";
+    &:before {
+        content: "";
         @include fill();
-        height:508px;
-        background:$primary-alt;
+        height: 508px;
+        background: $primary-alt;
     }
 
-    &__column{
-        width:27%;
-        margin-right:3%;
-        display:inline-block;
-        text-align:left;
+    &__column {
+        width: 27%;
+        margin-right: 3%;
+        display: inline-block;
+        text-align: left;
 
-        &--wide{
-            width:60%;
-            margin:0;
+        &--wide {
+            width: 60%;
+            margin: 0;
         }
     }
 
-    &__header{
-        color:$white;
+    &__header {
+        color: $white;
+    }
+
+    h1 {
+        margin: 132px 0 0;
+    }
+
+    &__subtitle {
+        display: block;
+        margin-bottom: 160px;
+        font-weight:bold;
+        font-size:$base + 4;
+    }
+
+    &__image {
+        border-radius: 20px;
+    }
+
+    h2{
+        font-size:$base + 12;
+    }
+}
+
+.icon-list {
+    @include clearlist();
+
+    &__item {
+        text-align: center;
+        width: 80px;
+        margin-right: 36px;
+        font-size: $base - 6;
+        line-height: $spacing - 20;
+
+        svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 12px;
+        }
+    }
+}
+
+.star-list {
+    &__item {
+        padding-left:0;
+
+        svg{
+            margin-right:20px;
+        }
+
+        &:before {
+            content: "";
+        }
     }
 }

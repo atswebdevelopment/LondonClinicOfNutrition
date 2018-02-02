@@ -1,5 +1,8 @@
 ﻿global.init();
 cookieBar.init();
+if ($('.form').length) {
+    forms.init();
+}
 if ($('.content-scroller').length) {
     contentScroller.init();
 }

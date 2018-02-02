@@ -2,22 +2,20 @@
 @{
     Layout = "_Layout.cshtml";
 }
+
 <div class="section team">
-    <div class="inner">
-        <div class="team__column">
-            @Model.Content.GetPropertyValue("image")
-        </div>
-        <div class="team__column team__column--wide">
-            <div class="team__header">
-                <h1>@Model.Content.Name</h1>
-                <span class="subtitle">@Model.Content.GetPropertyValue("jobTitle")</span>
+    <div class="controls">
+        <div class="inner">
+            <div class="controls__left">
+                <a href="@Model.Content.Up().Url"><span class="round-button arrow round-button--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back</a>
             </div>
-            <span class="section__subtitle">@Model.Content.GetPropertyValue("")</span>
-        @Model.Content.GetPropertyValue("bodyContent")
         </div>
     </div>
-</div>
-<div class="section__indicator">
-    <button type="button" class="round-button arrow arrow--inverted"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
-    <span>back to top</span>
+    <div class="inner">
+        @Html.Partial("Team/Person", Model.Content)
+        <div class="section__indicator">
+            <button type="button" class="round-button arrow arrow--inverted"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+            <span>back to top</span>
+        </div>
+    </div>
 </div>

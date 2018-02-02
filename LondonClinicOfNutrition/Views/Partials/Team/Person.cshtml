@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var image = "";
+    var personImage = Model.Content.GetPropertyValue<IPublishedContent>("image");
+    if (personImage != null)
+    {
+        image = personImage.Url;
+    }
+}
+<div class="team__column">
+    <span class="team__image img-load" data-src="@image"></span>
+    <h2>SPECIALISES IN:</h2>
+    <ul class="icon-list">
+        <li class="icon-list__item icon"><span class="svg-load" data-src="/images/icon-auto-immune-disease.svg"></span><b>Auto immune disease</b></li>
+    </ul>
+    <br/>
+    <h2>QUALIFICATIONS:</h2>
+    <ul class="star-list">
+        <li class="star-list__item star"><span class="svg-load" data-src="/images/icon-star.svg"></span>1st Class Degree in Nutrional Therapy</li>
+    </ul>
+</div>
+<div class="team__column team__column--wide">
+    <div class="team__header">
+        <h1>@Model.Content.Name</h1>
+        <span class="subtitle team__subtitle">@Model.Content.GetPropertyValue("jobTitle")</span>
+    </div>
+    <span class="section__subtitle">@Model.Content.GetPropertyValue("")</span>
+    @Model.Content.GetPropertyValue("bodyContent")
+    <p>&nbsp;</p>
+    <p><span class="button"><a href="">View CPD</a></span></p>
+    <p>&nbsp;</p>
+</div>

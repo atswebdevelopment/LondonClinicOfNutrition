@@ -8,9 +8,6 @@ var global = {
     init: function () {
         global.ui();
         global.setImages();
-        if ($('form').length) {
-            global.forms();
-        }
         global.resize();
         //$(window).on('resize', function (e) {
         //    views.resize();
@@ -90,88 +87,6 @@ var global = {
     resize: function () {
 
     },
-    forms: function () {
-        $('form').submit(function (e) {
-            var form = $(this);
-
-            if (!views.validateForms(form)) {
-                e.preventDefault();
-                return false;
-            }
-
-            form.find('.error-text').hide();
-
-            form.addClass('form--loading');
-
-            try {
-                models.form(form.serialize(), form.attr('data-method')).success(function (data) {
-                    controllers.form(data, form);
-                }).fail(function (data) {
-                    console.log(data.responseJSON.Message);
-                    form.find('.error-text').show();
-                    form.removeClass('form--loading');
-                });
-            }
-            catch (ex) {
-                console.log(ex);
-                console.log('form post failed');
-                form.find('.error-text').show();
-                form.removeClass('form--loading');
-            }
-
-            e.preventDefault();
-        });
-
-        $('body').on('change', '.field--error input', function () {
-            var form = $(this).parents('form');
-            views.validateForms(form);
-        });
-    },
-    validateForms: function (form) {
-        var result = true;
-
-        form.find('.email').each(function () {
-            if (views.validateEmail($(this).val()) === false) {
-                result = false;
-                $(this).parents('.form__field').addClass('form__field--error').find('.validation').text('Email address is not valid');
-            }
-            else {
-                $(this).parents('.form__field').removeClass('form__field--error').find('.validation').text('');
-            }
-        });
-
-        form.find('.required').each(function () {
-            if ($(this).val() === "") {
-                result = false;
-                $(this).parents('.form__field').addClass('form__field--error').find('.validation').text('This field is required');
-            }
-            else {
-                $(this).parents('.form__field').removeClass('form__field--error').find('.validation').text('');
-            }
-        });
-
-        form.find('.phone').each(function () {
-            if (views.validatePhone($(this).val()) === false) {
-                result = false;
-                $(this).parents('.form__field').addClass('form__field--error').find('.validation').text('Telephone number is not valid');
-            }
-            else {
-                $(this).parents('.form__field').removeClass('form__field--error').find('.validation').text('');
-            }
-        });
-
-        form.find('.field--error').eq(0).find('input').focus();
-
-        return result;
-    },
-    validateEmail: function (val) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(val);
-    },
-    validatePhone: function (val) {
-        var re = /^[0-9]+$/;
-        return re.test(val);
-    },
     views: {
         prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
         nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
@@ -189,6 +104,14 @@ var global = {
                 url: '/umbraco/api/Search/GetSearch?searchTerm=' + searchTerm + '&skip=' + skip + '&take=' + take,
                 type: 'GET',
                 context: document.body
+            });
+        },
+        postForm: function (data, method) {
+            return $.ajax({
+                url: '/umbraco/api/Forms/' + method,
+                type: 'POST',
+                context: document.body,
+                data: data
             });
         }
     }

@@ -1,6 +1,6 @@
 ﻿.search-results {
     &__title {
-        font-size: $base + 9;
+        font-size: $base + 7;
         display: block;
         margin-bottom: 24px;
 
@@ -10,7 +10,7 @@
     }
 
     &__count {
-        font-size: $base - 2;
+        font-size: $base - 4;
         color: $primary-alt;
         display: block;
         border-bottom: 1px solid rgba($primary-alt,0.14);
@@ -25,7 +25,7 @@
 
         h2 {
             margin-bottom: 26px;
-            font-size: $base + 6;
+            font-size: $base + 4;
 
             a {
                 color: $black;
@@ -36,13 +36,13 @@
     &__timestamp {
         margin: 0;
         float: left;
-        font-size: $base - 2;
+        font-size: $base - 4;
         color: $primary-alt;
     }
 
     &__link {
         float: right;
-        font-size: $base - 2;
+        font-size: $base - 4;
         margin-right:8px;
 
         a {

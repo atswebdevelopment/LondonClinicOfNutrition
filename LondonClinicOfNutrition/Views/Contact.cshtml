@@ -4,9 +4,41 @@
 }
 @Html.Partial("Banner/Banner", Model.Content)
 @Html.Partial("Controls/Controls", Model.Content)
+<div class="section__header"></div>
 <div class="section">
     <div class="inner">
-        asd
+        <div class="section__content">
+            <form class="form ajax" data-method="CallBack">
+                <fieldset>
+                    <legend>Request a call back by filling in the fields* provided:</legend>
+                    <div class="form__field">
+                        <span class="form__validation"></span>
+                        <input type="text" name="name" placeholder="Full name*" class="required" />
+                    </div>
+                    <div class="form__field">
+                        <span class="form__validation"></span>
+                        <input type="email" name="mdr" placeholder="Email*" class="required email" />
+                        <input type="email" name="email" placeholder="Email*" class="hidden email" />
+                    </div>
+                    <div class="form__field">
+                        <input type="tel" name="telephone" placeholder="Mobile number" class="telephone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
+                    </div>
+                    <div class="form__field">
+                        <textarea name="message" placeholder="Start typing your message..."></textarea>
+                    </div>
+                    <div class="form__field form__field--center">
+                        <button class="button">Submit</button>
+                    </div>
+                </fieldset>
+                <div class="form__complete">
+                    <p>Thank you lorem ipsum lorem ipsum</p>
+                </div>
+            </form>
+            @Model.Content.GetPropertyValue("bodyContent")
+        </div>
+        <div class="section__social">
+            @Html.Partial("Social/Social", Model.Content)
+        </div>
     </div>
 </div>
 <div class="section section--map">

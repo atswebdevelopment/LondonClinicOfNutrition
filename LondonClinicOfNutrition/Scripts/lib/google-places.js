@@ -109,13 +109,13 @@
                             
           // fill in gold stars
           for (var i = 0; i < rating; i++) {
-              stars = stars +"<li class='boxes__star'><span class='svg-load' data-src='/images/icon-star.svg'></span></li>";
+              stars = stars +"<li class='boxes__star star'><span class='svg-load' data-src='/images/icon-star.svg'></span></li>";
           };
 
           // fill in empty stars
           if(rating < 5){
             for (var i = 0; i < (5 - rating); i++) {
-                stars = stars +"<li class='boxes__star boxes__star--inactive'><span class='svg-load' data-src='/images/icon-star.svg'></span></li>";
+                stars = stars +"<li class='boxes__star star boxes__star--inactive'><span class='svg-load' data-src='/images/icon-star.svg'></span></li>";
             };
           }
           stars = stars+"</ul>";

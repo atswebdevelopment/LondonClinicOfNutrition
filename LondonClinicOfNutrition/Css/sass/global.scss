@@ -63,6 +63,10 @@ ul li:before {
     content: '\2022';
 }
 
+input, textarea {
+    font-family: $primaryfont;
+}
+
 button{
     outline:none;
     cursor:pointer;

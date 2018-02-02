@@ -29,7 +29,7 @@ var recipes = {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';

@@ -31,10 +31,11 @@ namespace LondonClinicOfNutrition.Controllers
                     }
 
                     DateTime dt = item.CreateDate;
-                    var date = String.Format("{0}{1} {2}",
+                    var date = String.Format("{0}{1} {2} {3}",
                                       dt.Day,
                                       GetDaySuffix(dt.Day),
-                                      dt.ToString("MMMM", CultureInfo.InvariantCulture));
+                                      dt.ToString("MMMM", CultureInfo.InvariantCulture),
+                                      dt.Year);
 
                     nodes.Add(new SearchModel
                     {
