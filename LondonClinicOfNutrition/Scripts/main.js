@@ -51,13 +51,7 @@ var blogs = {
         blogs.container.append(html);
 
         if (blogs.container.attr('data-scroll') === 'True') {
-            blogs.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            blogs.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }
@@ -72,8 +66,8 @@ var contentScroller = {
     init: function () {
         $('.slick-content-scroller').slick({
             dots: true,
-            prevArrow: global.views.prevArrow,
-            nextArrow: global.views.nextArrow
+            prevArrow: global.views.slickSettings.prevArrow,
+            nextArrow: global.views.slickSettings.nextArrow
         });
         global.setImages();
     }
@@ -153,13 +147,7 @@ var recipes = {
         recipes.container.append(html);
 
         if (recipes.container.attr('data-scroll') === 'True') {
-            recipes.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            recipes.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }
@@ -183,13 +171,7 @@ var reviews = {
         var checkBoxesBeforeSlick = setInterval(function () {
             if ($('.boxes__stars').length) {
                 clearInterval(checkBoxesBeforeSlick);
-                reviews.container.slick({
-                    dots: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    prevArrow: global.views.prevArrow,
-                    nextArrow: global.views.nextArrow
-                });
+                reviews.container.slick(global.views.slickSettings);
                 global.setImages();
             }
         }, 100);
@@ -287,13 +269,7 @@ var services = {
         services.container.append(html);
 
         if (services.container.attr('data-scroll') === 'True') {
-            services.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            services.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }
@@ -440,13 +416,7 @@ var treatments = {
         treatments.container.append(html);
 
         if (treatments.container.attr('data-scroll') === 'True') {
-            treatments.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            treatments.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }
@@ -641,8 +611,13 @@ var global = {
 
     },
     views: {
-        prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
-        nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+        slickSettings: {
+            dots: true,
+            centerMode: true,
+            variableWidth: true,
+            prevArrow: '<button type="button" class="round-button slick-prev"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>',
+            nextArrow: '<button type="button" class="round-button slick-next"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>'
+        }
     },
     models: {
         getContent: function (id, skip, take) {

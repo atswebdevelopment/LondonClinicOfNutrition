@@ -39,13 +39,7 @@ var services = {
         services.container.append(html);
 
         if (services.container.attr('data-scroll') === 'True') {
-            services.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            services.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }

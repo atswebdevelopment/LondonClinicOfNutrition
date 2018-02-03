@@ -51,13 +51,7 @@ var blogs = {
         blogs.container.append(html);
 
         if (blogs.container.attr('data-scroll') === 'True') {
-            blogs.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            blogs.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }

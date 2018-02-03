@@ -8,8 +8,8 @@ var contentScroller = {
     init: function () {
         $('.slick-content-scroller').slick({
             dots: true,
-            prevArrow: global.views.prevArrow,
-            nextArrow: global.views.nextArrow
+            prevArrow: global.views.slickSettings.prevArrow,
+            nextArrow: global.views.slickSettings.nextArrow
         });
         global.setImages();
     }

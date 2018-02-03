@@ -38,13 +38,7 @@ var treatments = {
         treatments.container.append(html);
 
         if (treatments.container.attr('data-scroll') === 'True') {
-            treatments.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            treatments.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }

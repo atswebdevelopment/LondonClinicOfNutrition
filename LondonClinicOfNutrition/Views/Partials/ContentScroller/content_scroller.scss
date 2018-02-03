@@ -1,23 +1,38 @@
 ﻿.content-scroller {
-    background:url(/Images/bg-content-scroller.svg) center $primary-alt fixed;
-    background-size:cover;
-    padding:40px 0;
-    color:$white;
+    background: url(/Images/bg-content-scroller.svg) center $primary-alt fixed;
+    background-size: cover;
+    padding: 40px 0;
+    color: $white;
 
-    &__text{
+    &__text {
         padding: 100px 20%;
 
-        p{
-            font-size:$base + 7;
-            line-height:$base + 20;
-            max-width:750px;
+        @include media-query(phone, max) {
+            padding: 40px 20%;
+        }
+
+        p {
+            font-size: $base + 7;
+            line-height: $base + 20;
+            max-width: 750px;
+
+            @include media-query(phone, max) {
+                font-size: $base + 2;
+                line-height: $base + 12;
+            }
         }
     }
 
-    .slick-dots{
-        .slick-active{
-            button{
-                background:$white;
+    .slick-dots {
+        li {
+            @include media-query(phone, max) {
+                margin-bottom:20px;
+            }
+
+            &.slick-active {
+                button {
+                    background: $white;
+                }
             }
         }
     }

@@ -36,7 +36,13 @@ button.button {
     border-radius: 28px;
     box-sizing: border-box;
     text-transform: uppercase;
-    text-align:center;
+    text-align: center;
+
+    @include media-query(phone, max) {
+        line-height: 48px;
+        font-size: $base - 4;
+        min-width: 156px;
+    }
 }
 
 .buttons a:hover,

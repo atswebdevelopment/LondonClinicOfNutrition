@@ -17,13 +17,7 @@ var reviews = {
         var checkBoxesBeforeSlick = setInterval(function () {
             if ($('.boxes__stars').length) {
                 clearInterval(checkBoxesBeforeSlick);
-                reviews.container.slick({
-                    dots: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    prevArrow: global.views.prevArrow,
-                    nextArrow: global.views.nextArrow
-                });
+                reviews.container.slick(global.views.slickSettings);
                 global.setImages();
             }
         }, 100);

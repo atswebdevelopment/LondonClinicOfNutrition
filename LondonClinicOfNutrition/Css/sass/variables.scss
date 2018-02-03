@@ -33,6 +33,7 @@ $bezier: cubic-bezier(.21,.96,.59,.97);
 /*#region Media Queries*/
 
 $breakpoints: (
+    small: 470px,
     phone: 768px,
     tablet: 1024px
 );

@@ -1,41 +1,73 @@
-﻿.footer-main{
-    background:$primary-alt;
-    height:293px;
-    padding:100px 0;
-    box-sizing:border-box;
-    color:$primary-dark;
-    
-    &__social{
-        width:50%;
-        float:left;
+﻿.footer-main {
+    background: $primary-alt;
+    height: 293px;
+    padding: 100px 0;
+    box-sizing: border-box;
+    color: $primary-dark;
+
+    @include media-query(phone, max) {
+        padding:40px 0;
+        height:auto;
     }
 
-    &__register{
-        width:50%;
-        float:right;
+    &__social {
+        width: 50%;
+        float: left;
+
+        @include media-query(tablet, max) {
+            width: 100%;
+            float: none;
+        }
+    }
+
+    &__register {
+        width: 50%;
+        float: right;
     }
 }
 
-.footer-utilities{
-    background:$primary-dark;
-    height:84px;
-    color:rgba($primary,0.68);
+.footer-utilities {
+    background: $primary-dark;
+    color: rgba($primary,0.68);
+    padding: 30px 0;
+    @include group();
 
-    p{
-        float:left;
-        margin:30px 0 0;
+    @include media-query(tablet, max) {
+        font-size: $base - 2;
     }
 
-    &__nav{
+    @include media-query(phone, max) {
+        text-align: center;
+    }
+
+    p {
+        float: left;
+        margin: 0;
+
+        @include media-query(phone, max) {
+            float: none;
+            margin-bottom:20px;
+        }
+    }
+
+    &__nav {
         @include clearlist();
-        float:right;
+        float: right;
+
+        @include media-query(phone, max) {
+            float: none;
+        }
     }
 
-    &__link{
-        margin:30px 0 0 80px;
+    &__link {
+        margin: 0 0 0 80px;
 
-        a{
-            color:rgba($primary,0.68);
+        @include media-query(phone, max) {
+            margin:0 20px;
+        }
+
+        a {
+            color: rgba($primary,0.68);
         }
     }
 }

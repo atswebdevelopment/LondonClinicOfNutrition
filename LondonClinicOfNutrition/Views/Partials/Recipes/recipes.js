@@ -38,13 +38,7 @@ var recipes = {
         recipes.container.append(html);
 
         if (recipes.container.attr('data-scroll') === 'True') {
-            recipes.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            recipes.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }

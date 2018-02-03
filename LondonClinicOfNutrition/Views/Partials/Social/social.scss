@@ -1,23 +1,32 @@
-﻿.social{
+﻿.social {
     @include clearlist();
 
-    &__link{
-        margin:0 46px 0 0;
+    &__link {
+        margin: 0 46px 0 0;
 
-        a{
-            svg{
-                width:47px;
-                height:47px;
+        @include media-query(phone, max) {
+            margin-right:16px;
+        }
 
-                .a{
-                    fill:$white;
+        a {
+            svg {
+                width: 47px;
+                height: 47px;
+
+                @include media-query(phone, max) {
+                    width: 35px;
+                    height: 35px;
+                }
+
+                .a {
+                    fill: $white;
                 }
             }
 
-            &:hover{
-                svg{
-                    .a{
-                        fill:$primary-dark;
+            &:hover {
+                svg {
+                    .a {
+                        fill: $primary-dark;
                     }
                 }
             }

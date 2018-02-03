@@ -104,6 +104,10 @@
 
 /*ATS Web Overrides*/
 
+.slick-slider {
+    padding: 0 82px;
+}
+
 .slick-arrow{
     @extend .arrow;
     position:absolute;

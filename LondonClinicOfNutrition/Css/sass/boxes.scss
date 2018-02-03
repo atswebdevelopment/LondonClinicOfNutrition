@@ -1,13 +1,16 @@
 ﻿.boxes {
     text-align: center;
-    padding: 0 8%;
 
     &__box {
         display: inline-block;
-        width: 33.3%;
+        width: 428px;
         position: relative;
         transition: 0.2s all $bezier;
         background: url(/Images/bg-box.svg) no-repeat center;
+
+        @include media-query(small, max) {
+            width: 280px;
+        }
 
         &:hover {
             transform: scale(1.1);
@@ -16,16 +19,28 @@
 
     &__content {
         width: 60%;
+        max-width: 296px;
         height: 502px;
-        margin: 50px 20% 120px;
-        background-size: cover;
+        margin: 50px auto 120px;
         border-radius: 10px;
+
+        @include media-query(small, max) {
+            height: 328px;
+            width: 68%;
+            margin: 32px auto 80px;
+        }
 
         p {
             height: 171px;
             overflow: hidden;
             margin-bottom: 28px;
             position: relative;
+
+            @include media-query(small, max) {
+                height: 64px;
+                font-size: $base - 2;
+                line-height: $spacing - 10;
+            }
 
             &:after {
                 content: "";
@@ -50,6 +65,12 @@
         font-size: $base + 4;
         font-weight: bold;
         display: block;
+
+        @include media-query(small, max) {
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: $base + 2;
+        }
     }
 
     &__subtitle {
@@ -60,12 +81,13 @@
     }
 
     &__foot {
-        font-weight:bold;
+        font-weight: bold;
     }
 
     &__link {
         @include fill();
         z-index: 2;
+        outline: none;
     }
 
     &__image {
@@ -74,11 +96,17 @@
         position: absolute;
         top: 32px;
         left: 0;
-        width: 79%;
-        margin-left: 10.5%;
+        width: 338px;
+        margin-left: 45px;
         display: block;
         height: 176px;
         border-radius: 10px 10px 0 0;
+
+        @include media-query(small, max) {
+            width: 220px;
+            margin-left: 30px;
+            height: 102px;
+        }
     }
 
     &__icon {
@@ -89,6 +117,13 @@
         position: relative;
         top: 32px;
         z-index: 1;
+
+        @include media-query(small, max) {
+            width: 90px;
+            height: 90px;
+            top: 18px;
+            margin-bottom: 30px;
+        }
 
         svg {
             width: 100%;
@@ -105,34 +140,54 @@
     &__timestamp {
         color: $primary;
         margin-bottom: 10px;
+
+        @include media-query(small, max) {
+            margin-top: 30px;
+        }
     }
 }
 
-.boxes-small{
-    .boxes{
-        &__box{
-            background:url(/Images/bg-box-small.svg) no-repeat center;
+.boxes-small {
+    .boxes {
+        &__box {
+            background: url(/Images/bg-box-small.svg) no-repeat center;
         }
 
-        &__content{
-            margin-top:82px;
+        &__content {
+            margin-top: 82px;
             height: 337px;
+
+            @include media-query(small, max) {
+                margin-top: 55px;
+                height: 268px;
+            }
         }
 
-        &__title{
-            border:none;
-            font-weight:normal;
+        &__title {
+            border: none;
+            font-weight: normal;
             height: 56px;
             overflow: hidden;
+
+            @include media-query(small, max) {
+                height: 36px;
+            }
         }
 
-        &__icon{
-            width:110px;
-            height:110px;
-            background:$white;
-            top:70px;
+        &__icon {
+            width: 110px;
+            height: 110px;
+            background: $white;
+            top: 70px;
             box-sizing: border-box;
             padding: 18px;
+
+            @include media-query(small, max) {
+                top: 36px;
+                width: 86px;
+                height: 86px;
+                padding: 12px;
+            }
         }
     }
 }
