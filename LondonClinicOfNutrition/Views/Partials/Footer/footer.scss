@@ -1,4 +1,26 @@
-﻿.footer-main {
+﻿.footer {
+    input {
+        background: $white;
+        width: 370px;
+        margin-right: 10px;
+        border-radius: 29px;
+    }
+
+    button {
+        svg {
+            .b {
+                fill: $primary;
+                stroke: $primary;
+            }
+        }
+
+        &:hover {
+            background: $primary-dark;
+        }
+    }
+}
+
+.footer-main {
     background: $primary-alt;
     height: 293px;
     padding: 100px 0;
@@ -21,8 +43,12 @@
     }
 
     &__register {
-        width: 50%;
+        width: 445px;
         float: right;
+
+        .title{
+            padding-left:26px;
+        }
     }
 }
 
@@ -46,7 +72,7 @@
 
         @include media-query(phone, max) {
             float: none;
-            margin-bottom:20px;
+            margin-bottom: 20px;
         }
     }
 
@@ -61,13 +87,38 @@
 
     &__link {
         margin: 0 0 0 80px;
+        position: relative;
 
         @include media-query(phone, max) {
-            margin:0 20px;
+            margin: 0 20px;
         }
 
         a {
             color: rgba($primary,0.68);
+            display:block;
+
+            &:hover {
+                color: $white;
+                text-decoration: none;
+            }
+        }
+
+        &:hover,
+        &--active {
+            a {
+                text-decoration: none;
+            }
+
+            :after {
+                content: "";
+                width: 40px;
+                height: 0;
+                border-bottom: 3px solid $primary;
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                margin-left: -20px;
+            }
         }
     }
 }

@@ -6,6 +6,83 @@
     a {
         color: $primary-dark;
     }
+
+    .form {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 92px;
+        height: 94px;
+        background: $white;
+        padding-top: 15px;
+        transition: all 0.5s $bezier;
+
+        input {
+            background: none;
+            border: none;
+            font-size: $base - 2;
+            padding: 0 0 0 34px;
+            width: 90px;
+            margin-left: -29px;
+            position: relative;
+            z-index: 1;
+        }
+
+        button {
+            width: 22px;
+            height: 60px;
+            background: $white;
+            position: relative;
+
+            svg {
+                height: 17px;
+                width: 17px;
+                opacity: 0.3;
+
+                .a {
+                    fill: $black-light;
+                }
+            }
+        }
+
+        .close {
+            position: absolute;
+            top: 32px;
+            right: 0;
+            opacity: 0;
+            z-index: -1;
+            transition: all 0.5s $bezier;
+
+            a {
+                width: 24px;
+                height: 24px;
+
+                svg {
+                    opacity: 0.3;
+
+                    .b {
+                        stroke: $black-light;
+                    }
+
+                    .c {
+                        fill: $black-light;
+                    }
+                }
+            }
+        }
+    }
+
+    .search {
+        &--active {
+            width: 632px;
+
+            .close,
+            button {
+                opacity: 1;
+                z-index: 2;
+            }
+        }
+    }
 }
 
 .header-utilities{
@@ -67,41 +144,46 @@
     }
 }
 
-.header-main{
-    height:85px;
+.header-main {
+    height: 85px;
 
-    &__nav{
+    &__nav {
         @include clearlist();
-        text-align:center;
+        text-align: center;
     }
-    
-    &__link{
-        margin:0;
-        position:relative;
 
-        a{
-            display:block;
-            padding:28px 47px;
+    &__link {
+        margin: 0;
+        position: relative;
+
+        a {
+            display: block;
+            padding: 28px 47px;
         }
 
-        &--padright{
-            margin-right:115px;
+        &--padright {
+            margin-right: 115px;
         }
 
-        &--padleft{
-            margin-left:115px;
+        &--padleft {
+            margin-left: 115px;
         }
 
-        &--active{
-            :after{
-                content:"";
-                width:40px;
-                height:0;
-                border-bottom:3px solid $primary;
-                position:absolute;
-                bottom:24px;
-                left:50%;
-                margin-left:-20px;
+        &:hover,
+        &--active {
+            a {
+                text-decoration: none;
+            }
+
+            :after {
+                content: "";
+                width: 40px;
+                height: 0;
+                border-bottom: 3px solid $primary;
+                position: absolute;
+                bottom: 24px;
+                left: 50%;
+                margin-left: -20px;
             }
         }
     }
@@ -119,4 +201,4 @@
     top: -58px;
     left: 50%;
     margin-left: -85px;
-}
+}   

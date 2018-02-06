@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using System.Globalization;
 using Umbraco.Core.Models;
+using Umbraco.Core.Logging;
 
 namespace LondonClinicOfNutrition.Controllers
 {
@@ -21,13 +22,20 @@ namespace LondonClinicOfNutrition.Controllers
                 foreach (var item in search)
                 {
                     var content = "";
-                    if (item.GetProperty("content").HasValue)
+                    try
                     {
-                        content = item.GetProperty("content").Value.ToString();
+                        if (item.GetProperty("content") != null)
+                        {
+                            content = item.GetProperty("content").Value.ToString();
+                        }
+                        if (item.GetProperty("bodyContent") != null && content == "")
+                        {
+                            content = Umbraco.Truncate(item.GetProperty("bodyContent").Value.ToString(), 300).ToString();
+                        }
                     }
-                    else if (item.GetProperty("bodyContent").HasValue)
+                    catch (Exception ex)
                     {
-                        content = Umbraco.Truncate(item.GetProperty("bodyContent").Value.ToString(), 300).ToString();
+                        LogHelper.Error<Exception>("CUSTZZ - " + ex.StackTrace, ex);
                     }
 
                     DateTime dt = item.CreateDate;

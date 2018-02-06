@@ -361,6 +361,7 @@
     <Content Include="Views\Partials\ContentScroller\content_scroller.js" />
     <Content Include="Views\Partials\Controls\controls.js" />
     <Content Include="Views\Partials\CookieBar\cookie_bar.js" />
+    <Content Include="Views\Partials\Header\header.js" />
     <Content Include="Views\Partials\Recipes\recipes.js" />
     <Content Include="Views\Partials\Reviews\reviews.js" />
     <Content Include="Views\Partials\Search\search.js" />

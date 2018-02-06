@@ -7,7 +7,7 @@
         @if (Model.Content.DocumentTypeAlias == "treatment" || Model.Content.DocumentTypeAlias == "service" || Model.Content.DocumentTypeAlias == "blog" || Model.Content.DocumentTypeAlias == "recipe")
         {
             <div class="controls__left">
-                <a href="@Model.Content.Up().Url"><span class="round-button arrow round-button--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back to @Model.Content.Up().Name</a>
+                <a href="@Model.Content.Up().Url"><span class="round-button arrow round-button--left"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></span> Back</a>
             </div>
         }
 
@@ -54,6 +54,38 @@
         {
             <div class="controls__right">
                 @Html.Partial("Social/Social", Model.Content)
+            </div>
+        }
+
+        @if (Model.Content.DocumentTypeAlias == "contact")
+        {
+            <div class="controls__center">
+                <ul class="large-icon-list">
+                    <li class="large-icon-list__item">
+                        <a href="tel:02033320030">
+                            <span class="svg-load" data-src="/images/icon-phone.svg"></span>
+                            <span>Call us on 020 3332 0030</span>
+                        </a>
+                    </li>
+                    <li class="large-icon-list__item">
+                        <a href="mailto:info@londonclinicofnutrition.co.uk">
+                            <span class="svg-load" data-src="/images/icon-email.svg"></span>
+                            <span>info@londonclinicofnutrition.co.uk</span>
+                        </a>
+                    </li>
+                    <li class="large-icon-list__item">
+                        <a href="#request">
+                            <span class="svg-load" data-src="/images/icon-request.svg"></span>
+                            <span>Fill in a request form</span>
+                        </a>
+                    </li>
+                    <li class="large-icon-list__item">
+                        <a href="https://www.google.co.uk/maps/place/London+Clinic+of+Nutrition/&#64;51.5211107,-0.1493158,15z/data=!4m2!3m1!1s0x0:0xc96175558b49eba9?sa=X&ved=0ahUKEwja847Dj4XZAhVlKsAKHYYyDZIQ_BIIfTAK" target="_blank">
+                            <span class="svg-load" data-src="/images/icon-clinic.svg"></span>
+                            <span>Get directions to our clinic</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         }
     </div>

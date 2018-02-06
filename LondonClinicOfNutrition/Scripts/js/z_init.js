@@ -1,5 +1,7 @@
 ﻿global.init();
 cookieBar.init();
+header.init();
+
 if ($('.form').length) {
     forms.init();
 }

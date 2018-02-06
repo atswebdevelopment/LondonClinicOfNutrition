@@ -42,7 +42,7 @@ namespace LondonClinicOfNutrition.Controllers
                 catch (Exception ex)
                 {
                     //Handle submission error, and add issue to Umbraco log files.
-                    LogHelper.Error<Exception>(ex.StackTrace, ex);
+                    LogHelper.Error<Exception>("CUSTZZ - " + ex.StackTrace, ex);
                     return "failure";
                 }
             }
