@@ -1,20 +1,41 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{ 
-    var treatments = Umbraco.TypedContentAtXPath("//treatments").Where(m => m.Id == 1096).First();
+    IPublishedContent treatments = null;
+    if (Model.Content.DocumentTypeAlias == "treatments") {
+        treatments = Model.Content;
+    }
+    else
+    {
+        treatments = Umbraco.TypedContentAtXPath("//treatments").Where(m => m.Id == 1096).First();
+    }
+
+    var term = Request.QueryString["q"];
     var take = 999;
     var scroll = false;
 
-    if(Model.Content.DocumentTypeAlias != "treatments")
+    if (Model.Content.DocumentTypeAlias != "treatments")
     {
         take = 6;
         scroll = true;
     }
 }
 <div class="section__header">
-    <span class="section__title">Conditions we treat</span>
+    <span class="section__title">@treatments.GetPropertyValue("sectionTitle")</span>
+    @if (Model.Content.DocumentTypeAlias == "treatments")
+    {
+    <form class="form section__search" action="@Model.Content.Url#boxes">
+        <fieldset>
+            <div class="form__field">
+                <button type="button"><span class="svg-load" data-src="/images/icon-search.svg"></span></button>
+                <input type="text" name="q" placeholder="Search" value="@term" />
+            </div>
+        </fieldset>
+    </form>
+    }
 </div>
 <div class="boxes-treatments">
-    <div class="boxes" data-id="@treatments.Id" data-take="@take" data-scroll="@scroll">
+    <a name="boxes"></a>
+    <div class="boxes" data-id="@treatments.Id" data-take="@take" data-scroll="@scroll" data-search="@term">
     </div>
 </div>
 @if (Model.Content.DocumentTypeAlias != "treatments")

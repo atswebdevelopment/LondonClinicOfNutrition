@@ -20,7 +20,7 @@ var blogs = {
         });
     },
     view: function (skip, take){
-        global.models.getContent(blogs.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(blogs.container.attr('data-id'), skip, take, blogs.container.attr('data-search')).success(function (data) {
             blogs.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -48,7 +48,7 @@ var blogs = {
             }
         }
 
-        blogs.container.append(html);
+        blogs.container.append(html).addClass('boxes--loaded');
 
         if (blogs.container.attr('data-scroll') === 'True') {
             blogs.container.slick(global.views.slickSettings);
@@ -141,9 +141,30 @@ var recipes = {
         //Recipes
         recipes.take = recipes.container.attr('data-take');
         recipes.view(recipes.skip, recipes.take);
+
+        $('.filter a').click(function () {
+            $('.filter li').removeClass('active');
+            $(this).parent().addClass('active');
+
+            recipes.container.attr('data-filter', $(this).attr('data-filter'));
+
+            recipes.skip = 0;
+
+            global.boxes.reset();
+
+            recipes.view(recipes.skip, recipes.take);
+
+            return false;
+        });
+
+        $('.load-more').click(function () {
+            recipes.skip += recipes.take;
+            recipes.view(recipes.skip, recipes.take);
+            return false;
+        });
     },
     view: function (skip, take) {
-        global.models.getContent(recipes.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(recipes.container.attr('data-id'), skip, take, recipes.container.attr('data-search'), recipes.container.attr('data-filter')).success(function (data) {
             recipes.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -164,7 +185,13 @@ var recipes = {
                 '</div></div>';
         }
 
-        recipes.container.append(html);
+        if ($('.load-more').length) {
+            if (data.length < recipes.take) {
+                $('.section__indicator').remove();
+            }
+        }
+
+        recipes.container.append(html).addClass('boxes--loaded');
 
         if (recipes.container.attr('data-scroll') === 'True') {
             recipes.container.slick(global.views.slickSettings);
@@ -264,7 +291,7 @@ var services = {
         services.view(services.skip, services.take);
     },
     view: function (skip, take) {
-        global.models.getContent(services.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(services.container.attr('data-id'), skip, take, services.container.attr('data-search')).success(function (data) {
             services.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -286,7 +313,7 @@ var services = {
                 '</div></div>';
         }
 
-        services.container.append(html);
+        services.container.append(html).addClass('boxes--loaded');
 
         if (services.container.attr('data-scroll') === 'True') {
             services.container.slick(global.views.slickSettings);
@@ -303,13 +330,14 @@ var services = {
 var team = {
     skip: 0,
     take: 0,
+    container: $('.boxes-team .boxes'),
     init: function () {
         //Team
-        team.take = $('.boxes-team .boxes').attr('data-take');
+        team.take = team.container.attr('data-take');
         team.view(team.skip, team.take);
     },
     view: function (skip, take){
-        global.models.getContent($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(team.container.attr('data-id'), skip, take).success(function (data) {
             team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -324,23 +352,17 @@ var team = {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="boxes__subtitle">' + data[i].content + '</span>' +
                 '<span class="button button--secondary"><a>About me</a></span>' +
                 '</div></div>';
         }
 
-        $('.boxes-team .boxes').append(html);
+        team.container.append(html).addClass('boxes--loaded');
 
-        if ($('.boxes-team .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-team .boxes').slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+        if (team.container.attr('data-scroll') === 'True') {
+            team.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }
@@ -382,16 +404,10 @@ var testimonials = {
                 '</div></div>';
         }
 
-        testimonials.container.append(html);
+        testimonials.container.append(html).addClass('boxes--loaded');
 
         if (testimonials.container.attr('data-scroll') === 'True') {
-            testimonials.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            testimonials.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }
@@ -412,7 +428,7 @@ var treatments = {
         treatments.view(treatments.skip, treatments.take);
     },
     view: function (skip, take){
-        global.models.getContent(treatments.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(treatments.container.attr('data-id'), skip, take, treatments.container.attr('data-search')).success(function (data) {
             treatments.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -433,7 +449,7 @@ var treatments = {
                 '</div></div>';
         }
 
-        treatments.container.append(html);
+        treatments.container.append(html).addClass('boxes--loaded');
 
         if (treatments.container.attr('data-scroll') === 'True') {
             treatments.container.slick(global.views.slickSettings);
@@ -630,6 +646,11 @@ var global = {
     resize: function () {
 
     },
+    boxes: {
+        reset: function () {
+            $('.boxes').removeClass('boxes--loaded').empty();
+        }
+    },
     views: {
         slickSettings: {
             dots: true,
@@ -640,9 +661,12 @@ var global = {
         }
     },
     models: {
-        getContent: function (id, skip, take) {
+        getContent: function (id, skip, take, searchTerm, filter) {
+            searchTerm = searchTerm === undefined ? "" : searchTerm;
+            filter = filter === undefined ? "" : filter;
+
             return $.ajax({
-                url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+                url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take + '&searchTerm=' + searchTerm + '&filter=' + filter,
                 type: 'GET',
                 context: document.body
             });

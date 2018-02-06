@@ -376,7 +376,6 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Models\FormsModel.cs" />
-    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

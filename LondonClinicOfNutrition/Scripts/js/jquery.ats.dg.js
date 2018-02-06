@@ -87,6 +87,11 @@ var global = {
     resize: function () {
 
     },
+    boxes: {
+        reset: function () {
+            $('.boxes').removeClass('boxes--loaded').empty();
+        }
+    },
     views: {
         slickSettings: {
             dots: true,
@@ -97,9 +102,12 @@ var global = {
         }
     },
     models: {
-        getContent: function (id, skip, take) {
+        getContent: function (id, skip, take, searchTerm, filter) {
+            searchTerm = searchTerm === undefined ? "" : searchTerm;
+            filter = filter === undefined ? "" : filter;
+
             return $.ajax({
-                url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take,
+                url: '/umbraco/api/Content/GetContent?id=' + id + '&skip=' + skip + '&take=' + take + '&searchTerm=' + searchTerm + '&filter=' + filter,
                 type: 'GET',
                 context: document.body
             });

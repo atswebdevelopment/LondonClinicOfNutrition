@@ -53,6 +53,7 @@ legend{
 
     &__field {
         margin-bottom: 22px;
+        position:relative;
 
         &--center {
             text-align: center;
@@ -76,6 +77,10 @@ legend{
     &__complete {
         display: none;
     }
+}
+
+button{
+    background:none;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

@@ -14,7 +14,7 @@ var treatments = {
         treatments.view(treatments.skip, treatments.take);
     },
     view: function (skip, take){
-        global.models.getContent(treatments.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(treatments.container.attr('data-id'), skip, take, treatments.container.attr('data-search')).success(function (data) {
             treatments.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -35,7 +35,7 @@ var treatments = {
                 '</div></div>';
         }
 
-        treatments.container.append(html);
+        treatments.container.append(html).addClass('boxes--loaded');
 
         if (treatments.container.attr('data-scroll') === 'True') {
             treatments.container.slick(global.views.slickSettings);

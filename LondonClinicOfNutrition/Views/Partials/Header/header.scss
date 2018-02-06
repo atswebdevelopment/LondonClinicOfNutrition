@@ -9,7 +9,7 @@
 
     .form {
         position: absolute;
-        right: 0;
+        right: 10px;
         top: 0;
         width: 92px;
         height: 94px;
@@ -31,7 +31,6 @@
         button {
             width: 22px;
             height: 60px;
-            background: $white;
             position: relative;
 
             svg {
@@ -47,7 +46,7 @@
 
         .close {
             position: absolute;
-            top: 32px;
+            top: 16px;
             right: 0;
             opacity: 0;
             z-index: -1;
@@ -95,11 +94,14 @@
         vertical-align:top;
         @include clearlist();
         margin-left:10px;
+
+        li{
+            padding:0 0 0 10px;
+        }
     }
 
     &__link{
         margin:0;
-        padding-right:10px;
 
         &:after{
             content:"";

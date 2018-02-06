@@ -14,7 +14,7 @@ var services = {
         services.view(services.skip, services.take);
     },
     view: function (skip, take) {
-        global.models.getContent(services.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(services.container.attr('data-id'), skip, take, services.container.attr('data-search')).success(function (data) {
             services.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -36,7 +36,7 @@ var services = {
                 '</div></div>';
         }
 
-        services.container.append(html);
+        services.container.append(html).addClass('boxes--loaded');
 
         if (services.container.attr('data-scroll') === 'True') {
             services.container.slick(global.views.slickSettings);

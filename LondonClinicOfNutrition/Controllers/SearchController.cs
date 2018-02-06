@@ -12,10 +12,10 @@ namespace LondonClinicOfNutrition.Controllers
     public class SearchController : UmbracoApiController
     {
         // GET: Search
-        public IEnumerable<SearchModel> GetSearch(string searchTerm = "", int take = 0, int skip = 0)
+        public IEnumerable<ContentModel> GetSearch(string searchTerm = "", int take = 0, int skip = 0)
         {
             var search = Umbraco.TypedSearch(searchTerm).Skip(skip).Take(take);
-            List<SearchModel> nodes = new List<SearchModel>();
+            List<ContentModel> nodes = new List<ContentModel>();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
@@ -45,7 +45,7 @@ namespace LondonClinicOfNutrition.Controllers
                                       dt.ToString("MMMM", CultureInfo.InvariantCulture),
                                       dt.Year);
 
-                    nodes.Add(new SearchModel
+                    nodes.Add(new ContentModel
                     {
                         name = item.Name,
                         url = item.Url,

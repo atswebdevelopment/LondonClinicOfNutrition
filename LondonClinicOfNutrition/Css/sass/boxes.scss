@@ -1,5 +1,12 @@
 ﻿.boxes {
     text-align: center;
+    min-height: 100px;
+    background: url(/images/loader.svg) no-repeat center;
+    background-size: 100px 100px;
+
+    &--loaded {
+        background: none;
+    }
 
     &__box {
         display: inline-block;

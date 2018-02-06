@@ -20,7 +20,7 @@ var blogs = {
         });
     },
     view: function (skip, take){
-        global.models.getContent(blogs.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(blogs.container.attr('data-id'), skip, take, blogs.container.attr('data-search')).success(function (data) {
             blogs.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -48,7 +48,7 @@ var blogs = {
             }
         }
 
-        blogs.container.append(html);
+        blogs.container.append(html).addClass('boxes--loaded');
 
         if (blogs.container.attr('data-scroll') === 'True') {
             blogs.container.slick(global.views.slickSettings);

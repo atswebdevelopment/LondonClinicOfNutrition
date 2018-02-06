@@ -165,6 +165,37 @@
         }
     }
 
+    &__search {
+        margin: 0;
+        float: right;
+
+        .form__field {
+            input {
+                width: 400px;
+                height: 48px;
+                background: none;
+                border-radius: 24px;
+                padding: 0 26px 0 46px;
+                border-color: $black-light;
+            }
+
+            button {
+                position: absolute;
+                top: 14px;
+                left: 16px;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+
+                    .a {
+                        fill: $black-light;
+                    }
+                }
+            }
+        }
+    }
+
     &__social {
         max-width: 850px;
         margin: 80px auto;

@@ -7,13 +7,14 @@
 var team = {
     skip: 0,
     take: 0,
+    container: $('.boxes-team .boxes'),
     init: function () {
         //Team
-        team.take = $('.boxes-team .boxes').attr('data-take');
+        team.take = team.container.attr('data-take');
         team.view(team.skip, team.take);
     },
     view: function (skip, take){
-        global.models.getContent($('.boxes-team .boxes').attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(team.container.attr('data-id'), skip, take).success(function (data) {
             team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -28,23 +29,17 @@ var team = {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
-                '<div class="boxes__icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
+                '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="boxes__subtitle">' + data[i].content + '</span>' +
                 '<span class="button button--secondary"><a>About me</a></span>' +
                 '</div></div>';
         }
 
-        $('.boxes-team .boxes').append(html);
+        team.container.append(html).addClass('boxes--loaded');
 
-        if ($('.boxes-team .boxes').attr('data-scroll') === 'True') {
-            $('.boxes-team .boxes').slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+        if (team.container.attr('data-scroll') === 'True') {
+            team.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }

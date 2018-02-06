@@ -5,64 +5,101 @@ using System.Linq;
 using System;
 using System.Globalization;
 using Umbraco.Core.Models;
+using Umbraco.Core.Logging;
 
 namespace LondonClinicOfNutrition.Controllers
 {
     public class ContentController : UmbracoApiController
     {
         // GET: Content
-        public IEnumerable<ContentModel> GetContent(int id = 0, int take = 0, int skip = 0)
+        public IEnumerable<ContentModel> GetContent(int id = 0, int take = 0, int skip = 0, string searchTerm = "", string filter = "")
         {
+            IEnumerable<IPublishedContent> nodeChildren = null;
+
             var node = Umbraco.TypedContent(id);
-            var nodeChildren = node.Children.Skip(skip).Take(take);
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                nodeChildren = Umbraco.TypedSearch(searchTerm, true, "ExternalSearcher").Where(m => m.Parent.Id == id);
+            }
+            else
+            {
+                nodeChildren = node.Children;
+            }
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                nodeChildren = nodeChildren.Where(m => m.GetProperty("categories").DataValue.ToString().Contains(filter));
+            }
+
+            nodeChildren = nodeChildren.Skip(skip).Take(take);
+
             List<ContentModel> nodes = new List<ContentModel>();
 
             foreach (var item in nodeChildren)
             {
                 var icon = "";
-                var nodeIcon = node.DocumentTypeAlias == "blogs" ||
-                    node.DocumentTypeAlias == "recipes" ||
-                    node.DocumentTypeAlias == "team" ? node.GetProperty("icon") : item.GetProperty("icon");
+                try { 
+                    var nodeIcon = node.DocumentTypeAlias == "blogs" ||
+                        node.DocumentTypeAlias == "recipes" ||
+                        node.DocumentTypeAlias == "team" ? node.GetProperty("icon") : item.GetProperty("icon");
 
-                if (nodeIcon != null)
-                {
-                    var nodeImageValue = nodeIcon.Value.ToString();
-                    var mediaNode = Umbraco.TypedMedia(nodeImageValue);
-                    if (mediaNode != null)
+                    if (nodeIcon != null)
                     {
-                        icon = mediaNode.Url;
+                        var nodeImageValue = nodeIcon.Value.ToString();
+                        var mediaNode = Umbraco.TypedMedia(nodeImageValue);
+                        if (mediaNode != null)
+                        {
+                            icon = mediaNode.Url;
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error<Exception>("CUSTZZ - " + ex.StackTrace, ex);
                 }
 
                 var image = "";
-                var nodeImage = item.GetProperty("background");
-                if (nodeImage == null)
+                try
                 {
-                    nodeImage = item.GetProperty("image");
-                }
-                if (nodeImage != null)
-                {
-                    var nodeImageValue = nodeImage.Value.ToString();
-                    var mediaNode = Umbraco.TypedMedia(nodeImageValue);
-                    if(mediaNode != null)
+                    var nodeImage = item.GetProperty("background");
+                    if (nodeImage == null)
                     {
-                        image = mediaNode.Url;
+                        nodeImage = item.GetProperty("image");
                     }
+                    if (nodeImage != null)
+                    {
+                        var nodeImageValue = nodeImage.Value.ToString();
+                        var mediaNode = Umbraco.TypedMedia(nodeImageValue);
+                        if (mediaNode != null)
+                        {
+                            image = mediaNode.Url;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Error<Exception>("CUSTZZ - " + ex.StackTrace, ex);
                 }
 
                 var content = "";
                 var title = "";
-                if (node.DocumentTypeAlias == "team")
+                try
                 {
-                    content = item.GetProperty("jobTitle").Value.ToString();
+                    if (node.DocumentTypeAlias == "team")
+                    {
+                        content = item.GetProperty("jobTitle").Value.ToString();
+                    }
+                    if (node.DocumentTypeAlias == "about")
+                    {
+                        content = item.GetProperty("content").Value.ToString();
+                        title = item.GetProperty("bodyName").Value.ToString();
+                    }
                 }
-                if (node.DocumentTypeAlias == "about")
+                catch (Exception ex)
                 {
-                    content = item.GetProperty("content").Value.ToString();
-                    title = item.GetProperty("bodyName").Value.ToString();
+                    LogHelper.Error<Exception>("CUSTZZ - " + ex.StackTrace, ex);
                 }
-
-
+                
                 DateTime dt = item.CreateDate;
                 var date = String.Format("{0}{1} {2}",
                                   dt.Day,

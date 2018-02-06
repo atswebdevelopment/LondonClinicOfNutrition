@@ -35,16 +35,10 @@ var testimonials = {
                 '</div></div>';
         }
 
-        testimonials.container.append(html);
+        testimonials.container.append(html).addClass('boxes--loaded');
 
         if (testimonials.container.attr('data-scroll') === 'True') {
-            testimonials.container.slick({
-                dots: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                prevArrow: global.views.prevArrow,
-                nextArrow: global.views.nextArrow
-            });
+            testimonials.container.slick(global.views.slickSettings);
         }
         global.setImages();
     }

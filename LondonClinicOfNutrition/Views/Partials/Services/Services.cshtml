@@ -1,6 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{ 
     var services = Umbraco.TypedContentSingleAtXPath("//services");
+    var term = Request.QueryString["q"];
     var take = 999;
     var scroll = false;
 
@@ -11,10 +12,22 @@
     }
 }
 <div class="section__header">
-    <span class="section__title">Services we provide</span>
+    <span class="section__title">@services.GetPropertyValue("sectionTitle")</span>
+    @if (Model.Content.DocumentTypeAlias == "services")
+    {
+        <form class="form section__search" action="@Model.Content.Url#boxes">
+            <fieldset>
+                <div class="form__field">
+                    <button type="button"><span class="svg-load" data-src="/images/icon-search.svg"></span></button>
+                    <input type="text" name="q" placeholder="Search" value="@term" />
+                </div>
+            </fieldset>
+        </form>
+    }
 </div>
 <div class="boxes-services">
-    <div class="boxes" data-id="@services.Id" data-take="@take" data-scroll="@scroll">
+    <a name="boxes"></a>
+    <div class="boxes" data-id="@services.Id" data-take="@take" data-scroll="@scroll" data-search="@term">
     </div>
 </div>
 @if (Model.Content.DocumentTypeAlias != "services")

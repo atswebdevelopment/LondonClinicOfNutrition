@@ -12,9 +12,30 @@ var recipes = {
         //Recipes
         recipes.take = recipes.container.attr('data-take');
         recipes.view(recipes.skip, recipes.take);
+
+        $('.filter a').click(function () {
+            $('.filter li').removeClass('active');
+            $(this).parent().addClass('active');
+
+            recipes.container.attr('data-filter', $(this).attr('data-filter'));
+
+            recipes.skip = 0;
+
+            global.boxes.reset();
+
+            recipes.view(recipes.skip, recipes.take);
+
+            return false;
+        });
+
+        $('.load-more').click(function () {
+            recipes.skip += recipes.take;
+            recipes.view(recipes.skip, recipes.take);
+            return false;
+        });
     },
     view: function (skip, take) {
-        global.models.getContent(recipes.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(recipes.container.attr('data-id'), skip, take, recipes.container.attr('data-search'), recipes.container.attr('data-filter')).success(function (data) {
             recipes.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);
@@ -35,7 +56,13 @@ var recipes = {
                 '</div></div>';
         }
 
-        recipes.container.append(html);
+        if ($('.load-more').length) {
+            if (data.length < recipes.take) {
+                $('.section__indicator').remove();
+            }
+        }
+
+        recipes.container.append(html).addClass('boxes--loaded');
 
         if (recipes.container.attr('data-scroll') === 'True') {
             recipes.container.slick(global.views.slickSettings);
