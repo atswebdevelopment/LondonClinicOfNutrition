@@ -29,8 +29,9 @@ legend{
 
 .form {
     margin: 0 auto 40px;
-    max-width: 700px;
+    max-width: 720px;
     min-height: 100px;
+    @include group();
 
     &--loading {
         background: url(/images/loader.svg) no-repeat center;
@@ -53,10 +54,18 @@ legend{
 
     &__field {
         margin-bottom: 22px;
-        position:relative;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        float: left;
 
         &--center {
             text-align: center;
+        }
+
+        &--small {
+            max-width: 360px;
         }
 
         &--error {
@@ -65,6 +74,12 @@ legend{
                 background: rgba($alert,0.02);
             }
         }
+    }
+
+    &__footer {
+        display: block;
+        margin-bottom: 40px;
+        color: rgba($black-light,0.5);
     }
 
     &__validation {

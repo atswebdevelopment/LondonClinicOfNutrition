@@ -372,9 +372,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Models\CommentModel.cs" />
     <Compile Include="Models\FormsModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -486,6 +488,8 @@
     <Content Include="Views\Partials\Search\Search.cshtml" />
     <Content Include="Views\Partials\Search\search.scss" />
     <Content Include="Views\Partials\Team\Person.cshtml" />
+    <Content Include="Views\Partials\Comments\Comments.cshtml" />
+    <Content Include="Views\Partials\Comments\comments.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

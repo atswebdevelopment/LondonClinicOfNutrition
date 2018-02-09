@@ -17,12 +17,13 @@
                 </ul>
             </div>
             <div class="footer-main__register">
-                <form class="form">
-                    <span class="title">Recieve free health tips & recipes</span>
+                <span class="title form-label">Recieve free health tips & recipes</span>
+                <form class="form ajax" data-method="Forms/Register">
                     <fieldset>
                         <div class="form__field">
-                            <input type="text" placeholder="yourname@email.com"/>
-                            <button type="button" class="round-button"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
+                            <input type="email" name="mdr" placeholder="yourname@email.com" class="required email" />
+                            <input type="email" name="email" placeholder="Email*" class="hidden email" />
+                            <button type="submit" class="round-button"><span class="svg-load" data-src="/images/icon-arrow.svg"></span></button>
                         </div>
                     </fieldset>
                 </form>

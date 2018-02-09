@@ -6,16 +6,11 @@ using System.Web;
 
 namespace LondonClinicOfNutrition.Models
 {
-    public class Register
+    public class Comment
     {
         [Required]
-        [EmailAddress]
-        public string mdr { get; set; } //Email
-        public string email { get; set; } //Spam
-    }
+        public int blogId { get; set; }
 
-    public class CallBack
-    {
         [Required]
         public string name { get; set; }
 
@@ -23,10 +18,6 @@ namespace LondonClinicOfNutrition.Models
         [EmailAddress]
         public string mdr { get; set; } //Email
         public string email { get; set; } //Spam
-
-        [RegularExpression("^[0-9]*$")]
-        [DataType(DataType.PhoneNumber)]
-        public string telephone { get; set; }
 
         public string message { get; set; }
     }

@@ -1,0 +1,29 @@
+﻿.comments {
+    &__count {
+        font-size: $base - 4;
+        color: $primary-alt;
+        display: block;
+        float: right;
+        margin-top: -70px;
+    }
+
+    &__item {
+        @include group();
+        border-bottom: 1px solid rgba($primary-alt,0.14);
+        margin-bottom: 84px;
+        padding-bottom: 4px;
+
+        h2 {
+            margin-bottom: 26px;
+            font-size: $base + 4;
+            font-weight: normal;
+        }
+    }
+
+    &__timestamp {
+        margin: 0;
+        float: left;
+        font-size: $base - 4;
+        color: $primary-alt;
+    }
+}

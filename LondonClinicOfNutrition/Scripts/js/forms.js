@@ -9,6 +9,11 @@ var forms = {
         $('.ajax').submit(function (e) {
             var form = $(this);
 
+            if (form.hasClass('no-submit')) {
+                e.preventDefault();
+                return false;
+            }
+
             if (!forms.validateForms(form)) {
                 e.preventDefault();
                 return false;
@@ -45,8 +50,17 @@ var forms = {
     controller: function (data, form) {
         if (data === "success") {
             form.addClass('form--complete');
+            form.addClass('no-submit');
         }
         form.removeClass('form--loading');
+        //LCN FOOTER FORM
+        if ($('.form-label').length) {
+            $('.required').attr('readonly', 'true').val('Thanks for signing up!');
+
+            form.find('button').addClass('round-button--tick').empty().html('<span class="svg-load" data-src="/images/icon-tick.svg"></span>');
+            global.setImages();
+        }
+        //LCN FOOTER FORM
     },
     validateForms: function (form) {
         var result = true;
@@ -60,6 +74,16 @@ var forms = {
                 else {
                     $(this).parents('.form__field').removeClass('form__field--error').find('.form__validation').text('');
                 }
+                //LCN FOOTER FORM
+                if ($('.form-label').length) {
+                    if (forms.validateEmail($(this).val()) === false) {
+                        $('.form-label').text('Email address is not valid');
+                    }
+                    else {
+                        $('.form-label').text('');
+                    }
+                }
+                //LCN FOOTER FORM
             }
         });
 

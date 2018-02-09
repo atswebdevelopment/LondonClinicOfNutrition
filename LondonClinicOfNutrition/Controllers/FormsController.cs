@@ -16,6 +16,38 @@ namespace LondonClinicOfNutrition.Controllers
     {
         [HttpGet]
         [HttpPost]
+        public string Register(Register model)
+        {
+            var result = "success";
+
+            //Check recaptcha validation - set error state if model fails recaptcha validation
+            if (!validateModel(model, model.email))
+            {
+                result = "failure";
+            }
+
+            var data = model.mdr + "," + DateTime.Now;
+
+            if (result == "success")
+            {
+                try
+                {
+                    //Attempt save to csv
+                    saveFormToCsv("register.csv", "Email address, Timestamp", data);
+                }
+                catch (Exception ex)
+                {
+                    //Handle submission error, and add issue to Umbraco log files.
+                    LogHelper.Error<Exception>("CUSTZZ - " + ex.StackTrace, ex);
+                    return "failure";
+                }
+            }
+
+            return result;
+        }
+
+        [HttpGet]
+        [HttpPost]
         public string CallBack(CallBack model)
         {
             var result = "success";
@@ -107,6 +139,24 @@ namespace LondonClinicOfNutrition.Controllers
             {
                 smtp.Send(mail);
             }
+        }
+
+        #endregion
+
+        #region Form CSV saver
+
+        private void saveFormToCsv(string file, string header, string data)
+        {
+            string csv = "";
+            var serverPath = "~/App_Data/CSVData/" + file;
+            if (!System.IO.File.Exists(System.Web.HttpContext.Current.Server.MapPath(serverPath)))
+            {
+                csv = header;
+                csv += Environment.NewLine;
+            }
+            csv += data;
+            csv += Environment.NewLine;
+            System.IO.File.AppendAllText(System.Web.HttpContext.Current.Server.MapPath(serverPath), csv);
         }
 
         #endregion

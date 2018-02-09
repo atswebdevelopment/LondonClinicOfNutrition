@@ -121,7 +121,7 @@ var global = {
         },
         postForm: function (data, method) {
             return $.ajax({
-                url: '/umbraco/api/Forms/' + method,
+                url: '/umbraco/api/' + method,
                 type: 'POST',
                 context: document.body,
                 data: data

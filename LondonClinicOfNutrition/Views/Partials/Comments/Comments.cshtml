@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    
+}
+<div class="comments">
+    <span class="comments__count">@Model.Content.Children.Count() comments</span>
+    <form class="form ajax comments__form" data-method="Comment/SubmitComment">
+        <fieldset>
+            <legend>Share your comments and feedback</legend>
+            <div class="form__field form__field--small">
+                <span class="form__validation"></span>
+                <input type="text" name="name" placeholder="Full name*" class="required" />
+            </div>
+            <div class="form__field form__field--small">
+                <span class="form__validation"></span>
+                <input type="email" name="mdr" placeholder="Email*" class="required email" />
+                <input type="email" name="email" placeholder="Email*" class="hidden email" />
+            </div>
+            <div class="form__field">
+                <textarea name="message" placeholder="Start typing your message..."></textarea>
+            </div>
+            <input type="text" name="blogId" class="hidden" value="@Model.Content.Id" />
+            <div class="form__field">
+                <span class="form__footer">Your email address will not be published. Required fields are marked *</span>
+            </div>
+            <div class="form__field form__field--center">
+                <button type="submit" class="button">Post comment</button>
+            </div>
+        </fieldset>
+        <div class="form__complete">
+            <p>Thank you lorem ipsum lorem ipsum</p>
+        </div>
+    </form>
+    @foreach (var comment in Model.Content.Children)
+    {
+        <div class="comments__item">
+            <h2>@comment.GetPropertyValue("userName")</h2>
+            <p>@comment.GetPropertyValue("message")</p>
+            <span class="comments__timestamp timestamp">@Model.Content.CreateDate.ToString("dd MMMM yyyy")</span>
+        </div>
+    }
+</div>

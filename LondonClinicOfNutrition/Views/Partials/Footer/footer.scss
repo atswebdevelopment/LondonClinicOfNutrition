@@ -28,8 +28,8 @@
     color: $primary-dark;
 
     @include media-query(phone, max) {
-        padding:40px 0;
-        height:auto;
+        padding: 40px 0;
+        height: auto;
     }
 
     &__social {
@@ -46,8 +46,16 @@
         width: 445px;
         float: right;
 
-        .title{
-            padding-left:26px;
+        .title {
+            padding-left: 26px;
+        }
+
+        .form {
+            &--complete {
+                fieldset {
+                    display: block;
+                }
+            }
         }
     }
 }
