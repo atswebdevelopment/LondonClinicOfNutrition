@@ -27,15 +27,20 @@
     <!-- Cookie bar -->
     @Html.Partial("CookieBar/CookieBar", Model.Content)
     <!-- End Cookie bar -->
-    <!-- Header -->
-    @Html.Partial("Header/Header", Model.Content)
-    <!-- End Header -->
-    <!-- Content -->
-    @RenderBody()
-    <!-- End Content -->
-    <!-- Footer -->
-    @Html.Partial("Footer/Footer", Model.Content)
-    <!-- End Footer -->
+    <div class="content-container">
+        <!-- Header -->
+        @Html.Partial("Header/Header", Model.Content)
+        <!-- End Header -->
+        <!-- Content -->
+        @RenderBody()
+        <!-- End Content -->
+        <!-- Footer -->
+        @Html.Partial("Footer/Footer", Model.Content)
+        <!-- End Footer -->
+    </div>
+    <!-- Overlay -->
+    @Html.Partial("Overlay/Overlay", Model.Content)
+    <!-- End Overlay -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111281711-1"></script>
     <script>

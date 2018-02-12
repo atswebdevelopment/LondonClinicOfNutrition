@@ -1,0 +1,61 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var home = Umbraco.TypedContentSingleAtXPath("//homepage");
+}
+<div class="overlay overlay--phone">
+    <span class="close"><a href=""><span class="svg-load" data-src="/images/icon-close.svg"></span></a></span>
+    <div class="overlay__content">
+        <span class="overlay__icon svg-load" data-src="/images/icon-phone.svg"></span>
+        <h2>@home.GetPropertyValue("phoneNumber")</h2>
+        <p>Our clinic operates from 9am to 5pm, Monday to Friday. </p>
+        <p><span class="button"><a href="tel:@home.GetPropertyValue("phoneNumber")">Call now</a></span> </p>
+    </div>
+</div>
+<div class="overlay overlay--email">
+    <span class="close"><a href=""><span class="svg-load" data-src="/images/icon-close.svg"></span></a></span>
+    <div class="overlay__content">
+        <span class="overlay__icon svg-load" data-src="/images/icon-email.svg"></span>
+        <p>Our clinic operates from 9am to 5pm, Monday to Friday. </p>
+    </div>
+</div>
+<div class="overlay overlay--enquire">
+    <span class="close"><a href=""><span class="svg-load" data-src="/images/icon-close.svg"></span></a></span>
+    <div class="overlay__content">
+        <div class="overlay__highlight">
+            <div class="overlay__highlight-item">
+                <span class="overlay__icon svg-load" data-src="/images/icon-phone.svg"></span>
+                <p>Our clinic operates from 9am to 5pm, Monday to Friday.<br/><br/>@home.GetPropertyValue("phoneNumber")</p>
+            </div>
+            <div class="overlay__highlight-item">
+                <span class="overlay__icon svg-load" data-src="/images/icon-email.svg"></span>
+                <p>Send an email to:<br/><br/><a href="mailto:@home.GetPropertyValue("emailAddress")">@home.GetPropertyValue("emailAddress")</a></p>
+            </div>
+        </div>
+        <form class="form ajax overlay__form" data-method="Forms/CallBack">
+            <fieldset>
+                <legend>Request to book your FREE 20 minute consultation by contacting us or by filling in the form below:</legend>
+                <div class="form__field">
+                    <span class="form__validation"></span>
+                    <input type="text" name="name" placeholder="Full name*" class="required" />
+                </div>
+                <div class="form__field">
+                    <span class="form__validation"></span>
+                    <input type="email" name="mdr" placeholder="Email*" class="required email" />
+                    <input type="email" name="email" placeholder="Email*" class="hidden email" />
+                </div>
+                <div class="form__field">
+                    <input type="tel" name="telephone" placeholder="Mobile number" class="telephone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" />
+                </div>
+                <div class="form__field">
+                    <textarea name="message" placeholder="Start typing your message..."></textarea>
+                </div>
+                <div class="form__field">
+                    <button type="submit" class="button">Submit</button>
+                </div>
+            </fieldset>
+            <div class="form__complete">
+                <p>Thank you lorem ipsum lorem ipsum</p>
+            </div>
+        </form>
+    </div>
+</div>

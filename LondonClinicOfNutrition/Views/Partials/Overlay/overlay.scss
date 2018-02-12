@@ -1,0 +1,132 @@
+﻿.content-container {
+    position: relative;
+
+    &.overlay-on {
+        &:after {
+            content: "";
+            @include fill();
+            background: rgba($black-alt,0.6);
+            z-index: 9;
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 10;
+    display: none;
+    max-width: 550px;
+    width: 100%;
+
+    h2 {
+        font-size: $base + 22;
+        border-bottom: 1px solid $black;
+        padding-bottom: 19px;
+        margin-bottom: 26px;
+        display: inline-block;
+    }
+
+    p {
+        font-size: $base + 7;
+        line-height: $spacing + 4;
+    }
+
+    &--active {
+        display: block;
+    }
+
+    &--enquire {
+        max-width: 980px;
+
+        .overlay__content {
+            padding: 0;
+        }
+    }
+
+    &__content {
+        width: 100%;
+        background: $white;
+        padding: 50px 50px 0;
+        box-sizing: border-box;
+        border-radius: 20px;
+        text-align: center;
+        @include group();
+        overflow: hidden;
+    }
+
+    &__icon {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 20px;
+        display: block;
+
+        .a {
+            fill: $secondary;
+        }
+    }
+
+    &__highlight {
+        float: left;
+        width: 40%;
+        background: $secondary;
+        padding: 50px 50px 0;
+        box-sizing: border-box;
+        color: $white;
+
+        a{
+            color:$white;
+        }
+
+        .overlay__icon {
+            width: 100px;
+            height: 100px;
+            padding-top: 50px;
+
+            .a {
+                fill: $white;
+            }
+        }
+
+        p {
+            font-size: $base;
+            line-height: $spacing - 10;
+        }
+    }
+
+    &__highlight-item {
+        margin-bottom: 50px;
+
+        &:before {
+            content: "";
+            width: 64px;
+            border-bottom: 2px solid $white;
+            display: block;
+            margin: 0 auto;
+        }
+
+        &:first-child:before {
+            content: none;
+        }
+    }
+
+    &__form {
+        width: 60%;
+        float: left;
+        margin: 0;
+        padding: 50px 50px 0;
+        box-sizing: border-box;
+    }
+
+    .close {
+        text-align: right;
+        display: block;
+        margin-bottom: 20px;
+
+        a {
+            display: inline-block;
+        }
+    }
+}

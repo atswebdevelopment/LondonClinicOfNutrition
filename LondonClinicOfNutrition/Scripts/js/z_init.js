@@ -1,6 +1,7 @@
 ﻿global.init();
 cookieBar.init();
 header.init();
+overlay.init();
 
 if ($('.form').length) {
     forms.init();
