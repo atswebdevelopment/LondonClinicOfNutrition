@@ -1,11 +1,19 @@
 ﻿.controls {
     background: $primary;
-    padding: 40px 0;
+    padding: 40px 0 20px;
     @include group();
+
+    @include media-query(phone, max) {
+        text-align: center;
+    }
 
     &__left {
         float: left;
-        margin-right: 160px;
+        margin: 0 160px 20px 0;
+
+        @include media-query(phone, max) {
+            margin-right:40px;
+        }
 
         a {
             line-height: 59px;
@@ -34,6 +42,10 @@
             top: 8px;
         }
     }
+
+    .buttons li {
+        margin: 0 25px 20px;
+    }
 }
 
 .large-icon-list {
@@ -41,7 +53,12 @@
 
     &__item {
         width: 24%;
-        margin: 0;
+        margin: 0 0 20px;
+        vertical-align: top;
+
+        @include media-query(tablet, max) {
+            width: 48%;
+        }
 
         a {
             display: block;
@@ -54,6 +71,12 @@
                 margin-bottom: 20px;
                 display: inline-block;
 
+                @include media-query(phone, max) {
+                    width: 48%;
+                    width: 90px;
+                    height: 90px;
+                }
+
                 .a {
                     fill: $white;
                 }
@@ -61,6 +84,8 @@
 
             span {
                 display: block;
+                font-size: $base - 2;
+                overflow-wrap: break-word;
             }
         }
     }

@@ -106,21 +106,29 @@
 
 .slick-slider {
     padding: 0 82px;
+
+    @include media-query(phone, max) {
+        padding: 0;
+    }
 }
 
-.slick-arrow{
+.slick-arrow {
     @extend .arrow;
-    position:absolute;
-    top:50%;
-    margin-top:-30px;
-    right:8px;
-    z-index:1;
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    right: 8px;
+    z-index: 1;
 
-    &.slick-prev{
-        right:auto;
-        left:8px;
+    @include media-query(phone, max) {
+        display:none !important;
+    }
 
-        svg{
+    &.slick-prev {
+        right: auto;
+        left: 8px;
+
+        svg {
             transform-origin: 5px 12px;
             transform: rotateZ(180deg);
         }

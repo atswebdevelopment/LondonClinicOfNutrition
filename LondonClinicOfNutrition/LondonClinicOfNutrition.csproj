@@ -367,6 +367,7 @@
     <Content Include="Views\Partials\Search\search.js" />
     <Content Include="Views\Partials\Services\services.js" />
     <Content Include="Views\Partials\Team\team.js" />
+    <Content Include="Views\Partials\Overlay\overlay.js" />
     <Content Include="Views\Partials\Testimonials\testimonials.js" />
     <Content Include="Views\Partials\Treatments\treatments.js" />
     <Content Include="Web.config" />
@@ -490,6 +491,8 @@
     <Content Include="Views\Partials\Team\Person.cshtml" />
     <Content Include="Views\Partials\Comments\Comments.cshtml" />
     <Content Include="Views\Partials\Comments\comments.scss" />
+    <Content Include="Views\Partials\Overlay\Overlay.cshtml" />
+    <Content Include="Views\Partials\Overlay\overlay.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -8,7 +8,7 @@
         padding: 100px 20%;
 
         @include media-query(phone, max) {
-            padding: 40px 20%;
+            padding: 0 20px 40px;
         }
 
         p {

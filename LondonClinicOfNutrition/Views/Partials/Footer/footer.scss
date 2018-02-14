@@ -4,6 +4,10 @@
         width: 350px;
         margin-right: 10px;
         border-radius: 29px;
+
+        @include media-query(phone, max) {
+            width: 206px;
+        }
     }
 
     button {
@@ -27,7 +31,7 @@
     box-sizing: border-box;
     color: $primary-dark;
 
-    @include media-query(phone, max) {
+    @include media-query(tablet, max) {
         padding: 40px 0;
         height: auto;
     }
@@ -39,6 +43,7 @@
         @include media-query(tablet, max) {
             width: 100%;
             float: none;
+            padding-bottom: 40px;
         }
     }
 
@@ -46,14 +51,33 @@
         width: 445px;
         float: right;
 
+        @include media-query(tablet, max) {
+            width: 100%;
+            float: none;
+        }
+
         .title {
             padding-left: 26px;
+
+            @include media-query(tablet, max) {
+                padding-left: 0;
+            }
         }
 
         .form {
+            @include media-query(tablet, max) {
+                margin: 0;
+            }
+
             &--complete {
                 fieldset {
                     display: block;
+                }
+            }
+
+            &__field {
+                @include media-query(tablet, max) {
+                    padding: 0;
                 }
             }
         }

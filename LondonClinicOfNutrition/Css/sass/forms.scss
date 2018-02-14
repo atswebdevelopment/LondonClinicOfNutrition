@@ -30,12 +30,12 @@ legend{
 .form {
     margin: 0 auto 40px;
     max-width: 720px;
-    min-height: 100px;
+    min-height: 80px;
     @include group();
 
     &--loading {
         background: url(/images/loader.svg) no-repeat center;
-        background-size: 100px 100px;
+        background-size: 80px 80px;
 
         fieldset {
             display: none;
@@ -59,7 +59,11 @@ legend{
         box-sizing: border-box;
         padding: 0 10px;
         float: left;
-        text-align:left;
+        text-align: left;
+
+        @include media-query(phone, max) {
+            padding: 0;
+        }
 
         &--center {
             text-align: center;
@@ -67,6 +71,10 @@ legend{
 
         &--small {
             max-width: 360px;
+
+            @include media-query(phone, max) {
+                max-width:none;
+            }
         }
 
         &--error {

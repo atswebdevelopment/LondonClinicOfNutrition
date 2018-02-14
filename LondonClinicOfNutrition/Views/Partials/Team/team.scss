@@ -34,33 +34,58 @@
         display: inline-block;
         text-align: left;
 
+        @media only screen and (max-width: 1400px) {
+            width: 32%;
+        }
+
+        @include media-query(tablet, max) {
+            width: 100%;
+            text-align: center;
+        }
+
         &--wide {
             width: 60%;
             margin: 0;
+
+            @include media-query(tablet, max) {
+                width: 100%;
+            }
         }
     }
 
     &__header {
         color: $white;
+
+        @include media-query(tablet, max) {
+            color: $black;
+        }
     }
 
     h1 {
         margin: 132px 0 0;
+
+        @include media-query(tablet, max) {
+            margin-top: 40px;
+        }
     }
 
     &__subtitle {
         display: block;
         margin-bottom: 160px;
-        font-weight:bold;
-        font-size:$base + 4;
+        font-weight: bold;
+        font-size: $base + 4;
+
+        @include media-query(tablet, max) {
+            margin-bottom: 40px;
+        }
     }
 
     &__image {
         border-radius: 20px;
     }
 
-    h2{
-        font-size:$base + 12;
+    h2 {
+        font-size: $base + 12;
     }
 }
 
@@ -73,6 +98,10 @@
         margin-right: 36px;
         font-size: $base - 6;
         line-height: $spacing - 20;
+
+        @include media-query(tablet, max) {
+            margin:0 18px;
+        }
 
         svg {
             width: 80px;

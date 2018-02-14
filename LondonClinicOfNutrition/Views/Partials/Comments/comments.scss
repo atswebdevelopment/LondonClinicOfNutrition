@@ -5,6 +5,10 @@
         display: block;
         float: right;
         margin-top: -70px;
+
+        @include media-query(phone, max) {
+            margin-top:-36px;
+        }
     }
 
     &__item {

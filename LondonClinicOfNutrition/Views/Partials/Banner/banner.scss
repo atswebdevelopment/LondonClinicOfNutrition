@@ -10,7 +10,7 @@
     @include vertical;
 
     @include media-query(phone, max) {
-        height:auto;
+        height: auto;
     }
 
     &:after {
@@ -42,6 +42,10 @@
         height: 120px;
         float: left;
 
+        @include media-query(phone, max) {
+            float:none;
+        }
+
         .a {
             fill: $white;
         }
@@ -55,6 +59,11 @@
         &.align-left {
             text-align: left;
             padding-left: 176px;
+
+            @include media-query(phone, max) {
+                text-align: center;
+                padding-left: 0;
+            }
         }
     }
 }
