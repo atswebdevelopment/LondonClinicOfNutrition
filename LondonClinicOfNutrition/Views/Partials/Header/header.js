@@ -16,5 +16,10 @@ var header = {
             $('.search input').val('');
             return false;
         });
+
+        $('.nav-m a').click(function () {
+            $('.header').toggleClass('header--m-nav-open');
+            return false;
+        });
     }
 };
