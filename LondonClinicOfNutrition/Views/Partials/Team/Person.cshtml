@@ -11,13 +11,25 @@
     <span class="team__image img-load" data-src="@image"></span>
     <h2>SPECIALISES IN:</h2>
     <ul class="icon-list">
-        <li class="icon-list__item icon"><span class="svg-load" data-src="/images/icon-auto-immune-disease.svg"></span><b>Auto immune disease</b></li>
+        @{
+            var typedMultiNodeTreePicker = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("specialties");
+            foreach (var item in typedMultiNodeTreePicker)
+            {
+                var icon = "";
+                var iconImage = item.GetPropertyValue<IPublishedContent>("icon");
+                if (iconImage != null)
+                {
+                    icon = iconImage.Url;
+                }
+                <li class="icon-list__item icon"><span class="svg-load" data-src="@icon"></span><b>@item.Name</b></li>
+            }
+        }
     </ul>
     <br/>
     <h2>QUALIFICATIONS:</h2>
-    <ul class="star-list">
-        <li class="star-list__item star"><span class="svg-load" data-src="/images/icon-star.svg"></span>1st Class Degree in Nutrional Therapy</li>
-    </ul>
+    <div class="star-list">
+        @Model.Content.GetPropertyValue("qualifications")
+    </div>
 </div>
 <div class="team__column team__column--wide">
     <div class="team__header">

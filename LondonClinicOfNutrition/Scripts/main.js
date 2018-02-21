@@ -641,6 +641,10 @@ var global = {
             }
             return false;
         });
+
+        $('div.star-list li').each(function () {
+            $(this).prepend('<span class="svg-load" data-src="/images/icon-star.svg"></span>');
+        });
     },
     setImages: function () {
         $('.img-load,.bg-load,.svg-load').each(function () {
