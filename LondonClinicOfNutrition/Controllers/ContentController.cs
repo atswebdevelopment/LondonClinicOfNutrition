@@ -94,6 +94,10 @@ namespace LondonClinicOfNutrition.Controllers
                         content = item.GetProperty("content").Value.ToString();
                         title = item.GetProperty("bodyName").Value.ToString();
                     }
+                    else
+                    {
+                        content = item.GetProperty("content").Value.ToString();
+                    }
                 }
                 catch (Exception ex)
                 {

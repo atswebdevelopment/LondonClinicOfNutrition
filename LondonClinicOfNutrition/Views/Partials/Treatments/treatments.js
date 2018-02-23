@@ -30,7 +30,7 @@ var treatments = {
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
                 '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
-                '<p>Cancer is a complicated illness. There are many different types of cancer and prognosis can vary enormously between individuals. We all know someone who has been diagnosed with cancer and sadly, it’s becoming more common.</p>' +
+                data[i].content +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
                 '</div></div>';
         }
