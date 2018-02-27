@@ -1,11 +1,11 @@
 ﻿.boxes-services{
     .boxes{
         &__icon{
-            background:$secondary;
+            background:$white;
 
             svg{
                 .a{
-                    @include svg($secondary);
+                    fill:$secondary;
                 }
             }
         }

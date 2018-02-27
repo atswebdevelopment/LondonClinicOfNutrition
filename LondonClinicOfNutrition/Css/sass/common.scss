@@ -238,11 +238,11 @@ a.button--secondary:hover,
 .icon {
     svg {
         .a {
-            @include svg($primary);
+            fill: $primary;
         }
 
         .b {
-            @include svg($white);
+            fill: $white;
         }
     }
 }
