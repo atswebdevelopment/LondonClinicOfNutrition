@@ -4,7 +4,7 @@
     background-size: cover;
     color: $white;
     text-align: center;
-    padding: 65px 0;
+    padding: 65px 0 50px;
     box-sizing: border-box;
 
     @include media-query(phone, max) {

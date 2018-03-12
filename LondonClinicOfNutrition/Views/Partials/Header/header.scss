@@ -60,16 +60,12 @@
             a {
                 width: 24px;
                 height: 24px;
+                border:2px solid $black-light;
+                opacity: 0.3;
 
                 svg {
-                    opacity: 0.3;
-
-                    .b {
-                        stroke: $black-light;
-                    }
-
-                    .c {
-                        fill: $black-light;
+                    .b{
+                        fill:$black-light;
                     }
                 }
             }

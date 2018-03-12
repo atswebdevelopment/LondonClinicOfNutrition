@@ -30,6 +30,7 @@
     p {
         font-size: $base + 7;
         line-height: $base + 20;
+        font-family:$lightfont;
 
         @include media-query(phone, max) {
             font-size: $base + 2;

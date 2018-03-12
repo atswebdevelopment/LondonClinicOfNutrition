@@ -46,6 +46,8 @@
         padding-bottom: 10px;
         display: inline-block;
         min-width: 250px;
+        letter-spacing:1px;
+        font-family:$boldfont;
 
         @include media-query(phone, max) {
             margin-bottom: 30px;
@@ -62,6 +64,7 @@
         p {
             font-size: $base + 9;
             line-height: $spacing + 4;
+            font-family: $lightfont;
 
             @include media-query(tablet, max) {
                 font-size: $base + 4;
@@ -94,13 +97,16 @@
     }
 
     &__indicator {
-        width: 100px;
-        margin-left: -50px;
+        width: 150px;
         text-align: center;
         margin: 0 auto;
 
+        &--spaced{
+            margin: 120px auto 0;
+        }
+
         span {
-            display: inline-block;
+            display: block;
         }
 
         .round-button {

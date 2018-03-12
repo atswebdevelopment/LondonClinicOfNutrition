@@ -4,6 +4,7 @@
 
 h1, h2{
     font-size:$base + 37;
+    font-family:$secondaryfont;
 
     @include media-query(phone, max){
         font-size:$base + 12;
@@ -264,22 +265,18 @@ div.star-list,
         width: 35px;
         height: 35px;
         display:block;
+        border-radius:50%;
 
         svg {
             width:100%;
             height:100%;
 
+            .a{
+                fill:$white;
+            }
+
             .b {
-                stroke: $white;
-                stroke-width: 1.5px;
-            }
-
-            .c {
-                fill: $primary;
-            }
-
-            .e {
-                fill: $white;
+                fill:$primary;
             }
         }
     }
