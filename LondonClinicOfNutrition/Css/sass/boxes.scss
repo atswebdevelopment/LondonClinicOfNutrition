@@ -173,11 +173,12 @@
         &__title {
             border: none;
             font-weight: normal;
-            height: 56px;
+            max-height: 83px;
             overflow: hidden;
+            padding:0;
 
             @include media-query(small, max) {
-                height: 36px;
+                max-height: 73px;
             }
         }
 
