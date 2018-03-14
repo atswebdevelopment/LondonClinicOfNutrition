@@ -19,6 +19,7 @@
         font-size: $base + 18px;
         margin: 0 30px 20px 0;
         display: inline-block;
+        letter-spacing: 1px;
 
         @include media-query(phone, max) {
             font-size: $base + 2;

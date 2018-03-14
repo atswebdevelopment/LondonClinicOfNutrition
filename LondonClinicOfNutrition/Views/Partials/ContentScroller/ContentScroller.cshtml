@@ -1,21 +1,19 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{ 
+    var items = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("scrollerContent");
+}
 <div class="content-scroller">
     <div class="inner">
         <div class="slick-content-scroller">
-            <div class="content-scroller__item">
-                <div class="content-scroller__text">
-                    <h2>Our ethos and mission</h2>
-                    <p>London Nutrition Clinic is a health and wellbeing company whose primary focus is to educate and assist their clients in reaching their optimum health.</p>
-                    <span class="button"><a href="">Get in touch</a></span>
+            @foreach (var item in items)
+            {
+                <div class="content-scroller__item">
+                    <div class="content-scroller__text">
+                        <h2>@item.GetProperty("title").Value</h2>
+                        @item.GetProperty("content").Value
+                    </div>
                 </div>
-            </div>
-            <div class="content-scroller__item">
-                <div class="content-scroller__text">
-                    <h2>Our ethos and mission</h2>
-                    <p>London Nutrition Clinic is a health and wellbeing company whose primary focus is to educate and assist their clients in reaching their optimum health.</p>
-                    <span class="button"><a href="">Get in touch</a></span>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

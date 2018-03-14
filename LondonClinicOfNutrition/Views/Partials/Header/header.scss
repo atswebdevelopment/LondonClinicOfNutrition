@@ -60,11 +60,13 @@
             a {
                 width: 24px;
                 height: 24px;
-                border:2px solid $black-light;
                 opacity: 0.3;
 
                 svg {
                     .b{
+                        fill:$white;
+                    }
+                    .c{
                         fill:$black-light;
                     }
                 }
@@ -192,7 +194,7 @@
                     height: 24px;
 
                     .a {
-                        @include svg($primary-dark);
+                        fill:$primary-dark;
                     }
                 }
             }

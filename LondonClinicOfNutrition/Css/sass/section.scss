@@ -62,8 +62,8 @@
         }
 
         p {
-            font-size: $base + 9;
-            line-height: $spacing + 4;
+            font-size: $base + 4;
+            line-height: $spacing;
             font-family: $lightfont;
 
             @include media-query(tablet, max) {
