@@ -1,6 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-
+    var home = Umbraco.TypedContentSingleAtXPath("//homepage");
 }
 <div class="controls">
     <div class="inner">
@@ -62,15 +62,15 @@
             <div class="controls__center">
                 <ul class="large-icon-list">
                     <li class="large-icon-list__item">
-                        <a href="tel:02033320030">
+                        <a href="tel:@home.GetPropertyValue("phoneNumber")">
                             <span class="svg-load" data-src="/images/icon-phone.svg"></span>
-                            <span>Call us on 020 3332 0030</span>
+                            <span>Call us on @home.GetPropertyValue("phoneNumber")</span>
                         </a>
                     </li>
                     <li class="large-icon-list__item">
-                        <a href="mailto:info@londonclinicofnutrition.co.uk">
+                        <a href="mailto:@home.GetPropertyValue("emailAddress")">
                             <span class="svg-load" data-src="/images/icon-email.svg"></span>
-                            <span>info@londonclinicofnutrition.co.uk</span>
+                            <span>@home.GetPropertyValue("emailAddress")</span>
                         </a>
                     </li>
                     <li class="large-icon-list__item">
