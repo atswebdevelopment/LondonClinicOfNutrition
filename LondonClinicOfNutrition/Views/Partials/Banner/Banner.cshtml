@@ -4,7 +4,7 @@
     var bannerImage = Model.Content.GetPropertyValue<IPublishedContent>("background");
     if (bannerImage != null)
     {
-        background = bannerImage.Url;
+        background = Url.GetCropUrl(bannerImage, "Banner").ToString();
     }
 
     var iconBanner = false;
@@ -15,7 +15,7 @@
         additionalClasses = "align-left";
     }
 }
-<div class="banner bg-load vertical" data-src="@background?width=[width]">
+<div class="banner bg-load vertical" data-src="@background">
     <div class="inner vertical-block">
         @if (iconBanner)
         {

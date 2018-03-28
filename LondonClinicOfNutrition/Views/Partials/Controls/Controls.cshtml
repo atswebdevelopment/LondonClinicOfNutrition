@@ -42,9 +42,7 @@
             <div class="controls__center">
                 <div class="filter">
                     <ul class="buttons buttons--alt">
-                        <li class="active"><a href="" data-filter="all">View all</a></li>
-                        <li><a href="" data-filter="popular">Most popular</a></li>
-                        <li><a href="" data-filter="health-tips">Health tips</a></li>
+                        <li><a href="" data-filter="health-tips">Categories tbd</a></li>
                     </ul>
                 </div>
             </div>
@@ -86,6 +84,18 @@
                         </a>
                     </li>
                 </ul>
+            </div>
+        }
+
+        @if (Model.Content.DocumentTypeAlias == "team")
+        {
+            <div class="controls__center">
+                <div class="filter">
+                    <ul class="buttons buttons--alt">
+                        <li><a href="" data-filter="Practitioner">PRACTITIONER</a></li>
+                        <li><a href="" data-filter="Administrator">ADMINISTRATOR</a></li>
+                    </ul>
+                </div>
             </div>
         }
     </div>

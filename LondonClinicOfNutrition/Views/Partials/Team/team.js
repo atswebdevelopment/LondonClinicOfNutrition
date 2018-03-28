@@ -12,9 +12,24 @@ var team = {
         //Team
         team.take = team.container.attr('data-take');
         team.view(team.skip, team.take);
+
+        $('.filter a').click(function () {
+            $('.filter li').removeClass('active');
+            $(this).parent().addClass('active');
+
+            team.container.attr('data-filter', $(this).attr('data-filter'));
+
+            team.skip = 0;
+
+            global.boxes.reset();
+
+            team.view(team.skip, team.take);
+
+            return false;
+        });
     },
     view: function (skip, take){
-        global.models.getContent(team.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(team.container.attr('data-id'), skip, take, "", team.container.attr('data-filter')).success(function (data) {
             team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);

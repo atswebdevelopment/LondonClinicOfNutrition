@@ -228,6 +228,11 @@
             padding: 28px 47px;
 
             @media only screen and (max-width: 1600px) {
+                padding: 28px;
+                font-size: $base - 2;
+            }
+
+            @media only screen and (max-width: 1279px) {
                 padding: 28px 10px;
                 font-size: $base - 4;
             }

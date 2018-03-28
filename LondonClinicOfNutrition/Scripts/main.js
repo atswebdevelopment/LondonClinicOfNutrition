@@ -34,7 +34,7 @@ var blogs = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                '<span class="boxes__image bg-load" data-src="' + data[i].image + '?width=767"></span>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
                 '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__timestamp timestamp">' + data[i].date + '</span>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
@@ -207,7 +207,7 @@ var recipes = {
         for (var i = 0; i < data.length; i++) {
             html += '<div class="boxes__box"><div class="boxes__content">' +
                 '<a class="boxes__link" href="' + data[i].url + '"></a>' +
-                '<span class="boxes__image bg-load" data-src="' + data[i].image + '?width=767"></span>' +
+                '<span class="boxes__image bg-load" data-src="' + data[i].image + '"></span>' +
                 '<div class="boxes__icon icon"><span class="svg-load" data-src="' + data[i].icon + '"></span></div>' +
                 '<span class="boxes__title">' + data[i].name + '</span>' +
                 '<span class="button button--secondary"><a>Read more</a></span>' +
@@ -364,9 +364,24 @@ var team = {
         //Team
         team.take = team.container.attr('data-take');
         team.view(team.skip, team.take);
+
+        $('.filter a').click(function () {
+            $('.filter li').removeClass('active');
+            $(this).parent().addClass('active');
+
+            team.container.attr('data-filter', $(this).attr('data-filter'));
+
+            team.skip = 0;
+
+            global.boxes.reset();
+
+            team.view(team.skip, team.take);
+
+            return false;
+        });
     },
     view: function (skip, take){
-        global.models.getContent(team.container.attr('data-id'), skip, take).success(function (data) {
+        global.models.getContent(team.container.attr('data-id'), skip, take, "", team.container.attr('data-filter')).success(function (data) {
             team.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);

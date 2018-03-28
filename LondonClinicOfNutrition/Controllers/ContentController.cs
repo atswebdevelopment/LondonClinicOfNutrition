@@ -72,7 +72,7 @@ namespace LondonClinicOfNutrition.Controllers
                         var mediaNode = Umbraco.TypedMedia(nodeImageValue);
                         if (mediaNode != null)
                         {
-                            image = mediaNode.Url;
+                            image = Umbraco.Media(nodeImageValue).GetCropUrl("box");
                         }
                     }
                 }
@@ -105,6 +105,16 @@ namespace LondonClinicOfNutrition.Controllers
                 }
                 
                 DateTime dt = item.CreateDate;
+
+                if(item.GetProperty("postDate") != null)
+                {
+                    string customDate = item.GetProperty("postDate").Value.ToString();
+                    if (customDate != "01/01/0001 00:00:00" && customDate != "")
+                    {
+                        dt = DateTime.Parse(customDate);
+                    }
+                }
+
                 var date = String.Format("{0}{1} {2}",
                                   dt.Day,
                                   GetDaySuffix(dt.Day),
