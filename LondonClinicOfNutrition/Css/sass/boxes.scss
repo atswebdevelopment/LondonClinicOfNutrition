@@ -100,9 +100,9 @@
     &__image {
         background-image:url(/images/bg-box-default.png);
         background-size: cover;
-        background-position: center;
+        background-position: bottom;
         position: absolute;
-        top: 32px;
+        top: 36px;
         left: 0;
         width: 338px;
         margin-left: 45px;
@@ -120,7 +120,7 @@
     &__icon {
         width: 132px;
         height: 132px;
-        margin: 0 auto 68px;
+        margin: 0 auto 80px;
         border-radius: 50%;
         position: relative;
         top: 32px;
@@ -179,7 +179,7 @@
             padding:0;
 
             @include media-query(small, max) {
-                max-height: 73px;
+                max-height: 48px;
             }
         }
 
@@ -187,15 +187,16 @@
             width: 110px;
             height: 110px;
             background: $white;
-            top: 70px;
+            top: 80px;
             box-sizing: border-box;
             padding: 18px;
 
             @include media-query(small, max) {
-                top: 36px;
-                width: 86px;
-                height: 86px;
+                top: 50px;
+                width: 78px;
+                height: 78px;
                 padding: 12px;
+                margin-bottom:46px;
             }
         }
     }
