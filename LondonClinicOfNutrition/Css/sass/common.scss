@@ -1,5 +1,5 @@
 ﻿h1, h2, h4, h5, h6, p, img, li, blockquote, table {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 h1, h2{
@@ -16,7 +16,6 @@ h3 {
     color: $primary;
     text-transform: uppercase;
     padding-top: 20px;
-    margin-bottom: 30px;
 
     @include media-query(phone, max) {
         font-size: $base + 5;

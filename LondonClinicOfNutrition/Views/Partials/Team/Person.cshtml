@@ -39,6 +39,9 @@
     <span class="section__subtitle">@Model.Content.GetPropertyValue("")</span>
     @Model.Content.GetPropertyValue("bodyContent")
     <p>&nbsp;</p>
-    <p><span class="button"><a href="">View CPD</a></span></p>
+    @if (Model.Content.Down() != null)
+    {
+    <p><span class="button"><a href="@Model.Content.Down().Url">View CPD</a></span></p>
+    }
     <p>&nbsp;</p>
 </div>

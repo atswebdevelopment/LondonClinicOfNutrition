@@ -13,6 +13,21 @@ var blogs = {
         blogs.take = blogs.container.attr('data-take');
         blogs.view(blogs.skip, blogs.take);
 
+        $('.filter a').click(function () {
+            $('.filter li').removeClass('active');
+            $(this).parent().addClass('active');
+
+            blogs.container.attr('data-filter', $(this).attr('data-filter'));
+
+            blogs.skip = 0;
+
+            global.boxes.reset();
+
+            blogs.view(blogs.skip, blogs.take);
+
+            return false;
+        });
+
         $('.load-more').click(function () {
             blogs.skip += blogs.take;
             blogs.view(blogs.skip, blogs.take);
@@ -20,7 +35,7 @@ var blogs = {
         });
     },
     view: function (skip, take){
-        global.models.getContent(blogs.container.attr('data-id'), skip, take, blogs.container.attr('data-search')).success(function (data) {
+        global.models.getContent(blogs.container.attr('data-id'), skip, take, blogs.container.attr('data-search'), blogs.container.attr('data-filter')).success(function (data) {
             blogs.controller(data);
         }).fail(function (data) {
             console.log(data.responseJSON.Message);

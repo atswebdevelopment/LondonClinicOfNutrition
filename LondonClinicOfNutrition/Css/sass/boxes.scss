@@ -40,7 +40,6 @@
         p {
             height: 171px;
             overflow: hidden;
-            margin-bottom: 28px;
             position: relative;
 
             @include media-query(small, max) {

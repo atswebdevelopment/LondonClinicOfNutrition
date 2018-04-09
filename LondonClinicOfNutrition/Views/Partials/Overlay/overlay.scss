@@ -41,7 +41,7 @@
     }
 
     &--enquire {
-        max-width: 980px;
+        max-width: 768px;
 
         .overlay__content {
             padding: 0;
@@ -60,8 +60,8 @@
     }
 
     &__icon {
-        width: 120px;
-        height: 120px;
+        width: 94px;
+        height: 94px;
         margin: 0 auto 20px;
         display: block;
 
@@ -71,15 +71,25 @@
     }
 
     &__highlight {
-        float: left;
-        width: 40%;
-        background: $secondary;
-        padding: 50px 50px 0;
+        background: url(/images/bg-highlight.svg) no-repeat center $secondary;
+        background-size: cover;
+        padding: 50px 50px 30px;
         box-sizing: border-box;
         color: $white;
 
         @include media-query(phone, max) {
             width: 100%;
+        }
+
+        h2 {
+            font-size: $base + 22;
+            border: none;
+            padding: 0;
+            font-family: $boldfont;
+        }
+
+        p {
+            font-size: $base + 4;
         }
 
         a {
@@ -102,12 +112,22 @@
         }
     }
 
-    &__highlight-item {
-        margin-bottom: 50px;
+    &__links {
+        margin: 0;
+        padding: 50px 25px 0;
+        box-sizing: border-box;
+
+        @include media-query(phone, max) {
+            width: 100%;
+        }
+    }
+
+    &__links-item {
+        margin:0 25px 50px;
+        display:inline-block;
 
         @include media-query(phone, max) {
             margin-bottom: 10px;
-            display: inline-block;
             width: 48%;
         }
 
@@ -125,18 +145,6 @@
 
         &:first-child:before {
             content: none;
-        }
-    }
-
-    &__form {
-        width: 60%;
-        float: left;
-        margin: 0;
-        padding: 50px 50px 0;
-        box-sizing: border-box;
-
-        @include media-query(phone, max) {
-            width: 100%;
         }
     }
 
