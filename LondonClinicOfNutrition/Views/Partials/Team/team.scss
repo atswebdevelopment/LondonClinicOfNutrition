@@ -1,18 +1,31 @@
-﻿.boxes-team{
+﻿.boxes-team {
     @extend .boxes-small;
 
-    .boxes{
-        &__image{
+    .boxes {
+        &__image {
             height: 212px;
+
+            @include media-query(small, max) {
+                height: 168px;
+            }
         }
 
-        &__icon{
+        &__icon {
             top: 106px;
             margin: 0 auto 120px;
+            visibility: hidden;
+
+            @include media-query(small, max) {
+                margin: 0 auto 110px;
+            }
         }
 
-        &__subtitle{
-            margin:-68px 0 28px;
+        &__subtitle {
+            margin: -68px 0 28px;
+
+            @include media-query(small, max) {
+                margin: -68px 0 38px;
+            }
         }
     }
 }
