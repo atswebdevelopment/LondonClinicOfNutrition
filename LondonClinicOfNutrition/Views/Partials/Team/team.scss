@@ -106,6 +106,7 @@
     @include clearlist();
 
     &__item {
+        vertical-align: top;
         text-align: center;
         width: 80px;
         margin-right: 36px;
@@ -113,7 +114,7 @@
         line-height: $spacing - 20;
 
         @include media-query(tablet, max) {
-            margin:0 18px;
+            margin: 0 18px;
         }
 
         svg {
